@@ -18,11 +18,11 @@ This project implements the concept of Zuul Gateway. All microservices are expos
 # Zipkin Server
 Zipkin Server listens on localhost and can log events. Any event that involves a restfull microservice invocation, or Zull proxy ivoke is logged by Zipkin server.  Zipkin server also maintains the context of a call. This actually means the following
 
-Let us discuss a scenario where several microservices are present. They run on three servers name as below
+Let us discuss a scenario where several microservices are present. They run on three servers named as below
 
-* Server1 
-* Server2
-* Server3
+* Server1 hosts MS1
+* Server2 hosts MS2
+* Server3 hosts MS3
 
 `Server1:MS1` -> `Server2:MS2` -> `Server3:MS3`
 
