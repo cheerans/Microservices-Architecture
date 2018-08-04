@@ -1,0 +1,11 @@
+UserId,Name,Address,Gender,Age,Departure,Destination,Fare,Class,Date,Duration
+1,"Braund, Mr. Owen Harris","34, VandeRbilt, St. Loius, Missouri ",Male,22," St. Loius, Missouri ","Atlanta, GA",47.25,First,,
+2,"Cumings, Mrs. John Bradley","12, Main Street,  St. Loius, Missouri",Male,38," St. Loius, Missouri ","Atlanta, GA",17.2833,Second,,
+3,"Heikkinen, Miss. Laina","13, Main Street,  St. Loius, Missouri",Female,26," St. Loius, Missouri ","Atlanta, GA",37.925,First,,
+4,"Futrelle, Mrs. Jacques Heath","14, Main Street,  St. Loius, Missouri",Female,18," St. Loius, Missouri ","Atlanta, GA",53.1,Second,,
+5,"Allen, Mr. William Henry","15, Main Street,  St. Loius, Missouri",Male,35," St. Loius, Missouri ","Atlanta, GA",23,First,,
+6,"Moran, Mr. James","16, Main Street,  St. Loius, Missouri",Male,," St. Loius, Missouri ","Atlanta, GA",8.4583,Second,,
+7,"McCarthy, Mr. Timothy J","17, Main Street,  St. Loius, Missouri",Male,54," St. Loius, Missouri ","Atlanta, GA",51.8625,First,,
+8,"Palsson, Master. Gosta Leonard","18, Main Street,  St. Loius, Missouri",Male,2," St. Loius, Missouri ","Atlanta, GA",21.075,Second,,
+9,"Johnson, Mrs. Oscar W","19, Main Street,  St. Loius, Missouri",Female,27," St. Loius, Missouri ","Atlanta, GA",11.1333,Second,,
+10,"Jon, Mrs. Wasik","20, Main Street,  St. Loius, Missouri",Female,72," St. Loius, Missouri ","Atlanta, GA",61.1333,First,,

@@ -1,0 +1,4 @@
+Eureka server at - http://localhost:8761
+ZUUL Routes - http://localhost:8091/routes
+Health - http://localhost:8080/health
+features - http://localhost:8080/features
