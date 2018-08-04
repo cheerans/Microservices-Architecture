@@ -4,8 +4,8 @@ Microservice Architecture (Load balanced + High availability)
 The components of this design are
 
 - [Spring Boot Microservice](#mlservice)
-- [Spring Eureka Server](#eurekaserver)
-- [Spring Zipkin Server](#zipkinserver)
+- [Spring Eureka Server](#eureka-server)
+- [Spring Zipkin Server](#zipkin-server)
 - [Zuul Proxy](#msapigateway)
 - [Hystrix Circuit Breaker](#mlservice)
 
