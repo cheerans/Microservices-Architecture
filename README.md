@@ -1,5 +1,5 @@
-Microservice Architecture Using Spring Boot, Eureka Server, Zipkin and Zuul Proxy and Hystrix Circuit Breaker
-==============================================================================================================
+Microservice Architecture Using Spring Boot, Eureka Server, Zipkin, Zuul Proxy and Hystrix Circuit Breaker
+===========================================================================================================
 
 This is a work in progress, but existing parts are stable
 
