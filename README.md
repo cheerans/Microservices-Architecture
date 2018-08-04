@@ -24,10 +24,10 @@ Only change that has to be done in production is, same module microservices chai
 * Eureka Server takes Peer Info as environment variable
 
 
-# MSApiGateway - Zuul Proxy
+# MSApiGateway - (Zuul Proxy)
 This project implements the concept of Zuul Gateway. All microservices are exposed here from one baseurl of the gateway. The methos is desireable when you want to expose one global URL. The load balancing is done by Zuul. Each call will round robin fashion hit a new server. The Gateway is configured to listen to the Eureka server.
 
-# Zipkin Server - Spring Zipkin Server
+# Zipkin Server - (Spring Zipkin Server)
 Zipkin Server listens on localhost and can log events. Any event that involves a restfull microservice invocation, or Zull proxy ivoke is logged by Zipkin server.  Zipkin server also maintains the context of a call. This actually means the following
 
 Let us discuss a scenario where several microservices are present. They run on three servers named as below
