@@ -1,8 +1,12 @@
 Microservice Architecture
 =========================
 
-Spring Boot, Spring Eureka Server, Spring Zipkin Server, Zuul Proxy and Hystrix Circuit Breaker
-===========================================================================
+- Spring Boot
+- Spring Eureka Server
+- Spring Zipkin Server
+- Zuul Proxy
+- Hystrix Circuit Breaker
+
 
 This is a work in progress, but existing parts are stable
 
