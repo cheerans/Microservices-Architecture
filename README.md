@@ -1,5 +1,5 @@
-Microservice Loadbalanced high availability Architecture
-========================================================
+Microservice Architecture (Load balanced + High availability)
+=============================================================
 
 The components of this design are
 
