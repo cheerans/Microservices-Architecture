@@ -32,7 +32,6 @@ Zipkin will log this as one Span or call, it will include child spans for indivi
 
 # Happy coding! 
 
-
 Good Luck and spend time and code slow. It is not the size of the docker ship, it is the motion in the ocean
 - Santhosh 
 
@@ -43,10 +42,9 @@ Good Luck and spend time and code slow. It is not the size of the docker ship, i
 * Create a PR and feel proud.
 
 
-
 ## License
 
-react-native-piwik is released under the MIT license, see [LICENSE](https://github.com/BonifyByForteil/react-native-piwik/blob/master/LICENSE).
+MicroServicesArchitecture is released under the MIT license, see [LICENSE](https://github.com/BonifyByForteil/react-native-piwik/blob/master/LICENSE).
 
 `# Microservices Architecture`
 `# Microservices`
