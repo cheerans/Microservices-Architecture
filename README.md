@@ -31,8 +31,10 @@ Let us discuss a scenario where several microservices are present. They run on t
 Zipkin will log this as one Span or call, it will include child spans for individual servers running Microservice
 
 # Happy coding! 
-"# Microservices Architecture"
-"# Microservices"
+
 
 Good Luck and spend time and code slow. It is not the size of the docker ship, it is the motion in the ocean
-- Santhosh
+- Santhosh 
+
+* "# Microservices Architecture"
+* "# Microservices"
