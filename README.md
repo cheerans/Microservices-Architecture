@@ -1,6 +1,8 @@
 Microservice Architecture
 =========================
 
+The components of this design are
+
 - Spring Boot
 - Spring Eureka Server
 - Spring Zipkin Server
