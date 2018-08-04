@@ -1,0 +1,45 @@
+version: '2'
+services:
+    config-server:
+        container_name: mlservice-server-instance
+        build:
+            context: .
+            dockerfile: MLDockerFile.server
+        image: mlservice-server-img:latest
+        expose:
+            - 8888
+        networks:
+            - spring-cloud-network
+        volumes:
+            - mlservice-cloud-volume:/var/lib/spring-cloud/config-repo
+        logging:
+            driver: json-file
+    config-client:
+        container_name: mlservice-client-instance
+        build:
+            context: .
+            dockerfile: MLDockerFile.client
+        image: mlservice-client-img:latest
+        entrypoint: /opt/spring-cloud/bin/config-client-entrypoint.sh
+        environment:
+            SPRING_APPLICATION_JSON: \
+              '{"spring": {"cloud":  \
+              {"config": {"uri": "http://config-server:8765"}}}}'
+        expose:
+            - 8080
+        ports:
+            - 8080:8080
+        networks:
+            - spring-cloud-network
+        links:
+            - config-server:config-server
+        depends_on:
+            - config-server
+        logging:
+            driver: json-file
+networks:
+    spring-cloud-network:
+        driver: bridge
+volumes:
+    mlservice-cloud-volume:
+        external: true
