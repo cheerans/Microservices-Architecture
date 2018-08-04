@@ -1,14 +1,14 @@
 This is a work in progress, but most parts are stable
 
-Zipkin Server
--------------
-Zipkin Sever is fully functional
-Zipkin Server does failover 
-Zipkin Server takes Peer Info as environment variable
+# Zipkin Server
+
+1. Zipkin Sever is fully functional
+2. Zipkin Server does failover 
+3. Zipkin Server takes Peer Info as environment variable
 
 
 
-Happy coding!
--------------
+# Happy coding!
+
 "# Microservices Architecture" 
 "# Microservices Architecture" 
