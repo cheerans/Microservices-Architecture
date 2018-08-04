@@ -14,7 +14,7 @@ This is a work in progress, but existing parts are stable
 
 # MLService
 
-`Uses Spring Boot, Hystrix Circuit Breaker`
+`Uses Spring Boot, Loadbalanced Rest Template, Eureka Client, Hystrix Circuit Breaker`
 
 This project holds the service layer. There is only one microservice here. However, the sample is done in such a way that invoking another microservice is done through Eureka Server and Load balnced Rest template. Hence each service here acts like a separate microservice, for demonstration pruposes. The sample will help you design fully scalable microservices, fully functional. 
 
