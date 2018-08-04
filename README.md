@@ -3,7 +3,7 @@ Microservice Architecture (Load balanced + High availability)
 
 The components of this design are
 
-- Spring Boot
+- [Spring Boot](#MLService). 
 - Spring Eureka Server
 - Spring Zipkin Server
 - Zuul Proxy
