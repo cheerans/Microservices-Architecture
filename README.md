@@ -7,9 +7,9 @@ Only Change that has to be done in production is, same module microservices chai
 
 
 # Eureka Server
-1. Eureka Sever is fully functional
-2. Eureka Server does failover 
-3. Eureka Server takes Peer Info as environment variable
+* Eureka Sever is fully functional
+* Eureka Server does failover 
+* Eureka Server takes Peer Info as environment variable
 
 
 # MSApiGateway
