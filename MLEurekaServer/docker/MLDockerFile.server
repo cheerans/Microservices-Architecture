@@ -1,0 +1,12 @@
+FROM frolvlad/alpine-oraclejdk8:slim
+#label (key value pairs) for image
+LABEL Description="mlservice-server" Version="1.0"
+#Declare a variable for build purposes
+ARG VERSION=1.0
+RUN mkdir /mlservice-cloud-volume
+VOLUME /mlservice-cloud-volume
+COPY target/mlservice-server-${VERSION}.jar /mlservice-cloud-volume/server/lib/mlservice-server-latest.jar
+# touch the archive for timestamp
+RUN sh -c 'touch /mlservice-cloud-volume/server/lib/mlservice-server-latest.jar'
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/mlservice-cloud-volume/server/lib/mlservice-server-latest.jar"]
+EXPOSE 8765

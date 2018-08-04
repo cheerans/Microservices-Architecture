@@ -1,0 +1,16 @@
+#The server comes with a client config, but we do not want that to register
+#The server starts itself at ureka  http://localhost:8761/eureka/   
+#which is localhost:port
+server:
+    port: 8761
+    contextPath: /
+eureka:
+    instance:
+        hostname: localhost
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+        service-url:
+            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/        
+    server:
+        waitTimeInMsWhenSyncEmpty: 0
