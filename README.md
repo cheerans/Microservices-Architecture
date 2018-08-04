@@ -20,13 +20,13 @@ Zipkin Server listens on localhost and can log events. Any event that involves a
 
 Let us discuss a scenario where several microservices are present. They run on three servers name as below
 
-1. Server1 
-2. Server2
-3. Server3
+* Server1 
+* Server2
+* Server3
 
-Server1:MS1 -> Server2:MS2 -> Server3:MS3
+`Server1:MS1` -> `Server2:MS2` -> `Server3:MS3`
 
-Server1:MS1 invokes Server2:MS2 which invokes Server3:MS3
+`Server1:MS1` invokes `Server2:MS2` which invokes `Server3:MS3`
 
 Zipkin will log this as one Span or call, it will include child spans for individual servers running Microservice
 
