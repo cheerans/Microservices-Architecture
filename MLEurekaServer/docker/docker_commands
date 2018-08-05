@@ -1,9 +1,33 @@
-docker build --no-cache=true -f docker/MLDockerFile.server  -t scheeran/mlservice-server-img:latest --rm=true
+sudo service docker restart
+
+# build will leave a repository built on local | docker ls will show it
+docker build --no-cache=true -f docker/DockerFile.eureka  -t scheeran/eurekaserver-img:1.0 --rm=true
+
+docker push scheeran/eurekaserver-img:1.0            # Upload tagged image to registry
 
 #Create a docker volume to run the image from
 docker volume create --name=mlservice-cloud-volume
 
 #Run docker
-docker run --name=mlservice-server-instance --publish=8765:8765 --volume=mlservice-cloud-volume:/config mlservice-server-img:latest
+docker run --name=eurekaserver-instance -it --rm -v /mlservicerootdir/eurekaserver -w /mlservicerootdir/eurekaserver -p 8761:8761 --volume=mlservice-cloud-volume:/config eurekaserver-img:latest
 
-HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1
+
+docker run --rm -it -v /usr/project -w /project maven mvn package && docker-compose up
+
+-v volume
+-w workdirectory
+
+
+#RUN mkdir /mlservice-cloud-volume
+#WORKDIR /mlservice-cloud-volume
+#VOLUME /mlservice-cloud-volume
+
+docker container ls
+docker container stop <hash>           # Gracefully stop the specified container
+docker container kill <hash>         # Force shutdown of the specified container
+docker container rm <hash>        # Remove specified container from this machine
+docker container rm $(docker container ls -a -q)         # Remove all containers
+docker image ls -a                             # List all images on this machine
+docker image rm <image id>            # Remove specified image from this machine
+docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+docker login

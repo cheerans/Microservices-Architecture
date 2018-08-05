@@ -1,0 +1,9 @@
+https://runnable.com/docker/java/dockerize-your-java-application
+
+https://docs.docker.com/samples/library/tomcat/#tomcatversion
+
+# localhost:8080
+docker run -it --rm tomcat:8.0
+
+# localhost:8888
+docker run -it --rm -p 8888:8080 tomcat:8.0

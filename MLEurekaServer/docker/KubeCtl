@@ -1,0 +1,22 @@
+#https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
+
+
+https://kubernetes.io/blog/2016/07/autoscaling-in-kubernetes/
+Setting Up Autoscaling on GCE
+--------------------------------
+The following instructions apply to GCE. For GKE please check the autoscaling section in cluster operations manual available here.
+
+Before we begin, we need to have an active GCE project with Google Cloud Monitoring, Google Cloud Logging and Stackdriver enabled. For more information on project creation, please read our Getting Started Guide. We also need to download a recent version of Kubernetes project (version v1.3.0 or later).
+
+First, we set up a cluster with Cluster Autoscaler turned on. The number of nodes in the cluster will start at 2, and autoscale up to a maximum of 5. To implement this, we’ll export the following environment variables:
+
+export NUM\_NODES=2
+
+export KUBE\_AUTOSCALER\_MIN\_NODES=2
+
+export KUBE\_AUTOSCALER\_MAX\_NODES=5
+
+export KUBE\_ENABLE\_CLUSTER\_AUTOSCALER=true
+and start the cluster by running:
+
+./cluster/kube-up.sh

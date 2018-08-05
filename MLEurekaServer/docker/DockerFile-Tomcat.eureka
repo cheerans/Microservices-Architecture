@@ -1,0 +1,9 @@
+# can also use existing install as - ENV JAVA_HOME /path/to/java
+FROM tomcat:8.0-jre8
+LABEL Description="eureka-server" 
+LABEL Version="1.0"
+ARG VERSION=1.0
+RUN ["rm", "-fr", "/usr/local/tomcat/webapps/eureka-server-latest"]
+COPY target/eureka-server-${VERSION}.jar /usr/local/tomcat/webapps/eureka-server-latest.jar
+EXPOSE 8761,8762
+CMD [“catalina.sh”, “run”]

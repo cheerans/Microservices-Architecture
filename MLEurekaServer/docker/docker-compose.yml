@@ -1,0 +1,51 @@
+version: '1'
+services:
+    eureka-east-server1:
+        container_name: eureka-east-server1
+        build:
+            context: .
+            dockerfile: DockerFile.eureka
+        image: eureka-server-img:latest
+        environment:
+            EUREKA_VERSION=1.0
+            EUREKA-EAST-SERVER1-HOST=localhost
+			EUREKA-EAST-SERVER1-PORT=8761
+			SPRING_PROFILES_ACTIVE=PeerEast1
+        expose:
+            - 8761
+        ports:
+            - 8761:8761            
+        networks:
+            - spring-cloud-network
+        volumes:
+            - ./target/eureka-server-${EUREKA_VERSION}.jar:/var/www/mlservicerootdir/eureka-server-latest.jar
+        logging:
+            driver: json-file
+services:
+    eureka-east-server2:
+        container_name: eureka-east-server2
+        build:
+            context: .
+            dockerfile: DockerFile.eureka
+        image: eureka-server-img:latest
+        environment:
+            EUREKA_VERSION=1.0
+        	EUREKA-EAST-SERVER2-HOST=localhost
+        	EUREKA-EAST-SERVER2-PORT=8762
+        	SPRING_PROFILES_ACTIVE=PeerEast2
+        expose:
+            - 8762
+        ports:
+            - 8762:8762            
+        networks:
+            - spring-cloud-network
+        volumes:
+            - ./target/eureka-server-${EUREKA_VERSION}.jar:/var/www/mlservicerootdir/eureka-server-latest.jar
+        logging:
+            driver: json-file            
+networks:
+    spring-cloud-network:
+        driver: bridge
+volumes:
+    mlservicerootdir:
+        external: true

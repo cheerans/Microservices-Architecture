@@ -1,0 +1,58 @@
+docker-swarm concept
+--------------------
+https://rominirani.com/docker-swarm-tutorial-b67470cf8872
+
+# we can use a docker machine to create a 
+docker-machine create --driver virtualbox ml_manager
+docker-machine create --driver virtualbox ml_worker1
+docker-machine create --driver virtualbox ml_worker2
+
+docker-machine ls
+
+#Swarm initialized as below: current node <node ID> is now a manager.
+docker-machine ssh ml_manager 
+
+# Get the manager IP Address (******* Each machine runs ona  diff IP)
+docker-machine ip ml_manager
+
+# let us say we got 192.98.78.256
+
+#Always run docker swarm init and docker swarm join with port 2377
+docker swarm init --advertise-addr 192.98.78.256:2377 
+
+#get token for manager
+docker swarm join-token --rotate manager
+
+docker swarm join --token TOKEN_FROM_ABOVE 192.98.78.256:2377
+
+#get token for manager
+docker swarm join-token --rotate worker
+
+docker swarm join --token TOKEN_FROM_ABOVE 192.98.78.256:2377
+
+# export MANAGER_TOKEN=`docker-machine ssh ml_manager "docker swarm join-token manager -q"`
+# export WORKER_TOKEN=`docker-machine ssh ml_manager "docker swarm join-token worker -q"`
+
+docker node ls
+docker info ml_manager
+
+# Is equuialent of docker run
+
+docker service create --replicas 5 -p 80:80 --name web nginx
+
+# This will scale from 5 to 8
+docker service scale web=8
+
+docker service ls
+
+# get updates
+docker service update --image <imagename>:<version> web
+
+# remove service
+docker service rm web
+
+
+# to deploy the app on the cloud hosted swarm
+# Open docker compose and see, it has services listed
+# it runs on swarm created already
+docker stack deploy -c docker-compose.yml ml_cloud_stack 
