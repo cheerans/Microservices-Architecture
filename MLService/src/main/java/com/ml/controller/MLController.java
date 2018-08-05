@@ -28,6 +28,8 @@ import com.ml.core.impl.PrintTree;
 import com.ml.dto.DataColumn;
 import com.ml.dto.DataHolder;
 import com.ml.dto.DataRow;
+import com.ml.utils.ServiceStatus;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RestController
 public class MLController {
@@ -48,38 +50,74 @@ public class MLController {
 	
 	private  RestTemplate plainRestTemplate = new RestTemplateBuilder().build();
 	
+	
+	@HystrixCommand(fallbackMethod = "getDecision4Postfallback")
 	@RequestMapping(value="/getDecision4", method = RequestMethod.POST, produces = "application/json")	
 	public @ResponseBody String getDecision4(HttpServletRequest request,@RequestBody String data) throws Exception{	
 		
 		return "getDecision4" + ":" + request.getLocalPort();
-	}	
+	}
+	
+	@HystrixCommand(fallbackMethod = "getDecision4fallback")
 	@RequestMapping(value="/getDecision4", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision4Get(HttpServletRequest request) throws Exception{	
 		
 		return "getDecision4" + ":" + request.getLocalPort();
 	}	
 	
+	@HystrixCommand(fallbackMethod = "getDecision3fallback")
 	@RequestMapping(value="/getDecision3", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision3(HttpServletRequest request) throws Exception{	
 		
 		return "getDecision3" + ":" + request.getLocalPort() + "-(W Zuul)" + plainRestTemplate.getForEntity("http://localhost:8091/api-gateway/mls/getDecision4",String.class).getBody();
 	}
    
-	
+	@HystrixCommand(fallbackMethod = "getDecision2fallback")
 	@RequestMapping(value="/getDecision2", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision2(HttpServletRequest request) throws Exception{	
 		
 		return "getDecision2" + ":" + request.getLocalPort() + "-(WOut Zuul)" + restTemplate.getForEntity("http://mls/getDecision3",String.class).getBody();
 	}
     
+	@HystrixCommand(fallbackMethod = "getDecision1fallback")
 	@RequestMapping(value="/getDecision1", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision1(HttpServletRequest request) throws Exception{	
 		
 		return "getDecision1" + ":" + request.getLocalPort() + "-(WOut Zuul)" + restTemplate.getForEntity("http://mls/getDecision2",String.class).getBody();
 	}
 	
+	public @ResponseBody String getDecision4Postfallback(HttpServletRequest request,@RequestBody String data) throws Exception{	
+		
+		return ServiceStatus.buildFailure("getDecisionPost").toString();
+	}
+	
+	public @ResponseBody String getDecision4fallback(HttpServletRequest request) throws Exception{	
+		
+		return ServiceStatus.buildFailure("getDecision4").toString();
+	}
+	
+	public @ResponseBody String getDecision3fallback(HttpServletRequest request) throws Exception{	
+		
+		return ServiceStatus.buildFailure("getDecision3").toString();
+	}
+	
+	public @ResponseBody String getDecision2fallback(HttpServletRequest request) throws Exception{	
+		
+		return ServiceStatus.buildFailure("getDecision2").toString();
+	}
+	
+	public @ResponseBody String getDecision1fallback(HttpServletRequest request) throws Exception{	
+		
+		return ServiceStatus.buildFailure("getDecision1").toString();
+	}
+	
+	public @ResponseBody String getDecisionfallback(@RequestBody String data,HttpServletRequest request) throws Exception{	
+		
+		return ServiceStatus.buildFailure("getDecision").toString();
+	}
+	
 	@RequestMapping(value="/getDecision", method = RequestMethod.POST, produces = "application/json")
-	public @ResponseBody String getDecision(@RequestBody String data) throws Exception{		
+	public @ResponseBody String getDecision(@RequestBody String data,HttpServletRequest request) throws Exception{		
 				
 		JSONObject json = new JSONObject(data);
 		String fileData = new String(Base64.getDecoder().decode(json.getString("allLearningData")));

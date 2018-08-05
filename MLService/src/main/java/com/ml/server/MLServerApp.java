@@ -2,6 +2,7 @@ package com.ml.server;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -15,6 +16,7 @@ import brave.sampler.Sampler;
 //that is client to Eureka Server instance
 @EnableEurekaClient
 @SpringBootApplication
+@EnableCircuitBreaker
 @EnableWebMvc
 @ComponentScan(basePackages = "com.ml.controller")
 public class MLServerApp{
