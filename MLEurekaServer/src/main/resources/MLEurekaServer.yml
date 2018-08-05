@@ -21,6 +21,8 @@ spring:
 eureka:
     instance:
         hostname: ${EUREKA-EAST-SERVER-HOST}
+        metadataMap:
+            zone: ${ZONE}
     client:
         registerWithEureka: false
         fetchRegistry: false

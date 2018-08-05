@@ -3,7 +3,7 @@ spring:
         name: mls
 eureka:
     client:
-        registerWithEureka: true 
+        registerWithEureka: true
         fetchRegistry: true    
         healthcheck:
             enabled: true        
