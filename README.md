@@ -19,16 +19,6 @@ This is a work in progress, but existing parts are stable
 * Eureka Sever holds Microservice Registry
 * Eureka Server is configured with a peer server for failover 
 
-Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments.
-
-Eureka Server 1
-===============
-`-Dspring.profiles=PeerEast1 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8761 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8762`
-
-Eureka Server 2
-===============
-`-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
-
 
 ```
 #The server comes with a client config, but we do not want that to register
@@ -63,6 +53,16 @@ eureka:
             defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
 
 ```
+
+Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments.
+
+Eureka Server 1
+===============
+`-Dspring.profiles=PeerEast1 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8761 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8762`
+
+Eureka Server 2
+===============
+`-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
 
 # MLService
 
