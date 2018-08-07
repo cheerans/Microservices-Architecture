@@ -61,11 +61,15 @@ Clients of Eureka servers, hence have to configure with both servers for a regio
 
 `eureka: client: serviceUrl: defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/`
 
+`-DSERVER-PORT=8080 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+
 # MSApiGateway
 
 `Uses Zuul Proxy`
 
 This project implements the concept of Zuul Gateway. All microservices are exposed here from one baseurl of the gateway. The methos is desireable when you want to expose one global URL. The load balancing is done by Zuul. Each call will round robin fashion hit a new server. The Gateway is configured to listen to the Eureka server.
+
+`-DREGION=East -DSERVER-PORT=8091 -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
 
 # Zipkin Server
 
@@ -84,6 +88,8 @@ Let us discuss a scenario where several microservices are present. They run on t
 `Server1:MS1` invokes `Server2:MS2` which invokes `Server3:MS3`
 
 Zipkin will log this as one Span or call, it will include child spans for individual servers running Microservice
+
+`-DSERVER-PORT=9411 -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
 
 # Happy coding! 
 
