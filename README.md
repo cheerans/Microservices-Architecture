@@ -30,8 +30,7 @@ Eureka Server 2
 `-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
 
 
-[source,java,indent=0]
-----
+```
 #The server comes with a client config, but we do not want that to register
 #The server starts itself at ureka  http://localhost:8761/eureka/   
 #which is localhost:port
@@ -63,7 +62,7 @@ eureka:
         service-url:
             defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
 
-----
+```
 
 # MLService
 
