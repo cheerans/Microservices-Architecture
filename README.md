@@ -63,7 +63,7 @@ eureka:
         service-url:
             defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
 
----
+----
 
 # MLService
 
