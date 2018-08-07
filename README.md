@@ -25,26 +25,29 @@ spring:
     application:
         name: mleurekaserver
 server:
-    port: ${SERVER-PORT}
+    port: ${EUREKA-SERVER-PORT}
     contextPath: /  
 eureka:
     instance:
         hostname: ${EUREKA-SERVER-HOST}
     client:
         registerWithEureka: false
-        fetchRegistry: false
+        fetchRegistry: false 
+        region: ${REGION} 
+        availabilityZones: 
+            ${REGION}: http://${EUREKA-SERVER-HOST}:${EUREKA-SERVER-PORT}/eureka/,http://${EUREKA-PEER-SERVER-HOST}:${EUREKA-PEER-SERVER-PORT}/eureka/ 
         service-url:
-            defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
+            defaultZone: http://${EUREKA-PEER-SERVER-HOST}:${EUREKA-PEER-SERVER-PORT}/eureka/
 ```
 Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments.
 
-Eureka Server 1
-===============
-`-Dspring.profiles=PeerEast1 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8761 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8762`
+Eureka East Server 1
+====================
+`-DREGION=East -DEUREKA-SERVER-HOST=localhost -DEUREKA-SERVER-PORT=8761 -DEUREKA-PEER-SERVER-HOST=localhost -DEUREKA-PEER-SERVER-PORT=8762`
 
-Eureka Server 2
-===============
-`-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
+Eureka West Server 1
+====================
+`-DREGION=West -DEUREKA-SERVER-HOST=localhost -DEUREKA-SERVER-PORT=8764 -DEUREKA-PEER-SERVER-HOST=localhost -DEUREKA-PEER-SERVER-PORT=8763`
 
 # MLService
 
