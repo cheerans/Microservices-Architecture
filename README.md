@@ -29,6 +29,42 @@ Eureka Server 2
 ===============
 `-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
 
+
+[source,java,indent=0]
+----
+#The server comes with a client config, but we do not want that to register
+#The server starts itself at ureka  http://localhost:8761/eureka/   
+#which is localhost:port
+server:
+    port: ${SERVER-PORT}
+    contextPath: /   
+---
+spring:
+    profiles: PeerEast1  
+eureka:
+    instance:
+        hostname: ${EUREKA-SERVER-HOST}
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+        service-url:
+            defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
+---
+spring:
+    profiles: PeerEast2  
+eureka:
+    instance:
+        hostname: ${EUREKA-EAST-SERVER-HOST}
+        metadataMap:
+            zone: ${ZONE}
+    client:
+        registerWithEureka: false
+        fetchRegistry: false
+        service-url:
+            defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
+
+---
+
 # MLService
 
 `Uses Spring Boot, Loadbalanced Rest Template, Eureka Client, Hystrix Circuit Breaker`
