@@ -43,9 +43,7 @@ spring:
     profiles: PeerEast2  
 eureka:
     instance:
-        hostname: ${EUREKA-EAST-SERVER-HOST}
-        metadataMap:
-            zone: ${ZONE}
+        hostname: ${EUREKA-SERVER-HOST}
     client:
         registerWithEureka: false
         fetchRegistry: false
