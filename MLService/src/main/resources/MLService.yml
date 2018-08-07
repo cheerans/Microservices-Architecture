@@ -1,10 +1,17 @@
 spring:
     application:
         name: mls
+server:
+    port: ${SERVER-PORT}
+    contextPath: /
 eureka:
+    instance:
+        hostname: ${SERVER-HOST}
     client:
         registerWithEureka: true
-        fetchRegistry: true    
+        fetchRegistry: true
+        region: ${REGION}
+        preferSameZoneEureka: true 
         healthcheck:
             enabled: true        
         serviceUrl:
