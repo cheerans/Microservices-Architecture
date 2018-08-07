@@ -29,7 +29,7 @@ Only change that has to be done in production is, same module microservices chai
 * Eureka Server does failover 
 * Eureka Server takes Peer Info as environment variable
 
-Eureka Server is configured with a peer and per region. For Demo purposes we call the region east. Servers are statrted with following VM arguments
+Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments
 
 Server 1
 ========
