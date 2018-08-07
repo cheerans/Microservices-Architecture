@@ -21,15 +21,12 @@ This is a work in progress, but existing parts are stable
 
 
 ```
-#The server comes with a client config, but we do not want that to register
-#The server starts itself at ureka  http://localhost:8761/eureka/   
-#which is localhost:port
+spring:
+    application:
+        name: mleurekaserver
 server:
     port: ${SERVER-PORT}
-    contextPath: /   
----
-spring:
-    profiles: PeerEast1  
+    contextPath: /  
 eureka:
     instance:
         hostname: ${EUREKA-SERVER-HOST}
@@ -38,20 +35,7 @@ eureka:
         fetchRegistry: false
         service-url:
             defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
----
-spring:
-    profiles: PeerEast2  
-eureka:
-    instance:
-        hostname: ${EUREKA-SERVER-HOST}
-    client:
-        registerWithEureka: false
-        fetchRegistry: false
-        service-url:
-            defaultZone: http://${PEER-SERVER-HOST}:${PEER-SERVER-PORT}/eureka/
-
 ```
-
 Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments.
 
 Eureka Server 1
