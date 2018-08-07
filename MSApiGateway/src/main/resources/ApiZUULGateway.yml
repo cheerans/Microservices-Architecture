@@ -1,13 +1,20 @@
+spring:
+    application:
+        name: msapigateway
+server:
+    port: ${SERVER-PORT}
+    contextPath: /  
 eureka:
   instance:
-    metadataMap:
-      zone: ${ZONE}
+    hostname: ${SERVER-HOST}
   client:
     preferSameZoneEureka: true
     registerWithEureka: true
     fetchRegistry: true
+    region: ${REGION}
+    preferSameZoneEureka: true 
     serviceUrl:
-      defaultZone: http://${EUREKA-EAST-SERVER1-HOST}:${EUREKA-EAST-SERVER1-PORT}/eureka/,http://${EUREKA-EAST-SERVER2-HOST}:${EUREKA-EAST-SERVER2-PORT}/eureka/ 
+      defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/ 
 ribbon:
     eureka:
         enabled: true
