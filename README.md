@@ -25,11 +25,10 @@ Only change that has to be done in production is, same module microservices chai
 
 `Uses Spring Eureka Server`
 
-* Eureka Sever is fully functional
-* Eureka Server does failover 
-* Eureka Server takes Peer Info as environment variable
+* Eureka Sever holds Microservice Registry
+* Eureka Server is configured with a peer server for failover 
 
-Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments
+Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments.
 
 Eureka Server 1
 ===============
@@ -39,6 +38,9 @@ Eureka Server 2
 ===============
 `-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
 
+Clients of Eureka servers, hence have to configure with both servers for a region. If in case of failover, one of the Eureka servers must be available and service discovery will continue uninterrupted. This is called high availability model. Below is a client configuration for Microservices to connect to their Eureka server to discover,the microserver ip:port/service url.
+
+`eureka: client: serviceUrl: defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/`
 
 # MSApiGateway
 
