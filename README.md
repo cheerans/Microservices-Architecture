@@ -31,12 +31,12 @@ Only change that has to be done in production is, same module microservices chai
 
 Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments
 
-Server 1
-========
+Eureka Server 1
+===============
 `-Dspring.profiles=PeerEast1 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8761 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8762`
 
-Server 2
-========
+Eureka Server 2
+===============
 `-Dspring.profiles=PeerEast2 -DEUREKA-SERVER-HOST=localhost -DSERVER-PORT=8762 -DPEER-SERVER-HOST=localhost -DPEER-SERVER-PORT=8761`
 
 
