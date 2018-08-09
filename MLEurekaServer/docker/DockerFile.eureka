@@ -12,14 +12,14 @@ RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
-run cd /home/mldocker/src/Microservices-Architecture/MLEurekaServer&amp;amp;amp;amp;amp;&amp;amp;amp;amp;amp;mvn clean install clean
+run -w /home/mldocker/src/Microservices-Architecture/MLEurekaServer mvn clean install clean
 
 LABEL Description="eureka-server"
 LABEL Version="1.0"
 LABEL orbiter="true"
 ARG VERSION=1.0
 
-docker volume rm mlservicerootdir
+volume rm mlservicerootdir
 RUN mkdir /mlservicerootdir/eurekaserver/
 COPY target/eureka-server-${VERSION}.jar /mlservicerootdir/eurekaserver/eureka-server-latest.jar
 #VOLUME /mlservicerootdir/eurekaserver
