@@ -17,7 +17,7 @@ WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
-run  mvn -e clean install
+run mvn -Dhttps.protocols=TLSv1.2 -e clean install
 
 LABEL Description="eureka-server"
 LABEL Version="1.0"
@@ -41,4 +41,3 @@ ARG EUREKA-PEER-SERVER-PORT=8762
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-D${REGION} -D${EUREKA-SERVER-HOST} -D${EUREKA-SERVER-PORT} -D${EUREKA-PEER-SERVER-HOST} -D${EUREKA-PEER-SERVER-PORT}","-jar","/eureka-server-latest.jar"]
 
 #DOCKER RUN -e "ARG REGION=East" -e "ARG EUREKA-SERVER-HOST=localhost" -e "ARG EUREKA-SERVER-PORT=8761" -e "ARG EUREKA-PEER-SERVER-HOST=localhost" -e "ARG EUREKA-PEER-SERVER-PORT=8762"
-
