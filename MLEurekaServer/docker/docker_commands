@@ -11,6 +11,7 @@ docker volume create --name=mlservice-cloud-volume
 #Run docker
 docker run --name=eurekaserver-instance -it --rm -v /mlservicerootdir/eurekaserver -w /mlservicerootdir/eurekaserver -p 8761:8761 --volume=mlservice-cloud-volume:/config eurekaserver-img:latest
 
+#DOCKER RUN -e "ARG REGION=East" -e "ARG EUREKA-SERVER-HOST=localhost" -e "ARG EUREKA-SERVER-PORT=8761" -e "ARG EUREKA-PEER-SERVER-HOST=localhost" -e "ARG EUREKA-PEER-SERVER-PORT=8762"
 
 docker run --rm -it -v /usr/project -w /project maven mvn package && docker-compose up
 
