@@ -2,7 +2,10 @@
 FROM centos:7
 FROM openjdk:8
 
-RUN yum clean all && yum install -y git
+RUN apt-get -qq update
+RUN apt-get -qqy install git
+RUN apt-get -qqy install curl
+RUN apt-get -qqy install git-core
 
 USER mldocker
 RUN mkdir /home/mldocker/src
