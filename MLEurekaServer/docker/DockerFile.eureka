@@ -5,6 +5,8 @@ FROM centos:7
 FROM openjdk:8
 FROM maven:3.2
 
+ENTRYPOINT echo $JAVA_HOME
+
 RUN apt-get -qq update
 RUN apt-get -qqy install git
 RUN apt-get -qqy install curl
