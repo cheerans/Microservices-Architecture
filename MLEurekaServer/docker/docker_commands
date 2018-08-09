@@ -14,8 +14,10 @@ docker run --name=eurekaserver-instance -it --rm -v /mlservicerootdir/eurekaserv
 
 docker run --rm -it -v /usr/project -w /project maven mvn package && docker-compose up
 
--v volume
--w workdirectory
+# -v volume
+# -w workdirectory
+# N.B: This actually loads a host physical directory and make it available to a container, container location is where physical dir is loaded
+# Docker by default has no access to machine directories, it has its own environment going on
 
 
 #RUN mkdir /mlservice-cloud-volume
