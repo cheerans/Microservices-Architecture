@@ -3,9 +3,9 @@
 # use the command line to execute commands
 FROM centos:7
 FROM openjdk:8
-FROM maven:3.2
+FROM maven:3.3
 
-ENTRYPOINT echo $JAVA_HOME
+CMD ["sh", "-c", "echo ${JAVA_HOME}"]
 
 RUN apt-get -qq update
 RUN apt-get -qqy install git
