@@ -17,7 +17,7 @@ WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
-run  mvn clean install clean
+run  mvn -e clean install
 
 LABEL Description="eureka-server"
 LABEL Version="1.0"
