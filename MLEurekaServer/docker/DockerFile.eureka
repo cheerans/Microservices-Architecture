@@ -1,12 +1,14 @@
 # can also use existing install as - ENV JAVA_HOME /path/to/java
+# This is your Editor pane. Write the Dockerfile here and 
+# use the command line to execute commands
 FROM centos:7
 FROM openjdk:8
+FROM maven:3.2
 
 RUN apt-get -qq update
 RUN apt-get -qqy install git
 RUN apt-get -qqy install curl
 RUN apt-get -qqy install git-core
-
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -14,7 +16,8 @@ RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
-run -w /home/mldocker/src/Microservices-Architecture/MLEurekaServer mvn clean install clean
+WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
+run  mvn clean install clean
 
 LABEL Description="eureka-server"
 LABEL Version="1.0"
