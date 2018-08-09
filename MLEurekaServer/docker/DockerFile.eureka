@@ -7,6 +7,8 @@ RUN apt-get -qqy install git
 RUN apt-get -qqy install curl
 RUN apt-get -qqy install git-core
 
+
+RUN useradd -ms /bin/bash mldocker
 USER mldocker
 RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
