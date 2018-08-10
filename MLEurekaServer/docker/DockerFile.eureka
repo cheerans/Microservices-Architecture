@@ -13,16 +13,15 @@ RUN apt-get -qqy install git-core
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
-sudo groupadd docker
-sudo gpasswd -a $USER docker
-newgrp docker
+CMD ["sh", "-c", "sudo groupadd docker"]
+CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
+CMD ["sh", "-c", "sudo newgrp docker"]
 
 RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
-
-ENV DOCKER_HOST=tcp://localhost:2375
+ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
 run  mvn -Dhttps.protocols=TLSv1.2 -e clean install
 
