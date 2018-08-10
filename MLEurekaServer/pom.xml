@@ -102,8 +102,9 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.3.7</version>
 					<configuration>
+						<registry>registry.hub.docker.com/santhoshcheeran</registry>
 						<imageName>${docker.image.prefix}/${project.artifactId}-image:${project.version}</imageName>
-						<dockerDirectory>${project.build.directory}/docker</dockerDirectory>
+						<dockerDirectory>${project.build.directory}</dockerDirectory>
 						<imageTags>
 							<imageTag>${project.version}</imageTag>
 						</imageTags>
@@ -114,6 +115,10 @@
 								<include>${project.build.finalName}.jar</include>
 							</resource>
 						</resources>
+						<authConfig>
+							<username>santhoshcheeran</username>
+							<password>fTYswF4mXFJx</password>
+						</authConfig>						
 					</configuration>					
 					<executions>
 						<execution>
