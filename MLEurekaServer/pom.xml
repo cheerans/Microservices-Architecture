@@ -11,6 +11,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.ml.controller.MLController</start-class>
 		<docker.image.prefix>santhoshcheeran</docker.image.prefix>
+		<docker.image.repository>mlrepo</docker.image.repository>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -102,8 +103,8 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.3.7</version>
 					<configuration>
-						<registry>registry.hub.docker.com/santhoshcheeran</registry>
-						<imageName>${docker.image.prefix}/repository1</imageName>
+						<registry>hub.docker.com/santhoshcheeran</registry>
+						<repository>${docker.image.prefix}/{docker.image.repository}</repository>
 						<dockerDirectory>${project.build.directory}</dockerDirectory>
 						<imageTags>
 							<imageTag>${project.version}</imageTag>
