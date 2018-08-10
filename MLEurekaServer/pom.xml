@@ -128,16 +128,6 @@
 							<goals>
 								<goal>build</goal>
 							</goals>
-						</execution>
-						<execution>
-							<id>push-image</id>
-						    	<phase>deploy</phase>
-						    	<goals>
-								<goal>push</goal>
-						    	</goals>
-						    	<configuration>
-								<imageName>${project.artifactId}:${project.version}</imageName>
-						    	</configuration>
 						</execution>							
 					</executions>					
 				</plugin>			
