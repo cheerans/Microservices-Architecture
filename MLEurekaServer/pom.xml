@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.ml.controller.MLController</start-class>
-		<docker.image.prefix>santhoshcheeran/repository1</docker.image.prefix>
+		<docker.image.prefix>santhoshcheeran</docker.image.prefix>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -103,7 +103,7 @@
 					<version>0.3.7</version>
 					<configuration>
 						<registry>registry.hub.docker.com/santhoshcheeran</registry>
-						<imageName>${docker.image.prefix}/${project.artifactId}-image:${project.version}</imageName>
+						<imageName>${docker.image.prefix}/repository1</imageName>
 						<dockerDirectory>${project.build.directory}</dockerDirectory>
 						<imageTags>
 							<imageTag>${project.version}</imageTag>
