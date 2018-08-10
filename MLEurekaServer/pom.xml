@@ -120,7 +120,26 @@
 							<username>santhoshcheeran</username>
 							<password>fTYswF4mXFJx</password>
 						</authConfig>						
-					</configuration>					
+					</configuration>
+					<executions>
+						<execution>
+							<id>build-image</id>
+							<phase>package</phase>
+							<goals>
+								<goal>build</goal>
+							</goals>
+						</execution>
+						<execution>
+							<id>push-image</id>
+						    	<phase>deploy</phase>
+						    	<goals>
+								<goal>push</goal>
+						    	</goals>
+						    	<configuration>
+								<imageName>${project.artifactId}:${project.version}</imageName>
+						    	</configuration>
+						</execution>							
+					</executions>					
 				</plugin>			
 		</plugins>	
 	</build>
