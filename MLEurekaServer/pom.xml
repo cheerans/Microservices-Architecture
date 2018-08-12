@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.ml.controller.MLController</start-class>
-		<docker.image.prefix>santhoshcheeran</docker.image.prefix>
+		<docker.image.prefix>hub.docker.com/r/santhoshcheeran</docker.image.prefix>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -102,8 +102,7 @@
 					<artifactId>docker-maven-plugin</artifactId>
 					<version>0.3.7</version>
 					<configuration>
-						<registry>hub.docker.com</registry>
-						<repository>${docker.image.prefix}/${project.artifactId}</repository>
+						<repository>${docker.image.prefix}/${project.artifactId}/</repository>
 						<imageName>${project.artifactId}:${project.version}</imageName>
 						<dockerDirectory>${project.build.directory}</dockerDirectory>
 						<imageTags>
@@ -119,12 +118,14 @@
 						<authConfig>
 							<username>santhoshcheeran</username>
 							<password>fTYswF4mXFJx</password>
-						</authConfig>						
+						</authConfig>
+						<serverId>docker-hub</serverId>
+						<pushImage>true</pushImage>					
 					</configuration>
 					<executions>
 						<execution>
 							<id>build-image</id>
-							<phase>deploy</phase>
+							<phase>install</phase>
 							<goals>
 								<goal>build</goal>
 							</goals>
