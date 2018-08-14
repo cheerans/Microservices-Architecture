@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.ml.controller.MLController</start-class>
+		<start-class>com.ml.client.MLEurekaServerApp</start-class>
 		<docker.image.prefix>hub.docker.com/r/santhoshcheeran</docker.image.prefix>
 	</properties>
 	<parent>
