@@ -19,7 +19,7 @@ CMD ["sh", "-c", "sudo newgrp docker"]
 
 RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
-RUN git clone https://github.com/cheerans/Microservices-Architecture-Tutorial
+RUN git clone https://github.com/cheerans/Microservices-Architecture
 
 #ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
