@@ -21,7 +21,7 @@ RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
-ENV DOCKER_HOST=tcp://localhost:2345
+#ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
 run mkdir /home/mldocker/.m2
 run mkdir /home/mldocker/.m2/repository
