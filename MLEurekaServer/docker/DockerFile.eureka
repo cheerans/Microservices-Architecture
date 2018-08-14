@@ -57,4 +57,4 @@ ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-D${REGION} -D${E
             -e "ARG EUREKA-SERVER-PORT=8761" /
             -e "ARG EUREKA-PEER-SERVER-HOST=localhost" /
             -e "ARG EUREKA-PEER-SERVER-PORT=8762" /
-            docker run --name=eurekaserver-instance -it --rm -p 8761:8761 eurekaserver-img:latest
+            santhoshcheeran/mlrepo
