@@ -39,12 +39,8 @@ WORKDIR /home/mldocker/mlservicerootdir/eurekaserver
 
 EXPOSE 8761 8762 8763 8764
 
-ENV REGION=East 
-ENV EUREKA-SERVER-HOST=localhost 
-ENV EUREKA-SERVER-PORT=8761 
-ENV EUREKA-PEER-SERVER-HOST=localhost 
-ENV EUREKA-PEER-SERVER-PORT=8762
-
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-D${REGION} -D${EUREKA-SERVER-HOST} -D${EUREKA-SERVER-PORT} -D${EUREKA-PEER-SERVER-HOST} -D${EUREKA-PEER-SERVER-PORT}","-jar","eureka-server-latest.jar"]
 
+#docker build -t santhoshcheeran/mlrepo .
+#docker push santhoshcheeran/mlrepo
 #DOCKER run --name=eurekaserver-instance -it --rm -p 8761:8761 -e "ARG REGION=East"  -e "ARG EUREKA-SERVER-HOST=localhost" -e "ARG EUREKA-SERVER-PORT=8761" -e "ARG EUREKA-PEER-SERVER-HOST=localhost" -e "ARG EUREKA-PEER-SERVER-PORT=8762" -P santhoshcheeran/mlrepo /bin/sh -c 'cd /home/mldocker/mlservicerootdir/eurekaserver/'
