@@ -117,7 +117,7 @@
 						</resources>
 						<authConfig>
 							<username>santhoshcheeran</username>
-							<password>fTYswF4mXFJx</password>
+							<password>enter pwd here</password>
 						</authConfig>
 						<serverId>docker-hub</serverId>
 						<pushImage>true</pushImage>					
