@@ -47,7 +47,8 @@ ENV EUREKA-PEER-SERVER-PORT=8762
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-D${REGION} -D${EUREKA-SERVER-HOST} -D${EUREKA-SERVER-PORT} -D${EUREKA-PEER-SERVER-HOST} -D${EUREKA-PEER-SERVER-PORT}","-jar","/eureka-server-latest.jar"]
 
-#DOCKER RUN run --name=eurekaserver-instance /
+#DOCKER RUN /
+            --name=eurekaserver-instance /
             -it /
             --rm /
             -p 8761:8761 /
