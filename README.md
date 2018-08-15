@@ -41,8 +41,8 @@ eureka:
 ```
 Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Docker image can be built as follows
 
-`docker build -t santhoshcheeran/mlrepo .
-docker push santhoshcheeran/mlrepo`
+`docker build -t santhoshcheeran/mlrepo .`
+`docker push santhoshcheeran/mlrepo`
 
 
 Servers are run with following VM arguments.
