@@ -41,13 +41,21 @@ eureka:
 ```
 Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Servers are started with following VM arguments.
 
-Eureka East Server 1
-====================
-`-DREGION=East -DEUREKA-SERVER-HOST=localhost -DEUREKA-SERVER-PORT=8761 -DEUREKA-PEER-SERVER-HOST=localhost -DEUREKA-PEER-SERVER-PORT=8762`
+Eureka East Server 1,2
+======================
+Run as follows
 
-Eureka West Server 1
-====================
-`-DREGION=West -DEUREKA-SERVER-HOST=localhost -DEUREKA-SERVER-PORT=8764 -DEUREKA-PEER-SERVER-HOST=localhost -DEUREKA-PEER-SERVER-PORT=8763`
+`docker run --name=eurekaserver-instance -it --rm -p 8761:8761 -e "REGION=East"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8761" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8762" -P santhoshcheeran/mlrepo /bin/sh -c 'cd /home/mldocker/mlservicerootdir/eurekaserver/'`
+
+`docker run --name=eurekaserver-instance -it --rm -p 8762:8762 -e "REGION=East"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8762" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8761" -P santhoshcheeran/mlrepo /bin/sh -c 'cd /home/mldocker/mlservicerootdir/eurekaserver/'`
+
+Eureka West Server 3,4
+======================
+Run as follows
+
+`docker run --name=eurekaserver-instance -it --rm -p 8763:8763 -e "REGION=West"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8763" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8764" -P santhoshcheeran/mlrepo /bin/sh -c 'cd /home/mldocker/mlservicerootdir/eurekaserver/'`
+
+`docker run --name=eurekaserver-instance -it --rm -p 8764:8764 -e "REGION=West"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8764" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8763" -P santhoshcheeran/mlrepo /bin/sh -c 'cd /home/mldocker/mlservicerootdir/eurekaserver/'`
 
 # MLService
 
