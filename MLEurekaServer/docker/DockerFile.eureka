@@ -48,7 +48,3 @@ ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom",  \
                     -D${EUREKA-PEER-SERVER-PORT}",\
                     "-jar",\
                     "eureka-server-latest.jar"]
-                    
-#docker build -t santhoshcheeran/mlrepo .
-#docker push santhoshcheeran/mlrepo
-#docker run --name=eurekaserver-instance -it --rm -p 8761:8761 -e "REGION=East"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8761" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8762" -P santhoshcheeran/mlrepo /bin/sh -c 'cd /home/mldocker/mlservicerootdir/eurekaserver/'
