@@ -76,7 +76,23 @@ Clients of Eureka servers, hence have to configure with both servers for a regio
 
 `eureka: client: serviceUrl: defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/`
 
-`-DSERVER-PORT=8080 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+East Server 1,2
+===============
+
+The application can be run with following VM arguments 
+
+`-DZUULPROXYADDRESS=http://localhost:8091 -DSERVER-PORT=8080 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+
+`-DZUULPROXYADDRESS=http://localhost:8091 -DSERVER-PORT=8083 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+
+West Server 1,2
+===============
+
+The application can be run with following VM arguments 
+
+`-DZUULPROXYADDRESS=http://localhost:8092 -DSERVER-PORT=8085 -DSERVER-HOST=localhost -DREGION=West -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
+
+`-DZUULPROXYADDRESS=http://localhost:8092 -DSERVER-PORT=8087 -DSERVER-HOST=localhost -DREGION=West -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
 
 # MSApiGateway
 
