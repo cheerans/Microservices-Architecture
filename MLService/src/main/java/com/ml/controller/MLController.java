@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -38,13 +39,23 @@ public class MLController {
     /** Logger. */
     private static Logger log = Logger.getLogger(MLController.class);
     
+    private Environment env;
+    
+    private String ZUULPROXYADDRESS = null;
 	
 	@Bean
 	@LoadBalanced
 	RestTemplate restTemplate() {
 		return new RestTemplate();
 	}
- 
+	
+	@Autowired
+	public MLController(Environment env) {
+		super();
+		this.env = env;
+		ZUULPROXYADDRESS = env.getProperty("ZUULPROXYADDRESS");
+	}
+
 	@Autowired
 	private RestTemplate restTemplate;
 	
@@ -69,7 +80,7 @@ public class MLController {
 	@RequestMapping(value="/getDecision3", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision3(HttpServletRequest request) throws Exception{	
 		
-		return "getDecision3" + ":" + request.getLocalPort() + "-(W Zuul)" + plainRestTemplate.getForEntity("http://localhost:8091/api-gateway/mls/getDecision4",String.class).getBody();
+		return "getDecision3" + ":" + request.getLocalPort() + "-(W Zuul)" + plainRestTemplate.getForEntity(ZUULPROXYADDRESS + "/api-gateway/mls/getDecision4",String.class).getBody();
 	}
    
 	@HystrixCommand(fallbackMethod = "getDecision2fallback")
@@ -138,7 +149,7 @@ public class MLController {
 		Object decision = DecisionTreeLogic.makeDecision(predictForRow);
 		return decision.toString();
 	}
-	
+
 	// Total control - setup a model and return the view name yourself. Or
 	// consider subclassing ExceptionHandlerExceptionResolver (see below).
 	@ExceptionHandler(Exception.class)
