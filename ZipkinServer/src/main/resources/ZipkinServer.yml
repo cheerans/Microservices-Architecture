@@ -13,6 +13,7 @@ eureka:
     client:
         registerWithEureka: true
         fetchRegistry: true
+        region: ${REGION}
         serviceUrl:
             defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/             
     server:
