@@ -39,8 +39,6 @@ public class MLController {
     /** Logger. */
     private static Logger log = Logger.getLogger(MLController.class);
     
-    private Environment env;
-    
     private String ZUULPROXYADDRESS = null;
 	
 	@Bean
@@ -52,7 +50,6 @@ public class MLController {
 	@Autowired
 	public MLController(Environment env) {
 		super();
-		this.env = env;
 		ZUULPROXYADDRESS = env.getProperty("ZUULPROXYADDRESS");
 	}
 
