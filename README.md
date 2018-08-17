@@ -14,8 +14,6 @@ This is a work in progress, but existing parts are stable
 
 # Eureka Server
 
-#include "./MLEurekaServer/README.md"
-
 `Uses Spring Eureka Server`
 
 * Eureka Sever holds Microservice Registry
