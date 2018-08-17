@@ -48,7 +48,7 @@ Eureka Server is configured with a peer and has a peer server - per region. For 
 
 Servers are run with following VM arguments.
 
-## Eureka East Server 1,2
+### Eureka East Server 1,2
 
 Run as follows
 
@@ -56,7 +56,7 @@ Run as follows
 
 `docker run --name=eurekaserver-instance-east2 -it --rm -p 8762:8762 -e "REGION=East"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8762" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8761" -P santhoshcheeran/mlrepo`
 
-## Eureka West Server 3,4
+### Eureka West Server 3,4
 
 Run as follows
 
