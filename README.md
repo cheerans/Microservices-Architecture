@@ -4,10 +4,15 @@ Microservice Architecture (Load balanced + High availability)
 The components of this design are
 
 - [Spring Eureka Server](MLEurekaServer/README.md)
+  Please click the link above for details.
 - [Spring Boot Microservice](MLService/README.md)
+  Please click the link above for details.
 - [Spring Zipkin Server](ZipkinServer/README.md)
+  Please click the link above for details.
 - [Zuul Proxy](MSApiGateway/README.md)
+  Please click the link above for details.
 - [Hystrix Circuit Breaker](MLService/README.md)
+  Please click the link above for details.
 
 
 This is a work in progress, but existing parts are stable
