@@ -5,7 +5,7 @@ The components of this design are
 
 - [Spring Eureka Server](MLEurekaServer/README.md)
   
-  Please click the link above for details.
+  Please click the link above for details. This server manages out service registry and discovery.
 - [Spring Boot Microservice](MLService/README.md)
   
   Please click the link above for details.
