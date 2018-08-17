@@ -1,5 +1,8 @@
-#https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
+Autoscaling
+-----------
+kubectl autoscale rs foo --min=2 --max=5 --cpu-percent=80
 
+#https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
 
 https://kubernetes.io/blog/2016/07/autoscaling-in-kubernetes/
 Setting Up Autoscaling on GCE
