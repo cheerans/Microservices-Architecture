@@ -14,7 +14,7 @@ This is a work in progress, but existing parts are stable
 
 # Eureka Server
 
-#include "MLEurekaServer/README.md"
+#include "./MLEurekaServer/README.md"
 
 `Uses Spring Eureka Server`
 
