@@ -76,7 +76,7 @@ Clients of Eureka servers, hence have to configure with both servers for a regio
 
 `eureka: client: serviceUrl: defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/`
 
-## East Server 1,2
+### East Server 1,2
 
 The application can be run with following VM arguments 
 
@@ -84,7 +84,7 @@ The application can be run with following VM arguments
 
 `-DZUULPROXYADDRESS=http://localhost:8091 -DSERVER-PORT=8083 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
 
-## West Server 1,2
+### West Server 1,2
 
 The application can be run with following VM arguments 
 
@@ -98,11 +98,11 @@ The application can be run with following VM arguments
 
 This project implements the concept of Zuul Gateway. All microservices are exposed here from one baseurl of the gateway. The methos is desireable when you want to expose one global URL. The load balancing is done by Zuul. Each call will round robin fashion hit a new server. The Gateway is configured to listen to the Eureka server.
 
-## East Server
+### East Server
 
 `-DREGION=East -DSERVER-PORT=8091 -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
 
-## West Server
+### West Server
 
 `-DREGION=West -DSERVER-PORT=8092 -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
 
@@ -124,11 +124,11 @@ Let us discuss a scenario where several microservices are present. They run on t
 
 Zipkin will log this as one Span or call, it will include child spans for individual servers running Microservice
 
-## East Server
+### East Server
 
 `-DSERVER-PORT=9411 -DREGION=East -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
 
-## West Server
+### West Server
 
 `-DSERVER-PORT=9412 -DREGION=West -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
 
