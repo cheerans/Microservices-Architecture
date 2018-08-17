@@ -3,20 +3,20 @@ Microservice Architecture (Load balanced + High availability)
 
 The components of this design are
 
-1 [Spring Eureka Server](MLEurekaServer/README.md)
+[Spring Eureka Server](MLEurekaServer/README.md)
   
   Please click the link above for details. This server manages our service registry and discovery. Our Microservices registers with Eureka servers. The consumer applciations and ZUUL proxy queries Eureka server for discovery.
   
-2 [Spring Boot Microservice](MLService/README.md)
+[Spring Boot Microservice](MLService/README.md)
   
   Please click the link above for details.
-3 [Spring Zipkin Server](ZipkinServer/README.md)
+[Spring Zipkin Server](ZipkinServer/README.md)
   
   Please click the link above for details.
-4 [Zuul Proxy](MSApiGateway/README.md)
+[Zuul Proxy](MSApiGateway/README.md)
   
   Please click the link above for details.
-5 [Hystrix Circuit Breaker](MLService/README.md)
+[Hystrix Circuit Breaker](MLService/README.md)
   
   Please click the link above for details.
 
