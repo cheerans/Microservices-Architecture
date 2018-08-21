@@ -3,7 +3,7 @@ Microservice Architecture (Load balanced + High availability)
 
 Microservice is a very abused term and Microservices are not supposed to be Micro in size. However they have the capability to be Micro, in case of a complete CICD requirement. Be warned this comes with a very high hardware price and automated testing overhead.
 
-![alt text](https://jaxenter.com/wp-content/uploads/2016/08/Screen-Shot-2016-08-04-at-9.52.20-AM.png)
+![alt text](CICD.png)
 
 The components of this design are
 
