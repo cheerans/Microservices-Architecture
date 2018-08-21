@@ -7,6 +7,10 @@ A better design is split Microservices per large homogeneous entity relationship
 
 ![alt text](CICD.png)
 
+# Realistic Microservice design and achieving enviable performance
+
+The minimal mode allows us to scale our deployments properly. Splitting ,icroservices properly allows to scale the busier portions to more instances and scale up and down as per load and achieve cost effectiveness on hardware, as well as high availability, fault tolerance. This is the real use of Microservices architecture.
+
 The components of this design are
 
 [Spring Eureka Server](MLEurekaServer/README.md)
