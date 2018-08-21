@@ -7,9 +7,9 @@ A better design is split Microservices per large homogeneous entity relationship
 
 ![alt text](CICD.png)
 
-# Realistic Microservice design and achieving enviable performance
+# Realistic Microservice Architecture and achieving dream performance
 
-The minimal mode allows us to scale our deployments properly. Splitting ,icroservices properly allows to scale the busier portions to more instances and scale up and down as per load and achieve cost effectiveness on hardware, as well as high availability, fault tolerance. This is the real use of Microservices architecture.
+The minimal Microservices mode allows us to scale our deployments properly. That is all that it does as a solution. CICD is a different animal than Microservices and do not belong in the species at all. Splitting Microservices properly allows us to scale the busier portions to more instances and scale up and down as per load and achieve cost effectiveness on hardware, as well as high availability, fault tolerance. This is the real use of Microservices architecture. The fault tolerance is achieved very easily and server farms are integrated with minimal code and testing.
 
 The components of this design are
 
