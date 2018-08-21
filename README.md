@@ -1,4 +1,4 @@
-Microservice Architecture (Load balanced + High availability)
+Microservices Architecture (Load balanced + High availability)
 =============================================================
 
 Microservice is a very abused term and Microservices are not supposed to be Micro in size. However they have the capability to be Micro, in case of a complete CICD requirement. Be warned this comes with a very high hardware price and automated testing overhead and fulfillment of complete Microservice independence requirement. Complete independence means, a database per Microservice. 
@@ -7,7 +7,7 @@ A better design is split Microservices per large homogeneous entity relationship
 
 ![alt text](CICD.png)
 
-# Realistic Microservice Architecture and achieving dream performance
+# Realistic Microservices Architecture and achieving dream performance
 
 The minimal Microservices mode allows us to scale our deployments properly. That is all that it does as a solution. CICD is a different animal than Microservices and do not belong in the species at all. Splitting Microservices properly allows us to scale the busier portions to more instances and scale up and down as per load and achieve cost effectiveness on hardware, as well as high availability, fault tolerance. This is the real use of Microservices architecture. The fault tolerance is achieved very easily and server farms are integrated with minimal code and testing.
 
