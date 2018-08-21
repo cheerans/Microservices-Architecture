@@ -1,3 +1,7 @@
 theme: jekyll-theme-cayman
 plugins:
   - jekyll-seo-tag
+title: Microservices Cloud Architecture Tutorial
+description: Microservice is a very abused term and Microservices are not supposed to be Micro in size. However they have the capability to be Micro, in case of a complete CICD requirement. Be warned this comes with a very high hardware price and automated testing overhead and fulfillment of complete Microservice independence requirement. Complete independence means, a database per Microservice. - A short description (e.g., A blog dedicated to reviewing cat gifs)
+url: https://github.com/cheerans/Microservices-Architecture
+author: Santhosh Cheeran - global author information (see Advanced usage)
