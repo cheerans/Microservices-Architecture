@@ -25,12 +25,13 @@ eureka:
         service-url:
             defaultZone: http://${EUREKA-PEER-SERVER-HOST}:${EUREKA-PEER-SERVER-PORT}/eureka/
 ```
-Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. Docker image can be built as follows
+Eureka Server is configured with a peer and has a peer server - per region. For Demo purposes we call the region east. 
 
 `docker build -f docker/DockerFile.eureka  -t santhoshcheeran/mlrepo .`
 
+Docker image can be built as follows. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
+
 `docker push santhoshcheeran/mlrepo`
- 
 
 Servers are run with following VM arguments.
 
