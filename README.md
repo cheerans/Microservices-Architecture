@@ -32,7 +32,23 @@ Please click the link above for details. This is the Microservice implementation
 [Hystrix Circuit Breaker](MLService/README.md)
   
   Please click the link above for details. This area shows how we can avoid cascading failures and avoid certain circuit paths by resolving to return failure.
-
+  
+  [Accessing a port on Windows Docker]
+  
+  The ports of a docker container is not automatically forwarded to the localhost:port. Hence we need to do the following instruction. The magic is done by `microsoft\iis` which spawns up IIS server on the windows machine and makes the docker container available. Here port 8080 on docker container is available. 
+  
+  `docker run -d -p 8080:8080 microsoft/iis`  
+  
+  However again the intricacy is that this port is only available on the docker container IP Address and not on local host. The following will obtain docker containers IP Address. 
+  
+  `docker inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' <container>`  
+  
+  Hence forth typing `dockerip:8080` in internet explorer provides the access to local docker container via browser.
+  
+   [Accessing a port on Linux Docker]
+   
+   On Linux the ports are forwarded to localhost or 127.0.0.1.
+   
 # Happy coding!
 
 Good Luck and spend time and code slow. It is not the size of the docker whale, it is the motion in the ocean - Santhosh 
