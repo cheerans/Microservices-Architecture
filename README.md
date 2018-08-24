@@ -33,7 +33,7 @@ Please click the link above for details. This is the Microservice implementation
   
   Please click the link above for details. This area shows how we can avoid cascading failures and avoid certain circuit paths by resolving to return failure.
   
-  [Accessing a port on Windows Docker]
+  ## Accessing a port on Windows Docker
   
   The ports of a docker container is not automatically forwarded to the localhost:port. Hence we need to do the following instruction. The magic is done by `microsoft\iis` which spawns up IIS server on the windows machine and makes the docker container available. Here port 8080 on docker container is available. 
   
@@ -45,7 +45,7 @@ Please click the link above for details. This is the Microservice implementation
   
   Hence forth typing `dockerip:8080` in internet explorer provides the access to local docker container via browser.
   
-   [Accessing a port on Linux Docker]
+   ## Accessing a port on Linux Docker
    
    On Linux the ports are forwarded to localhost or 127.0.0.1.
    
