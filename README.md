@@ -1,6 +1,8 @@
 The Dogma of A Complex System
 ===============================
 
+I will try to explain microservices with a small story.
+
 One day a man buys a dog and feeds it and makes it big. The dog was trained in several wonderful skills. The dog was fed good and his job was to catch the thief. One day a thief walks in and the dog bites the thief, and injures him not mortally. With the help of this injury police is able to catch the thief. The case goes to court and the prosecution argues that the dog should be hanged for biting the thief. Was a dog biting a man inhumane ? People said since the thief was a major person in the area, attacking the person is dogs crime and owning the dog, the mans crime. So the man get tried for hanging! But since the man had enough money to raise a dog and build a house worth protecting with a dog, he was able to hire a lawyer of great reputation. This lawyer with all his might argues the case to release the man and not charge him with man slaughter. However the dog was hanged and the thief was granded damages for medical treatment and defamation caused by the incident. 
 
 What if a poor man buys a dog ? The poor man will be hanged! The dog will taken by the major person as damages. What will happen to the dog ? He will protect the major man's house. Now the poor man steals at major mans home and the dog bites him, the poor man is arrested and the dog gets share of big bones and is hailed as a hero! 
