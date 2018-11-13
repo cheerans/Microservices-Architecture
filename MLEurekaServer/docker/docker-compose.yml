@@ -9,8 +9,8 @@ services:
         environment:
             EUREKA_VERSION=1.0
             EUREKA-EAST-SERVER1-HOST=localhost
-	    EUREKA-EAST-SERVER1-PORT=8761
-	    SPRING_PROFILES_ACTIVE=PeerEast1
+            EUREKA-EAST-SERVER1-PORT=8761
+            SPRING_PROFILES_ACTIVE=PeerEast1
         expose:
             - 8761
         ports:
