@@ -1,0 +1,4 @@
+
+To reduce built image size
+    - compile and copy target file, after deleting the copile time dependencies
+    - copy runtime dependencies, independently eg: java runtime and not all jdk
