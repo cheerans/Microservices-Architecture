@@ -36,6 +36,9 @@ run pwd && ls target/
 run cp target/eureka-server-${VERSION}.jar /home/mldocker/mlservicerootdir/eurekaserver/eureka-server-latest.jar
 WORKDIR /home/mldocker/mlservicerootdir/eurekaserver
 
+#This will be mount as a volume for persisting any data across runs
+RUN mkdir /var/www/mlservicedatadir
+
 ENV CLASSPATH .:/home/mldocker/mlservicerootdir/eurekaserver/eureka-server-latest.jar
 
 EXPOSE 8761 8762 8763 8764
