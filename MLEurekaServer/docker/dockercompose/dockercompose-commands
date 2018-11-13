@@ -1,2 +1,11 @@
 Docker compose tutorial
 https://www.3pillarglobal.com/insights/building-a-microservice-architecture-with-spring-boot-and-docker-part-i
+
+
+#can use the following for load balancing
+ha_employee:
+ image: tutum/haproxy
+ links:
+   - employee
+ ports:
+   - "8080:80"
