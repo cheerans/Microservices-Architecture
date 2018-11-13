@@ -5,7 +5,7 @@ services:
         build:
             context: .
             dockerfile: DockerFile.eureka
-        image: eureka-server-img:latest
+        image: scheeran/eurekaserver-img:latest
         environment:
             EUREKA_VERSION=1.0
             EUREKA-EAST-SERVER1-HOST=localhost
@@ -27,7 +27,7 @@ services:
         build:
             context: .
             dockerfile: DockerFile.eureka
-        image: eureka-server-img:latest
+        image: scheeran/eurekaserver-img:latest
         environment:
             EUREKA_VERSION=1.0
         	EUREKA-EAST-SERVER2-HOST=localhost
