@@ -34,3 +34,13 @@ docker image ls -a                             # List all images on this machine
 docker image rm <image id>            # Remove specified image from this machine
 docker image rm $(docker image ls -a -q)   # Remove all images from this machine
 docker login
+
+docker exec -it mycontainer sh (-it -i means interactively -t using tty opens a shell named mycontainer(just a dummy name))
+docker run -P -d --name employee --link mycontainer microservicedemo/employee (--link links to an existing container )
+
+docker ps - shows process
+docker port - all docker ports
+docker inspect - all config dump
+docker logs -f "container name" - shows logs of the container
+
+
