@@ -19,7 +19,7 @@ services:
         networks:
             - spring-cloud-network
         volumes:
-            - mlservicerootdir:/var/www/mlservicerootdir
+            - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
 services:
@@ -42,12 +42,12 @@ services:
         networks:
             - spring-cloud-network
         volumes:
-            - mlservicerootdir:/var/www/mlservicerootdir
+            - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file            
 networks:
     spring-cloud-network:
         driver: bridge
 volumes:
-    mlservicerootdir:
+    mlservicedatadir:
         external: true
