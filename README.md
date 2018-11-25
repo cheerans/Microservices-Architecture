@@ -73,7 +73,7 @@ Good Luck and spend time and code slow. It is not the size of the docker whale, 
 
 ## License
 
-MicroServicesArchitecture is released under the MIT license, see [LICENSE](https://github.com/cheerans/cheerans/Microservices-Architecture/blob/master/LICENSE).
+MicroServicesArchitecture is released under the MIT license, see [LICENSE](https://github.com/cheerans/Microservices-Architecture/blob/master/LICENCE).
 
 `# Microservices Architecture`
 `# Microservices`
