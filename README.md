@@ -60,10 +60,6 @@ Please click the link above for details. This is the Microservice implementation
    
    On Linux the ports are forwarded to localhost or 127.0.0.1.
 
-# Happy coding!
-
-Good Luck and spend time and code slow. It is not the size of the docker whale, it is the motion in the ocean - Santhosh 
-
 # Some useful GIT Bash commands
 
 * git status
@@ -73,12 +69,15 @@ Good Luck and spend time and code slow. It is not the size of the docker whale, 
 * git reset
 * git pull
 
+# Happy coding!
+
+Good Luck and spend time and code slow. It is not the size of the docker whale, it is the motion in the ocean - Santhosh 
+
 ## Contribute
 
 * Fork the project
 * Create a feature branch based on the 'master' branch
 * Create a PR and feel proud.
-
 
 ## License
 
