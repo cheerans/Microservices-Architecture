@@ -64,6 +64,15 @@ Please click the link above for details. This is the Microservice implementation
 
 Good Luck and spend time and code slow. It is not the size of the docker whale, it is the motion in the ocean - Santhosh 
 
+# Some useful GIT Bash commands
+
+git status
+git log - shows all the changes
+git reset - remove all changes
+git stash - stage and save the changes
+git reset
+git pull
+
 ## Contribute
 
 * Fork the project
