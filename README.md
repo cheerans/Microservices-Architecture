@@ -66,12 +66,12 @@ Good Luck and spend time and code slow. It is not the size of the docker whale, 
 
 # Some useful GIT Bash commands
 
-git status
-git log - shows all the changes
-git reset - remove all changes
-git stash - stage and save the changes
-git reset
-git pull
+* git status
+* git log - shows all the changes
+* git reset - remove all changes
+* git stash - stage and save the changes
+* git reset
+* git pull
 
 ## Contribute
 
