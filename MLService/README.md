@@ -15,8 +15,7 @@ Clients of Eureka servers, hence have to configure with both servers for a regio
 
 Docker image can be built using above command. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
 
-`docker login`
-Login to docker, before pushing image
+Login to docker, before pushing image using the following command - `docker login`
 
 `docker push santhoshcheeran/mlservicerepo`
 
