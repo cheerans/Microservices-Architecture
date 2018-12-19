@@ -10,7 +10,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<start-class>com.ml.client.MLEurekaServerApp</start-class>
-		<docker.image.prefix>hub.docker.com/r/santhoshcheeran</docker.image.prefix>
+		<docker.image.prefix>hub.docker.com/r/santhoshcheeran/mleurekaserverrepo</docker.image.prefix>
 	</properties>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -97,41 +97,41 @@
 					<target>1.8</target>
 				</configuration>
 				</plugin>
-				<plugin>
-					<groupId>com.spotify</groupId>
-					<artifactId>docker-maven-plugin</artifactId>
-					<version>0.3.7</version>
-					<configuration>
-						<repository>${docker.image.prefix}/${project.artifactId}/</repository>
-						<imageName>${project.artifactId}:${project.version}</imageName>
-						<dockerDirectory>${project.build.directory}</dockerDirectory>
-						<imageTags>
-							<imageTag>${project.version}</imageTag>
-						</imageTags>
-						<forceTags>true</forceTags>
-						<resources>
-							<resource>
-								<directory>${project.build.directory}</directory>
-								<include>${project.build.finalName}.jar</include>
-							</resource>
-						</resources>
-						<authConfig>
-							<username>santhoshcheeran</username>
-							<password>enter pwd here</password>
-						</authConfig>
-						<serverId>docker-hub</serverId>
-						<pushImage>true</pushImage>					
-					</configuration>
-					<executions>
-						<execution>
-							<id>build-image</id>
-							<phase>deploy</phase>
-							<goals>
-								<goal>build</goal>
-							</goals>
-						</execution>							
-					</executions>					
-				</plugin>			
+<!-- 				<plugin> -->
+<!-- 					<groupId>com.spotify</groupId> -->
+<!-- 					<artifactId>docker-maven-plugin</artifactId> -->
+<!-- 					<version>0.3.7</version> -->
+<!-- 					<configuration> -->
+<!-- 						<repository>${docker.image.prefix}/${project.artifactId}/</repository> -->
+<!-- 						<imageName>${project.artifactId}:${project.version}</imageName> -->
+<!-- 						<dockerDirectory>${project.build.directory}</dockerDirectory> -->
+<!-- 						<imageTags> -->
+<!-- 							<imageTag>${project.version}</imageTag> -->
+<!-- 						</imageTags> -->
+<!-- 						<forceTags>true</forceTags> -->
+<!-- 						<resources> -->
+<!-- 							<resource> -->
+<!-- 								<directory>${project.build.directory}</directory> -->
+<!-- 								<include>${project.build.finalName}.jar</include> -->
+<!-- 							</resource> -->
+<!-- 						</resources> -->
+<!-- 						<authConfig> -->
+<!-- 							<username>santhoshcheeran</username> -->
+<!-- 							<password>enter pwd here</password> -->
+<!-- 						</authConfig> -->
+<!-- 						<serverId>docker-hub</serverId> -->
+<!-- 						<pushImage>true</pushImage>					 -->
+<!-- 					</configuration> -->
+<!-- 					<executions> -->
+<!-- 						<execution> -->
+<!-- 							<id>build-image</id> -->
+<!-- 							<phase>package</phase> -->
+<!-- 							<goals> -->
+<!-- 								<goal>build</goal> -->
+<!-- 							</goals> -->
+<!-- 						</execution>							 -->
+<!-- 					</executions>					 -->
+<!-- 				</plugin>			 -->
 		</plugins>	
 	</build>
 </project>

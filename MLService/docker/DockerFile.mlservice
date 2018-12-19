@@ -4,7 +4,8 @@ FROM maven:3.3
 
 # This will be mount as a volume 
 # for persisting any data across runs
-RUN mkdir /var/www && mkdir /var/www/mlservicedatadir
+RUN mkdir /var/www
+RUN mkdir /var/www/mlservicedatadir
 
 CMD ["sh", "-c", "echo ${JAVA_HOME}"]
 
@@ -27,24 +28,23 @@ WORKDIR /home/mldocker/src/Microservices-Architecture
 RUN git pull
 
 #ENV DOCKER_HOST=tcp://localhost:2345
-WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
+WORKDIR /home/mldocker/src/Microservices-Architecture/MLService
 run mkdir /home/mldocker/.m2
 run mkdir /home/mldocker/.m2/repository
-run  mvn -Dhttps.protocols=TLSv1.2 -e clean package
+run  mvn -Dhttps.protocols=TLSv1.2 -e clean package -Dmaven.test.skip=true
 
-LABEL Description="eureka-server"
+LABEL Description="ml-service"
 LABEL Version="1.0"
 LABEL orbiter="true"
 ARG VERSION=1.0
 
-
 run rm -rf /home/mldocker/bin
 RUN mkdir /home/mldocker/bin
 run pwd && ls target/
-run cp target/eureka-server-${VERSION}.jar /home/mldocker/bin/eureka-server-latest.jar
+run cp target/ml-service-${VERSION}.jar /home/mldocker/bin/ml-service-latest.jar
 WORKDIR /home/mldocker/bin
 
-ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
+ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
 EXPOSE 8761 8762 8763 8764
 
@@ -55,4 +55,4 @@ ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom",  \
                     -D${EUREKA-PEER-SERVER-HOST:localhost} \
                     -D${EUREKA-PEER-SERVER-PORT:8762}",\
                     "-jar",\
-                    "eureka-server-latest.jar"]
+                    "ml-service-latest.jar"]
