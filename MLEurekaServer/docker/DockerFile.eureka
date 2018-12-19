@@ -29,10 +29,9 @@ LABEL Version="1.0"
 LABEL orbiter="true"
 ARG VERSION=1.0
 
-#volume rm mlservicerootdir
-RUN rm mlservicerootdir
 RUN mkdir /mlservicerootdir/eurekaserver/
 COPY target/eureka-server-${VERSION}.jar /mlservicerootdir/eurekaserver/eureka-server-latest.jar
+#VOLUME rm mlservicerootdir
 #VOLUME /mlservicerootdir/eurekaserver
 #WORKDIR /mlservicerootdir/eurekaserver
 
@@ -41,3 +40,4 @@ EXPOSE 8761 8762 8763 8764
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-D${REGION:East} -D${EUREKA-SERVER-HOST:localhost} -D${EUREKA-SERVER-PORT:8761} -D${EUREKA-PEER-SERVER-HOST:localhost} -D${EUREKA-PEER-SERVER-PORT:8762}","-jar","/eureka-server-latest.jar"]
 
 #DOCKER RUN -e "ARG REGION=East" -e "ARG EUREKA-SERVER-HOST=localhost" -e "ARG EUREKA-SERVER-PORT=8761" -e "ARG EUREKA-PEER-SERVER-HOST=localhost" -e "ARG EUREKA-PEER-SERVER-PORT=8762"
+
