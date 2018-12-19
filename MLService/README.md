@@ -11,7 +11,7 @@ Clients of Eureka servers, hence have to configure with both servers for a regio
 
 `eureka: client: serviceUrl: defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/`
 
-docker build -f docker/DockerFile -t santhoshcheeran/mlservicerepo .
+docker build -f docker/DockerFile.mlservice -t santhoshcheeran/mlservicerepo .
 
 Docker image can be built using above command. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
 
