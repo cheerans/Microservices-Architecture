@@ -29,7 +29,7 @@ Eureka Server is configured with a peer and has a peer server - per region. For 
 
 `docker build -f docker/DockerFile.eureka  -t santhoshcheeran/mleurekaserverrepo .`
 
-Docker image can be built as follows. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
+Docker image can be built using above command. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
 
 `docker push santhoshcheeran/mleurekaserverrepo`
 
