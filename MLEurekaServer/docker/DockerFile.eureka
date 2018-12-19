@@ -1,10 +1,11 @@
-# Dockerfile creates an image, that is executeable
 FROM centos:7
 FROM openjdk:8
 FROM maven:3.3
 
-RUN mkdir /mlservicerootdir
-RUN mkdir /mlservicerootdir/eurekaserver/
+# This will be mount as a volume 
+# for persisting any data across runs
+RUN mkdir /var/www
+RUN mkdir /var/www/mlservicedatadir
 
 CMD ["sh", "-c", "echo ${JAVA_HOME}"]
 
@@ -19,12 +20,15 @@ CMD ["sh", "-c", "sudo groupadd docker"]
 CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
 CMD ["sh", "-c", "sudo newgrp docker"]
 
+# creating here as mldocker user has no rights
 RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
 
-ENV DOCKER_HOST=tcp://localhost:2345
+#ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
+run mkdir /home/mldocker/.m2
+run mkdir /home/mldocker/.m2/repository
 run  mvn -Dhttps.protocols=TLSv1.2 -e clean package
 
 LABEL Description="eureka-server"
@@ -33,11 +37,21 @@ LABEL orbiter="true"
 ARG VERSION=1.0
 
 
-COPY target/eureka-server-${VERSION}.jar /mlservicerootdir/eurekaserver/eureka-server-latest.jar
-WORKDIR /mlservicerootdir/eurekaserver
+run rm -rf /home/mldocker/mlservicerootdir
+RUN mkdir /home/mldocker/mlservicerootdir && mkdir /home/mldocker/mlservicerootdir/eurekaserver
+run pwd && ls target/
+run cp target/eureka-server-${VERSION}.jar /home/mldocker/mlservicerootdir/eurekaserver/eureka-server-latest.jar
+WORKDIR /home/mldocker/mlservicerootdir/eurekaserver
+
+ENV CLASSPATH .:/home/mldocker/mlservicerootdir/eurekaserver/eureka-server-latest.jar
 
 EXPOSE 8761 8762 8763 8764
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom","-D${REGION:East} -D${EUREKA-SERVER-HOST:localhost} -D${EUREKA-SERVER-PORT:8761} -D${EUREKA-PEER-SERVER-HOST:localhost} -D${EUREKA-PEER-SERVER-PORT:8762}","-jar","/eureka-server-latest.jar"]
-
-#DOCKER RUN -e "ARG REGION=East" -e "ARG EUREKA-SERVER-HOST=localhost" -e "ARG EUREKA-SERVER-PORT=8761" -e "ARG EUREKA-PEER-SERVER-HOST=localhost" -e "ARG EUREKA-PEER-SERVER-PORT=8762"
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom",  \
+                    "-D${REGION:East} \
+                    -D${EUREKA-SERVER-HOST:localhost} \
+                    -D${EUREKA-SERVER-PORT:8761} \
+                    -D${EUREKA-PEER-SERVER-HOST:localhost} \
+                    -D${EUREKA-PEER-SERVER-PORT:8762}",\
+                    "-jar",\
+                    "eureka-server-latest.jar"]
