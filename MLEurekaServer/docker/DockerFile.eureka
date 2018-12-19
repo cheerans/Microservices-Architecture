@@ -20,6 +20,7 @@ CMD ["sh", "-c", "sudo groupadd docker"]
 CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
 CMD ["sh", "-c", "sudo newgrp docker"]
 
+# creating here as mldocker user has no rights
 RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 RUN git clone https://github.com/cheerans/Microservices-Architecture
@@ -34,6 +35,7 @@ LABEL Description="eureka-server"
 LABEL Version="1.0"
 LABEL orbiter="true"
 ARG VERSION=1.0
+
 
 run rm -rf /home/mldocker/mlservicerootdir
 RUN mkdir /home/mldocker/mlservicerootdir && mkdir /home/mldocker/mlservicerootdir/eurekaserver
