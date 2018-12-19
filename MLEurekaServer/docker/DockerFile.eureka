@@ -4,6 +4,9 @@ FROM maven:3.3
 
 # This will be mount as a volume 
 # for persisting any data across runs
+# volumes will be available as directories on docker
+# but would be real folders on the file system
+# and not virtual
 RUN mkdir /var/www && mkdir /var/www/mlservicedatadir
 
 CMD ["sh", "-c", "echo ${JAVA_HOME}"]

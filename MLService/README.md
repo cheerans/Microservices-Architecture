@@ -11,18 +11,27 @@ Clients of Eureka servers, hence have to configure with both servers for a regio
 
 `eureka: client: serviceUrl: defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/`
 
+`docker build -f docker/DockerFile.mlservice -t santhoshcheeran/mlservicerepo .`
+
+Docker image can be built using above command. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
+
+`docker login`
+`docker push santhoshcheeran/mlservicerepo`
+
+Servers are run with following VM arguments.
+
 ### East Server 1,2
 
 The application can be run with following VM arguments 
 
-`-DZUULPROXYADDRESS=http://localhost:8091 -DSERVER-PORT=8080 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+`docker run --name=mlserver-instance-east1 -it --rm -p 8080:8080 -e "ZUULPROXYADDRESS=http://localhost:8091" -e "SERVER-PORT=8080" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/mlservicerepo`
 
-`-DZUULPROXYADDRESS=http://localhost:8091 -DSERVER-PORT=8083 -DSERVER-HOST=localhost -DREGION=East -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+`docker run --name=mlserver-instance-east2 -it --rm -p 8083:8083 -e "ZUULPROXYADDRESS=http://localhost:8091" -e "SERVER-PORT=8083" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/mlservicerepo`
 
 ### West Server 1,2
 
 The application can be run with following VM arguments 
 
-`-DZUULPROXYADDRESS=http://localhost:8092 -DSERVER-PORT=8085 -DSERVER-HOST=localhost -DREGION=West -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
+`docker run --name=mlserver-instance-west1 -it --rm -p 8085:8085 -e "ZUULPROXYADDRESS=http://localhost:8092" -e "SERVER-PORT=8085" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/mlservicerepo`
 
-`-DZUULPROXYADDRESS=http://localhost:8092 -DSERVER-PORT=8087 -DSERVER-HOST=localhost -DREGION=West -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
+`docker run --name=mlserver-instance-west2 -it --rm -p 8087:8087 -e "ZUULPROXYADDRESS=http://localhost:8092" -e "SERVER-PORT=8087" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/mlservicerepo`
