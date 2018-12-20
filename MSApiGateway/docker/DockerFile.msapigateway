@@ -29,12 +29,12 @@ WORKDIR /home/mldocker/src/Microservices-Architecture
 
 
 #ENV DOCKER_HOST=tcp://localhost:2345
-WORKDIR /home/mldocker/src/Microservices-Architecture/MLService
+WORKDIR /home/mldocker/src/Microservices-Architecture/MSApiGateway
 run mkdir /home/mldocker/.m2
 run mkdir /home/mldocker/.m2/repository
 run  mvn -Dhttps.protocols=TLSv1.2 -e clean package -Dmaven.test.skip=true
 
-LABEL Description="ml-service"
+LABEL Description="msapi-gateway"
 LABEL Version="1.0"
 LABEL orbiter="true"
 ARG VERSION=1.0
@@ -42,16 +42,15 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/bin
 RUN mkdir /home/mldocker/bin
 run pwd && ls target/
-run cp target/ml-service-${VERSION}.jar /home/mldocker/bin/ml-service-latest.jar
+run cp target/msapi-gateway-${VERSION}.jar /home/mldocker/bin/msapi-gateway-latest.jar
 WORKDIR /home/mldocker/bin
 
-ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
+ENV CLASSPATH .:/home/mldocker/bin/msapi-gateway-latest.jar
 
 EXPOSE ${SERVER-PORT}
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
-                   "-D${ZUULPROXYADDRESS=http://localhost:8092}  \ 
-					-D${SERVER-PORT=8080}  \ 
+                   "-D${SERVER-PORT=8091}  \ 
 					-D${SERVER-HOST=localhost}  \ 
 					-D${REGION=West}  \ 
 					-D${EUREKA-SERVER1-HOST=localhost}  \ 
@@ -59,4 +58,4 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
 					-D${EUREKA-SERVER2-HOST=localhost}  \ 
 					-D${EUREKA-SERVER2-PORT=8762",\
                     "-jar",\
-                    "ml-service-latest.jar"]
+                    "msapi-gateway-latest.jar"]

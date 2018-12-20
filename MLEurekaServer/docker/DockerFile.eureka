@@ -49,7 +49,7 @@ WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
 
-EXPOSE 8761 8762 8763 8764
+EXPOSE ${EUREKA-SERVER-PORT} ${EUREKA-PEER-SERVER-PORT}
 
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom",  \
                     "-D${REGION:East} \
