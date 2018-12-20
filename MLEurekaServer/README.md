@@ -31,8 +31,10 @@ Eureka Server is configured with a peer and has a peer server - per region. For 
 
 Docker image can be built using above command. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
 
-`docker login`
-`docker push santhoshcheeran/mleurekaserverrepo`
+
+Login to docker, before pushing image using the following command - `docker login`
+
+`docker push santhoshcheeran/mlservicerepo`
 
 Servers are run with following VM arguments.
 
