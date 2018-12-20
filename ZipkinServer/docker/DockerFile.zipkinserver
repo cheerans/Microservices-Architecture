@@ -47,7 +47,7 @@ WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/zipkin-server-latest.jar
 
-EXPOSE ${SERVER-PORT}
+EXPOSE 9411 9412
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
                    "-D${SERVER-PORT:9411}  \ 

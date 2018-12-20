@@ -47,7 +47,7 @@ WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
-EXPOSE ${SERVER-PORT}
+EXPOSE 8080 8083 8085 8087
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
                    "-D${ZUULPROXYADDRESS:http://localhost:8092}  \ 
