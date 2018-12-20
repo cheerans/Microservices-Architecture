@@ -50,12 +50,12 @@ ENV CLASSPATH .:/home/mldocker/bin/msapi-gateway-latest.jar
 EXPOSE ${SERVER-PORT}
 
 ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
-                   "-D${SERVER-PORT=8091}  \ 
-					-D${SERVER-HOST=localhost}  \ 
-					-D${REGION=West}  \ 
-					-D${EUREKA-SERVER1-HOST=localhost}  \ 
-					-D${EUREKA-SERVER1-PORT=8761}  \ 
-					-D${EUREKA-SERVER2-HOST=localhost}  \ 
-					-D${EUREKA-SERVER2-PORT=8762",\
+                   "-D${SERVER-PORT:8091}  \ 
+					-D${SERVER-HOST:localhost}  \ 
+					-D${REGION:West}  \ 
+					-D${EUREKA-SERVER1-HOST:localhost}  \ 
+					-D${EUREKA-SERVER1-PORT:8761}  \ 
+					-D${EUREKA-SERVER2-HOST:localhost}  \ 
+					-D${EUREKA-SERVER2-PORT:8762",\
                     "-jar",\
                     "msapi-gateway-latest.jar"]
