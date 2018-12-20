@@ -22,6 +22,10 @@ A better design is split Microservices per large homogeneous entity relationship
 
 A conservative Microservices architecture allows us to scale our deployments properly and efficiently and structurally sound from aspects of failover and availability. That is all that Microservices focuses as a solution. CICD is a different animal than Microservices and do not belong in the species at all. Splitting Microservices properly allows us to scale the busier servcies to have more instances and scale up and down a group of services as per PRESENT TIME load and achieve cost effectiveness on hardware, as well as high availability and fault tolerance(failover). This is the real use of Microservices architecture. Microservices framework achieves fault tolerance using framework capabilities and server farms are integrated using provided mechanisms.
 
+# East / West Servers - Config in real world
+
+For the sake of demonstrations that would run on same machine, to simulate an East, West region, we use different port numbers for those servers. However in real life you can run on same port as in East on West as the IP Address is going ot be different. The only paramteter that needs to be input in that case is the host port of the main server.
+
 The components of this design are
 
 [Spring Eureka Server](MLEurekaServer/README.md)
