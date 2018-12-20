@@ -53,7 +53,7 @@ ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
                    "-D${ZUULPROXYADDRESS:http://localhost:8092}  \ 
 					-D${SERVER-PORT:8080}  \ 
 					-D${SERVER-HOST:localhost}  \ 
-					-D${REGION:West}  \ 
+					-D${REGION:East}  \ 
 					-D${EUREKA-SERVER1-HOST:localhost}  \ 
 					-D${EUREKA-SERVER1-PORT:8761}  \ 
 					-D${EUREKA-SERVER2-HOST:localhost}  \ 

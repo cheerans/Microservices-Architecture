@@ -2,10 +2,10 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>MLMicroService</groupId>
-	<artifactId>ml-service</artifactId>
+	<artifactId>zipkin-server</artifactId>
 	<version>1.0</version>
 	<packaging>jar</packaging>
-	<name>mlmservice</name>
+	<name>zipkinserver</name>
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -107,35 +107,41 @@
 					<target>1.8</target>
 				</configuration>
 				</plugin>
-				<plugin>
-					<groupId>com.spotify</groupId>
-					<artifactId>docker-maven-plugin</artifactId>
-					<version>0.3.7</version>
-					<executions>
-						<execution>
-							<phase>package</phase>
-							<goals>
-								<goal>build</goal>
-							</goals>
-						</execution>
-					</executions>
-					<configuration>
-						<imageName>${docker.image.prefix}/${project.artifactId}-image</imageName>
-						<dockerDirectory>docker</dockerDirectory>
-						<imageTags>
-							<imageTag>${project.version}</imageTag>
-						</imageTags>
-						<forceTags>true</forceTags>
-						<dockerDirectory>${project.basedir}/docker</dockerDirectory>
-						<resources>
-							<resource>
-								<targetPath>/</targetPath>
-								<directory>${project.build.directory}</directory>
-								<include>${project.build.finalName}.jar</include>
-							</resource>
-						</resources>
-					</configuration>
-				</plugin>			
+<!-- 				<plugin> -->
+<!-- 					<groupId>com.spotify</groupId> -->
+<!-- 					<artifactId>docker-maven-plugin</artifactId> -->
+<!-- 					<version>0.3.7</version> -->
+<!-- 					<configuration> -->
+<!-- 						<repository>${docker.image.prefix}/${project.artifactId}/</repository> -->
+<!-- 						<imageName>${project.artifactId}:${project.version}</imageName> -->
+<!-- 						<dockerDirectory>${project.build.directory}</dockerDirectory> -->
+<!-- 						<imageTags> -->
+<!-- 							<imageTag>${project.version}</imageTag> -->
+<!-- 						</imageTags> -->
+<!-- 						<forceTags>true</forceTags> -->
+<!-- 						<resources> -->
+<!-- 							<resource> -->
+<!-- 								<directory>${project.build.directory}</directory> -->
+<!-- 								<include>${project.build.finalName}.jar</include> -->
+<!-- 							</resource> -->
+<!-- 						</resources> -->
+<!-- 						<authConfig> -->
+<!-- 							<username>santhoshcheeran</username> -->
+<!-- 							<password>enter pwd here</password> -->
+<!-- 						</authConfig> -->
+<!-- 						<serverId>docker-hub</serverId> -->
+<!-- 						<pushImage>true</pushImage>					 -->
+<!-- 					</configuration> -->
+<!-- 					<executions> -->
+<!-- 						<execution> -->
+<!-- 							<id>build-image</id> -->
+<!-- 							<phase>package</phase> -->
+<!-- 							<goals> -->
+<!-- 								<goal>build</goal> -->
+<!-- 							</goals> -->
+<!-- 						</execution>							 -->
+<!-- 					</executions>					 -->
+<!-- 				</plugin>			 -->				
 		</plugins>	
 	</build>
 </project>
