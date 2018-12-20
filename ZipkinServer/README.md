@@ -37,4 +37,4 @@ The application can be run with following VM arguments
 
 The application can be run with following VM arguments 
 
-`docker run --name=zipkinserver-instance-West1 -it --rm -p 9412:9412 -e "SERVER-PORT=9412" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/zipkinserverrepo`
+`docker run --name=zipkinserver-instance-west1 -it --rm -p 9412:9412 -e "SERVER-PORT=9412" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/zipkinserverrepo`
