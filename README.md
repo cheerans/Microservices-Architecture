@@ -26,6 +26,10 @@ A conservative Microservices architecture allows us to scale our deployments pro
 
 For the sake of demonstrations that would run on same machine, to simulate an East, West region, we use different port numbers for those servers. However in real life you can run on same port as in East on West as the IP Address is going ot be different. The only paramteter that needs to be input in that case is the host port of the main server.
 
+The docker image has the default values for Eureka sever, Zipkin server, MSApiGateway server. If you configure your docker startup scripts to feed an IP and port to the main server, rest of the values can be hardcoded. What do I mean ? Run Eureka server always on port 8761,8762. Run ZipkinServer always on Port 9411. Run MSApiGateway always on port 8091. 
+
+The Micro Service Server, SCALE UP OR DOWN up as many on port 8080, 8083,8085,8087,8089 ... etc
+
 The components of this design are
 
 [Spring Eureka Server](MLEurekaServer/README.md)
