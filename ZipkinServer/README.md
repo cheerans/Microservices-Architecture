@@ -17,10 +17,24 @@ Let us discuss a scenario where several microservices are present. They run on t
 
 Zipkin will log this as one Span or call, it will include child spans for individual servers running Microservice
 
-### East Server
+`docker build -f docker/DockerFile.zipkinserver -t santhoshcheeran/zipkinserverrepo .`
 
-`-DSERVER-PORT=9411 -DREGION=East -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8761 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8762`
+Docker image can be built using above command. All you need is the dockerfile, the instructions in the file will do the rest. So get the dockerfile and prepare the image, if you need to.
 
-### West Server
+Login to docker, before pushing image using the following command - `docker login`
 
-`-DSERVER-PORT=9412 -DREGION=West -DSERVER-HOST=localhost -DEUREKA-SERVER1-HOST=localhost -DEUREKA-SERVER1-PORT=8763 -DEUREKA-SERVER2-HOST=localhost -DEUREKA-SERVER2-PORT=8764`
+`docker push santhoshcheeran/zipkinserverrepo`
+
+Servers are run with following VM arguments.
+
+### East Server 1,2
+
+The application can be run with following VM arguments 
+
+`docker run --name=zipkinserver-instance-east1 -it --rm -p 9411:9411 -e "SERVER-PORT=9411" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/zipkinserverrepo`
+
+### West Server 1,2
+
+The application can be run with following VM arguments 
+
+`docker run --name=zipkinserver-instance-west1 -it --rm -p 9412:9412 -e "SERVER-PORT=9412" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/zipkinserverrepo`
