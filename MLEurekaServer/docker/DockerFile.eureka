@@ -27,7 +27,7 @@ WORKDIR /home/mldocker/src/Microservices-Architecture
 
 #ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLEurekaServer
-run mkdir /home/mldocker/.m2 && mkdir /home/mldocker/.m2/repository && mvn -Dhttps.protocols=TLSv1.2 -e clean package
+run mkdir /home/mldocker/.m2 && mkdir /home/mldocker/.m2/repository && mvn -Dhttps.protocols=TLSv1.2 -e clean package -Dmaven.test.skip=true
 
 LABEL Description="eureka-server"
 LABEL Version="1.0"
