@@ -58,6 +58,8 @@ Please click the link above for details. This is the Microservice implementation
   
   `docker build -f Dockerfile.iissite -t santhoshcheeran/iissite .`
   
+  `docker push santhoshcheeran/iissite`
+  
   `docker run -d -p 8000:80 --name iissite_instance santhoshcheeran/iissite`  
   
   However again the intricacy is that this port is only available on the docker container IP Address and not on local host. The following will obtain docker containers IP Address. 
