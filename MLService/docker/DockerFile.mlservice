@@ -4,15 +4,11 @@ FROM maven:3.3
 
 # This will be mount as a volume 
 # for persisting any data across runs
-RUN mkdir /var/www
-RUN mkdir /var/www/mlservicedatadir
+RUN mkdir /var/www && mkdir /var/www/mlservicedatadir
 
 CMD ["sh", "-c", "echo ${JAVA_HOME}"]
 
-RUN apt-get -qq update
-RUN apt-get -qqy install git
-RUN apt-get -qqy install curl
-RUN apt-get -qqy install git-core
+RUN apt-get -qq update && apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -23,26 +19,20 @@ CMD ["sh", "-c", "sudo newgrp docker"]
 # creating here as mldocker user has no rights
 RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
-run rm -rf /home/mldocker/src/Microservices-Architecture
-RUN git clone https://github.com/cheerans/Microservices-Architecture
+run rm -rf /home/mldocker/src/Microservices-Architecture  &&  git clone https://github.com/cheerans/Microservices-Architecture
 WORKDIR /home/mldocker/src/Microservices-Architecture
 
 
 #ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/MLService
-run mkdir /home/mldocker/.m2
-run mkdir /home/mldocker/.m2/repository
-run  mvn -Dhttps.protocols=TLSv1.2 -e clean package -Dmaven.test.skip=true
+run mkdir /home/mldocker/.m2 && mkdir /home/mldocker/.m2/repository && mvn -Dhttps.protocols=TLSv1.2 -e clean package -Dmaven.test.skip=true
 
 LABEL Description="ml-service"
 LABEL Version="1.0"
 LABEL orbiter="true"
 ARG VERSION=1.0
 
-run rm -rf /home/mldocker/bin
-RUN mkdir /home/mldocker/bin
-run pwd && ls target/
-run cp target/ml-service-${VERSION}.jar /home/mldocker/bin/ml-service-latest.jar
+run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls target/ && cp target/ml-service-${VERSION}.jar /home/mldocker/bin/ml-service-latest.jar
 WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
