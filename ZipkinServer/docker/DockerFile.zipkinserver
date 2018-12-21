@@ -39,13 +39,7 @@ ENV CLASSPATH .:/home/mldocker/bin/zipkin-server-latest.jar
 
 EXPOSE 9411 9412
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", \
-                   "-D${SERVER-PORT:9411} \
-					-D${SERVER-HOST:localhost} \
-					-D${REGION:East} \
-					-D${EUREKA-SERVER1-HOST:localhost} \
-					-D${EUREKA-SERVER1-PORT:8761} \
-					-D${EUREKA-SERVER2-HOST:localhost} \
-					-D${EUREKA-SERVER2-PORT:8762}",\
-                    "-jar",\
-                    "zipkin-server-latest.jar"]
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
+                    "-D${SERVER-PORT:9411} -D${SERVER-HOST:localhost} -D${REGION:East} -D${EUREKA-SERVER1-HOST:localhost} -D${EUREKA-SERVER1-PORT:8761} -D${EUREKA-SERVER2-HOST:localhost} -D${EUREKA-SERVER2-PORT:8762}",\
+                     "-jar",\
+                     "zipkin-server-latest.jar"]
