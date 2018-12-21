@@ -39,14 +39,8 @@ ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
 EXPOSE 8080 8083 8085 8087
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom", \
-                   "-D${ZUULPROXYADDRESS:http://localhost:8092} \ 
-					-D${SERVER-PORT:8080} \
-					-D${SERVER-HOST:localhost} \
-					-D${REGION:East}  \
-					-D${EUREKA-SERVER1-HOST:localhost} \
-					-D${EUREKA-SERVER1-PORT:8761} \
-					-D${EUREKA-SERVER2-HOST:localhost} \
-					-D${EUREKA-SERVER2-PORT:8762}",\
-                    "-jar",\
-                    "ml-service-latest.jar"]
+ENTRYPOINT ["java", \
+			"-Djava.security.egd=file:/dev/./urandom",\
+            "-D${ZUULPROXYADDRESS:http://localhost:8092} -D${SERVER-PORT:8080} -D${SERVER-HOST:localhost} -D${REGION:East} -D${EUREKA-SERVER1-PORT:8761} -D${EUREKA-SERVER1-HOST:localhost} -D${EUREKA-SERVER2-PORT:8762} -D${EUREKA-SERVER2-HOST:localhost}",\
+            "-jar",\
+            "ml-service-latest.jar"]

@@ -9,7 +9,7 @@
 	<url>http://maven.apache.org</url>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<start-class>com.spring.controller.MLApp</start-class>
+		<start-class>com.ml.client.ZipkinServerApp</start-class>
 		<docker.image.prefix>scheerandockercoderepo</docker.image.prefix>
 	</properties>
 	<parent>
