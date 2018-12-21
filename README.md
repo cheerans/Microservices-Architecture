@@ -54,9 +54,11 @@ Please click the link above for details. This is the Microservice implementation
   
   ## Accessing a port on Windows Docker
   
-  The ports of a docker container is not automatically forwarded to the localhost:port. Hence we need to do the following instruction. The magic is done by `microsoft\iis` which spawns up IIS server on the windows machine and makes the docker container available. Here port 8080 on docker container is available. 
+  The ports of a docker container is not automatically forwarded to the localhost:port. Hence we need to do the following instruction. The magic is done by `microsoft\iis` which spawns up IIS server on the windows machine and makes the docker container available. Here port 8080 on docker container is available. To build an image do the following
   
-  `docker run -d -p 8080:8080 microsoft/iis`  
+  `docker build -f Dockerfile.iissite -t santhoshcheeran/iissite .`
+  
+  `docker run -d -p 8000:80 --name iissite_instance santhoshcheeran/iissite`  
   
   However again the intricacy is that this port is only available on the docker container IP Address and not on local host. The following will obtain docker containers IP Address. 
   
