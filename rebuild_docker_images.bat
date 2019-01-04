@@ -1,3 +1,4 @@
+SET PATH=%PATH%;"C:\Program Files\Docker Toolbox"
 docker build -f MLEurekaServer/docker/DockerFile.eureka -t santhoshcheeran/mleurekaserverrepo .
 docker push santhoshcheeran/mleurekaserverrepo
 docker build -f MLService/docker/DockerFile.mlservice -t santhoshcheeran/mlservicerepo .
