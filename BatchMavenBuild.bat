@@ -40,9 +40,3 @@ GOTO ENDIT
 	)
 :ENDIT
 Pause
-
-
-Thanks,
-Santhosh Cheeran
-(Contractor - Credit Risk Technology H)
-
