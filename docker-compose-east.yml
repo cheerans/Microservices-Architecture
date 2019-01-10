@@ -34,6 +34,15 @@ services:
             driver: json-file
         links:
             mlservice,msapigateway,zipkinserver
+        deploy:
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
 networks:
     ml-cloud-network-east:
         driver: bridge
