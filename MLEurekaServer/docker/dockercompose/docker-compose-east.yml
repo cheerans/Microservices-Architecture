@@ -19,13 +19,13 @@ services:
             - 8763:8763
             - 8764:8764
         networks:
-            - ml-cloud-network
+            - ml-cloud-network-east
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file            
 networks:
-    ml-cloud-network:
+    ml-cloud-network-east:
         driver: bridge
 volumes:
     mlservicedatadir:
