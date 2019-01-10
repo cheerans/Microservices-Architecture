@@ -16,8 +16,8 @@ services:
             - 8763
             - 8764
         ports:
-            - 8763:8763
-            - 8764:8764
+            - "8763:8763"
+            - "8764:8764"
         networks:
             - ml-cloud-network-east
         volumes:
