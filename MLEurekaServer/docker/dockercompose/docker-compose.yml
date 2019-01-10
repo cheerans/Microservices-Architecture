@@ -1,17 +1,17 @@
 version: '1'
 services:
     eureka-east-server1:
-        container_name: eurekaserver-instance-east1
+        container_name: eureka-east-server1
         build:
             context: .
             dockerfile: DockerFile.eureka
-        image: santhoshcheeran/mlrepo:latest
+        image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             REGION=East
             EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8761 
+            EUREKA-SERVER-PORT=8762
             EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8762		
+            EUREKA-PEER-SERVER-PORT=8761
         expose:
             - 8761
         ports:
@@ -28,13 +28,13 @@ services:
         build:
             context: .
             dockerfile: DockerFile.eureka
-        image: santhoshcheeran/mlrepo:latest
+        image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             REGION=East
             EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8762 
+            EUREKA-SERVER-PORT=8762
             EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8761	
+            EUREKA-PEER-SERVER-PORT=8761
         expose:
             - 8762
         ports:
