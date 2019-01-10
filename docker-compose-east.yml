@@ -3,6 +3,8 @@
 # it runs on swarm created already
 #docker stack deploy -c docker-compose-east.yml ml_cloud_stack
 
+#https://github.com/dockersamples/example-voting-app
+
 # EACH LINE IN DOCKER COMPOSE is equaialent to arguments in docker run
 # Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
 
