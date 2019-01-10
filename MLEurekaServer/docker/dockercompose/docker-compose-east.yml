@@ -30,3 +30,7 @@ networks:
 volumes:
     mlservicedatadir:
         external: true
+
+santhoshcheeran/mlservicerepo
+santhoshcheeran/msapigatewayrepo
+santhoshcheeran/zipkinserverrepo
