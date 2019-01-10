@@ -1,0 +1,36 @@
+version: '1'
+services:
+    eureka-west-server1:
+        container_name: eureka-west-server1
+        build:
+            context: .
+            dockerfile: DockerFile.eureka
+        image: santhoshcheeran/mleurekaserverrepo:latest
+        environment:
+            REGION=West
+            EUREKA-SERVER-HOST=localhost
+            EUREKA-SERVER-PORT=8763
+            EUREKA-PEER-SERVER-HOST=localhost
+            EUREKA-PEER-SERVER-PORT=8764
+        expose:
+            - 8763
+            - 8764
+        ports:
+            - "8763:8763"
+            - "8764:8764"
+        networks:
+            - ml-cloud-network-east
+        volumes:
+            - mlservicedatadir:/var/www/mlservicedatadir
+        logging:
+            driver: json-file            
+networks:
+    ml-cloud-network-east:
+        driver: bridge
+volumes:
+    mlservicedatadir:
+        external: true
+
+santhoshcheeran/mlservicerepo
+santhoshcheeran/msapigatewayrepo
+santhoshcheeran/zipkinserverrepo
