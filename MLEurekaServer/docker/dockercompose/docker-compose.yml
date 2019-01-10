@@ -9,44 +9,48 @@ services:
         environment:
             REGION=East
             EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8762
+            EUREKA-SERVER-PORT=8761
             EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8761
+            EUREKA-PEER-SERVER-PORT=8762
         expose:
             - 8761
+            - 8762
         ports:
             - 8761:8761
+            - 8762:8762
         networks:
-            - spring-cloud-network
+            - ml-cloud-network
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
 services:
-    eureka-east-server2:
-        container_name: eureka-east-server2
+    eureka-west-server1:
+        container_name: eureka-west-server1
         build:
             context: .
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=East
+            REGION=West
             EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8762
+            EUREKA-SERVER-PORT=8763
             EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8761
+            EUREKA-PEER-SERVER-PORT=8764
         expose:
-            - 8762
+            - 8763
+            - 8764
         ports:
-            - 8762:8762            
+            - 8763:8763
+            - 8764:8764
         networks:
-            - spring-cloud-network
+            - ml-cloud-network
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file            
 networks:
-    spring-cloud-network:
+    ml-cloud-network:
         driver: bridge
 volumes:
     mlservicedatadir:
