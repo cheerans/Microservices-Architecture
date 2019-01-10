@@ -23,7 +23,9 @@ services:
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
-            driver: json-file            
+            driver: json-file
+        links:
+            mlservice,msapigateway,zipkinserver
 networks:
     ml-cloud-network-east:
         driver: bridge
