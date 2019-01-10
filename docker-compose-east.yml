@@ -1,7 +1,10 @@
 # to deploy the app on the cloud hosted swarm
 # Open docker compose and see, it has services listed
 # it runs on swarm created already
-#docker stack deploy -c docker-compose.yml ml_cloud_stack
+#docker stack deploy -c docker-compose-east.yml ml_cloud_stack
+
+# EACH LINE IN DOCKER COMPOSE is equaialent to arguments in docker run
+# Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
 
 version: '1'
 services:
