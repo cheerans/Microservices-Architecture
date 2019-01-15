@@ -14,8 +14,8 @@ docker push santhoshcheeran/msapigatewayrepo
 
 ### East Server
 
-`docker run --name=msapigateway-instance-east1 -it --rm -p 8091:8091 -e "SERVER-PORT=8091" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/msapigatewayrepo`
+`docker run --name=msapigateway-east-server1 -it --rm -p 8091:8091 -e "SERVER-PORT=8091" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/msapigatewayrepo`
 
 ### West Server
 
-`docker run --name=msapigateway-instance-west1 -it --rm -p 8092:8092 -e "SERVER-PORT=8092" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/msapigatewayrepo`
+`docker run --name=msapigateway-west-server1 -it --rm -p 8092:8092 -e "SERVER-PORT=8092" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/msapigatewayrepo`
