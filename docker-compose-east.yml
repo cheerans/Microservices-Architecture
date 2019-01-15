@@ -133,7 +133,7 @@ services:
         container_name: mlservice_container
         build:
             context: .
-            dockerfile: DockerFile.mlservice
+            dockerfile: DockerFile.msapigateway
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
             SERVER-PORT=8091
@@ -175,7 +175,7 @@ services:
         container_name: mlservice_container
         build:
             context: .
-            dockerfile: DockerFile.mlservice
+            dockerfile: DockerFile.zipkinserver
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
             SERVER-PORT=9411
