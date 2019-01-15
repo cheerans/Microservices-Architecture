@@ -91,7 +91,7 @@ services:
         build:
             context: .
             dockerfile: DockerFile.mlservice
-        image: santhoshcheeran/mleurekaserverrepo:latest
+        image: santhoshcheeran/mlservicerepo:latest
         environment:
             ZUULPROXYADDRESS=http://localhost:8091
             SERVER-PORT=8080
@@ -128,7 +128,87 @@ networks:
 volumes:
     mlservicedatadir:
         external: true
-
-santhoshcheeran/mlservicerepo
-santhoshcheeran/msapigatewayrepo
-santhoshcheeran/zipkinserverrepo
+services:
+    msapigateway-east-server1:
+        container_name: mlservice_container
+        build:
+            context: .
+            dockerfile: DockerFile.mlservice
+        image: santhoshcheeran/msapigatewayrepo:latest
+        environment:
+            SERVER-PORT=8091
+            SERVER-HOST=localhost
+            REGION=East
+            EUREKA-SERVER1-HOST=localhost
+            EUREKA-SERVER1-PORT=8761
+            EUREKA-SERVER2-HOST=localhost
+            EUREKA-SERVER2-PORT=8762       
+        expose:
+            - 8091
+        ports:
+            - "8091:8091"
+        networks:
+            - ml-cloud-network-east
+        volumes:
+            - mlservicedatadir:/var/www/mlservicedatadir
+        logging:
+            driver: json-file
+        links:
+            msapigateway,zipkinserver
+        deploy:
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
+networks:
+    ml-cloud-network-east:
+        driver: bridge
+volumes:
+    mlservicedatadir:
+        external: true
+services:
+    msapigateway-east-server1:
+        container_name: mlservice_container
+        build:
+            context: .
+            dockerfile: DockerFile.mlservice
+        image: santhoshcheeran/zipkinserverrepo:latest
+        environment:
+            SERVER-PORT=9411
+            SERVER-HOST=localhost
+            REGION=East
+            EUREKA-SERVER1-HOST=localhost
+            EUREKA-SERVER1-PORT=8761
+            EUREKA-SERVER2-HOST=localhost
+            EUREKA-SERVER2-PORT=8762
+        expose:
+            - 9411
+        ports:
+            - "9411:9411"
+        networks:
+            - ml-cloud-network-east
+        volumes:
+            - mlservicedatadir:/var/www/mlservicedatadir
+        logging:
+            driver: json-file
+        links:
+            msapigateway,zipkinserver
+        deploy:
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
+networks:
+    ml-cloud-network-east:
+        driver: bridge
+volumes:
+    mlservicedatadir:
+        external: true          
