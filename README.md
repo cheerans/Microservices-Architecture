@@ -83,7 +83,7 @@ Please click the link above for details. This is the Microservice implementation
 
 # Happy coding!
 
-Good Luck and spend time and code slow. It is not the size of the docker, it is the motion in the ocean. 
+Good Luck and spend time and code slow, but smart.
 
 ## Contribute
 
