@@ -7,7 +7,7 @@ One day a man buys a dog and feeds it and makes it big. The dog was trained in s
 
 What if a poor man buys a dog ? The poor man will be hanged! The dog will be handed over to the major man as damages. What will happen to the dog ? He will protect the major man's house. Now the poor man steals at major mans home and the dog bites him, the poor man is arrested and the dog gets share of big bones and is hailed as a hero! 
 
-Poor man is Monolith architecture, Rich Major man is the Microservices architecture and the faithful dog is the Customer :) I hope you like the concept. 
+Poor man is Monolith architecture, Rich Major man is the Microservices architecture and the faithful dog is the Customer :) You can see only Happy scenario for a customer of a complex multi lot of users system to have a fast application is to have microservices architecture. I hope you like the concept. 
 
 Microservices Architecture (Load balanced + High availability)
 =============================================================
@@ -83,7 +83,7 @@ Please click the link above for details. This is the Microservice implementation
 
 # Happy coding!
 
-Good Luck and spend time and code slow. It is not the size of the docker whale, it is the motion in the ocean. 
+Good Luck and spend time and code slow. It is not the size of the docker, it is the motion in the ocean. 
 
 ## Contribute
 
