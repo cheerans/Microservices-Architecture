@@ -1,0 +1,46 @@
+services:	
+    mlserver-east-server1:	
+        container_name: mlservice_container	
+        build:	
+            context: .	
+            dockerfile: DockerFile.mlservice	
+        image: santhoshcheeran/mlservicerepo:latest	
+        environment:	
+            ZUULPROXYADDRESS=http://localhost:8091	
+            SERVER-PORT=8080	
+            SERVER-HOST=localhost	
+            REGION=East	
+            EUREKA-SERVER1-HOST=localhost	
+            EUREKA-SERVER1-PORT=8761	
+            EUREKA-SERVER2-HOST=localhost	
+            EUREKA-SERVER2-PORT=8762           	
+        expose:	
+            - 8080	
+        ports:	
+            - "8080:8080"	
+        networks:	
+            - ml-cloud-network-east	
+        volumes:	
+            - mlservicedatadir:/var/www/mlservicedatadir	
+        logging:	
+            driver: json-file	
+        links:	
+            msapigateway,zipkinserver	
+        deploy:	
+            replicas: 2	
+            update_config:	
+                parallelism: 1	
+                delay: 10s	
+            restart_policy: 	
+                condition: on-failure	
+            placement:	
+                constraints: [node.role == worker]	
+networks:	
+    ml-cloud-network-east:	
+        driver: bridge	
+volumes:	
+    mlservicedatadir:	
+        external: true	
+services:	services:
+    msapigateway-east-server1:	    msapigateway-east-server1:
+        container_name: mlservice_container
