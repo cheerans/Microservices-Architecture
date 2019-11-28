@@ -1,7 +1,17 @@
+# to deploy the app on the cloud hosted swarm
+# Open docker compose and see, it has services listed
+# it runs on swarm created already
+#docker stack deploy -c docker-compose-west.yml ml_cloud_stack
+
+#https://github.com/dockersamples/example-voting-app
+
+# EACH LINE IN DOCKER COMPOSE is equaialent to arguments in docker run
+# Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
+
 version: '1'
 services:
     eureka-west-server1:
-        container_name: eureka-west-server1
+        container_name: mlservice_container
         build:
             context: .
             dockerfile: DockerFile.eureka
@@ -14,19 +24,148 @@ services:
             EUREKA-PEER-SERVER-PORT=8764
         expose:
             - 8763
-            - 8764
         ports:
             - "8763:8763"
-            - "8764:8764"
         networks:
-            - ml-cloud-network-east
+            - ml-cloud-network-west
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
-            driver: json-file            
+            driver: json-file
+        deploy:
+            replicas: 1
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
 networks:
-    ml-cloud-network-east:
+    ml-cloud-network-west:
         driver: bridge
 volumes:
     mlservicedatadir:
         external: true
+services:
+    eureka-west-server2:
+        container_name: mlservice_container
+        build:
+            context: .
+            dockerfile: DockerFile.eureka
+        image: santhoshcheeran/mleurekaserverrepo:latest
+        environment:
+            REGION=West
+            EUREKA-SERVER-HOST=localhost
+            EUREKA-SERVER-PORT=8764
+            EUREKA-PEER-SERVER-HOST=localhost
+            EUREKA-PEER-SERVER-PORT=8763
+        expose:
+            - 8764
+        ports:
+            - "8764:8764"
+        networks:
+            - ml-cloud-network-west
+        volumes:
+            - mlservicedatadir:/var/www/mlservicedatadir
+        logging:
+            driver: json-file
+        deploy:
+            replicas: 1
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
+networks:
+    ml-cloud-network-west:
+        driver: bridge
+volumes:
+    mlservicedatadir:
+        external: true        
+services:
+    msapigateway-west-server1:
+        container_name: mlservice_container
+        build:
+            context: .
+            dockerfile: DockerFile.msapigateway
+        image: santhoshcheeran/msapigatewayrepo:latest
+        environment:
+            SERVER-PORT=8092
+            SERVER-HOST=localhost
+            REGION=west
+            EUREKA-SERVER1-HOST=localhost
+            EUREKA-SERVER1-PORT=8763
+            EUREKA-SERVER2-HOST=localhost
+            EUREKA-SERVER2-PORT=8764       
+        expose:
+            - 8092
+        ports:
+            - "8092:8092"
+        networks:
+            - ml-cloud-network-west
+        volumes:
+            - mlservicedatadir:/var/www/mlservicedatadir
+        logging:
+            driver: json-file
+        links:
+            msapigateway,zipkinserver
+        deploy:
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
+networks:
+    ml-cloud-network-west:
+        driver: bridge
+volumes:
+    mlservicedatadir:
+        external: true
+services:
+    zipkinserver-west-server1:
+        container_name: mlservice_container
+        build:
+            context: .
+            dockerfile: DockerFile.zipkinserver
+        image: santhoshcheeran/zipkinserverrepo:latest
+        environment:
+            SERVER-PORT=9412
+            SERVER-HOST=localhost
+            REGION=west
+            EUREKA-SERVER1-HOST=localhost
+            EUREKA-SERVER1-PORT=8763
+            EUREKA-SERVER2-HOST=localhost
+            EUREKA-SERVER2-PORT=8764
+        expose:
+            - 9412
+        ports:
+            - "9412:9412"
+        networks:
+            - ml-cloud-network-west
+        volumes:
+            - mlservicedatadir:/var/www/mlservicedatadir
+        logging:
+            driver: json-file
+        links:
+            msapigateway,zipkinserver
+        deploy:
+            replicas: 2
+            update_config:
+                parallelism: 1
+                delay: 10s
+            restart_policy: 
+                condition: on-failure
+            placement:
+                constraints: [node.role == worker]
+networks:
+    ml-cloud-network-west:
+        driver: bridge
+volumes:
+    mlservicedatadir:
+        external: true          
