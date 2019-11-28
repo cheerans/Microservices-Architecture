@@ -41,6 +41,3 @@ networks:
 volumes:	
     mlservicedatadir:	
         external: true	
-services:	services:
-    msapigateway-east-server1:	    msapigateway-east-server1:
-        container_name: mlservice_container
