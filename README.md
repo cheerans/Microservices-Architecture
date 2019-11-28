@@ -30,6 +30,10 @@ The docker image has the default values for Eureka sever, Zipkin server, MSApiGa
 
 The Micro Service Server, SCALE UP OR DOWN up as many on port 8080, 8083,8085,8087,8089 ... etc
 
+[Vertical/Horizontal Scaling](scaling.md)
+
+Please click the link above for details. This document details our scaling strategies.
+
 The components of this design are
 
 [Spring Eureka Server](MLEurekaServer/README.md)
