@@ -113,7 +113,7 @@ services:
         depends_on:
             eureka-east-server1,eureka-east-server2,zipkinserver-east-server1
         deploy:
-            replicas: 2
+            replicas: 1
             update_config:
                 parallelism: 1
                 delay: 10s
@@ -153,7 +153,7 @@ services:
         logging:
             driver: json-file
         deploy:
-            replicas: 2
+            replicas: 1
             update_config:
                 parallelism: 1
                 delay: 10s
