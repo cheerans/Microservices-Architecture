@@ -41,13 +41,6 @@ services:
                 condition: on-failure
             placement:
                 constraints: [node.role == worker]
-networks:
-    ml-cloud-network-east:
-        driver: bridge
-volumes:
-    mlservicedatadir:
-        external: true
-services:
     eureka-east-server2:
         container_name: mlserver_east_framework
         build:
@@ -79,13 +72,6 @@ services:
                 condition: on-failure
             placement:
                 constraints: [node.role == worker]
-networks:
-    ml-cloud-network-east:
-        driver: bridge
-volumes:
-    mlservicedatadir:
-        external: true        
-services:
     msapigateway-east-server1:
         container_name: mlserver_east_framework
         build:
@@ -121,13 +107,6 @@ services:
                 condition: on-failure
             placement:
                 constraints: [node.role == worker]
-networks:
-    ml-cloud-network-east:
-        driver: bridge
-volumes:
-    mlservicedatadir:
-        external: true
-services:
     zipkinserver-east-server1:
         container_name: mlserver_east_framework
         build:
