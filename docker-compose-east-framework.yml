@@ -55,7 +55,7 @@ services:
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=west
+            REGION=east
             EUREKA-SERVER-HOST=localhost
             EUREKA-SERVER-PORT=8762
             EUREKA-PEER-SERVER-HOST=localhost
@@ -65,7 +65,7 @@ services:
         ports:
             - "8762:8762"
         networks:
-            - ml-cloud-network-west
+            - ml-cloud-network-east
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
@@ -111,7 +111,7 @@ services:
         logging:
             driver: json-file
         depends_on:
-            msapigateway,zipkinserver
+            eureka-east-server1,eureka-east-server2,zipkinserver-east-server1
         deploy:
             replicas: 2
             update_config:
@@ -152,8 +152,6 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        links:
-            msapigateway,zipkinserver
         deploy:
             replicas: 2
             update_config:
