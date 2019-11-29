@@ -40,7 +40,7 @@ nginx:
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - pspdfkit
+      - mlserver-east
     ports:
       - "4000:4000"                
 networks:	
