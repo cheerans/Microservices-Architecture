@@ -16,7 +16,7 @@ services:
             EUREKA-SERVER2-PORT=8762           	
         expose:	
             - 8080
-        # cannot use 8080:8080 - because the format will bind 8080 to 8080 and docker compose cannot use scale, as only one server can use this port
+        # cannot use "8080:8080" - because the format will bind 8080 to 8080 and docker compose cannot use scale, as only one server can use this port
         # https://pspdfkit.com/blog/2018/how-to-use-docker-compose-to-run-multiple-instances-of-a-service-in-development/
         ports:
             - 8080
