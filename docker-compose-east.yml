@@ -34,15 +34,15 @@ services:
             restart_policy: 	
                 condition: on-failure	
             placement:	
-                constraints: [node.role == worker]	
-nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf:ro
-    depends_on:
-      - mlserver-east
-    ports:
-      - "4000:4000"                
+                constraints: [node.role == worker]
+    nginx:
+        image: nginx:latest
+        volumes:
+            - ./nginx.conf:/etc/nginx/nginx.conf:ro
+        depends_on:
+            - mlserver-east
+        ports:
+            - "4000:4000"                
 networks:	
     ml-cloud-network-east:	
         driver: bridge	
