@@ -11,13 +11,13 @@
 version: '1'
 services:
     eureka-east-server1:
-        container_name: mlservice_container
+        container_name: mlserver_east_framework
         build:
             context: .
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=West
+            REGION=east
             EUREKA-SERVER-HOST=localhost
             EUREKA-SERVER-PORT=8761
             EUREKA-PEER-SERVER-HOST=localhost
@@ -49,13 +49,13 @@ volumes:
         external: true
 services:
     eureka-east-server2:
-        container_name: mlservice_container
+        container_name: mlserver_east_framework
         build:
             context: .
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=West
+            REGION=west
             EUREKA-SERVER-HOST=localhost
             EUREKA-SERVER-PORT=8762
             EUREKA-PEER-SERVER-HOST=localhost
@@ -65,7 +65,7 @@ services:
         ports:
             - "8762:8762"
         networks:
-            - ml-cloud-network-east
+            - ml-cloud-network-west
         volumes:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
@@ -87,7 +87,7 @@ volumes:
         external: true        
 services:
     msapigateway-east-server1:
-        container_name: mlservice_container
+        container_name: mlserver_east_framework
         build:
             context: .
             dockerfile: DockerFile.msapigateway
@@ -95,7 +95,7 @@ services:
         environment:
             SERVER-PORT=8091
             SERVER-HOST=localhost
-            REGION=East
+            REGION=east
             EUREKA-SERVER1-HOST=localhost
             EUREKA-SERVER1-PORT=8761
             EUREKA-SERVER2-HOST=localhost
@@ -110,7 +110,7 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        links:
+        depends_on:
             msapigateway,zipkinserver
         deploy:
             replicas: 2
@@ -129,7 +129,7 @@ volumes:
         external: true
 services:
     zipkinserver-east-server1:
-        container_name: mlservice_container
+        container_name: mlserver_east_framework
         build:
             context: .
             dockerfile: DockerFile.zipkinserver
@@ -137,7 +137,7 @@ services:
         environment:
             SERVER-PORT=9411
             SERVER-HOST=localhost
-            REGION=East
+            REGION=east
             EUREKA-SERVER1-HOST=localhost
             EUREKA-SERVER1-PORT=8761
             EUREKA-SERVER2-HOST=localhost
