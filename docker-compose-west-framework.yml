@@ -11,13 +11,13 @@
 version: '1'
 services:
     eureka-west-server1:
-        container_name: mlservice_container
+        container_name: mlserver_west_framework
         build:
             context: .
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=West
+            REGION=west
             EUREKA-SERVER-HOST=localhost
             EUREKA-SERVER-PORT=8763
             EUREKA-PEER-SERVER-HOST=localhost
@@ -49,13 +49,13 @@ volumes:
         external: true
 services:
     eureka-west-server2:
-        container_name: mlservice_container
+        container_name: mlserver_west_framework
         build:
             context: .
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=West
+            REGION=west
             EUREKA-SERVER-HOST=localhost
             EUREKA-SERVER-PORT=8764
             EUREKA-PEER-SERVER-HOST=localhost
@@ -87,7 +87,7 @@ volumes:
         external: true        
 services:
     msapigateway-west-server1:
-        container_name: mlservice_container
+        container_name: mlserver_west_framework
         build:
             context: .
             dockerfile: DockerFile.msapigateway
@@ -110,10 +110,10 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        links:
-            msapigateway,zipkinserver
+        depends_on:
+            eureka-east-server1,eureka-east-server2,zipkinserver-east-server1
         deploy:
-            replicas: 2
+            replicas: 1
             update_config:
                 parallelism: 1
                 delay: 10s
@@ -129,7 +129,7 @@ volumes:
         external: true
 services:
     zipkinserver-west-server1:
-        container_name: mlservice_container
+        container_name: mlserver_west_framework
         build:
             context: .
             dockerfile: DockerFile.zipkinserver
@@ -152,10 +152,8 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        links:
-            msapigateway,zipkinserver
         deploy:
-            replicas: 2
+            replicas: 1
             update_config:
                 parallelism: 1
                 delay: 10s
