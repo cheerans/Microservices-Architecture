@@ -47,3 +47,6 @@ services:
 networks:
   ml-cloud-network-east: 
     external: true
+volumes:
+  userdata:
+    externa;: true
