@@ -48,4 +48,4 @@ networks:
     driver: bridge
 volumes:
   mlservicedatadir:
-    external: true
+    external: false
