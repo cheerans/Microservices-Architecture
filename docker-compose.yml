@@ -1,0 +1,6 @@
+version: '2.2'
+services:
+    web:
+        extends:
+            file: docker-compose-east-framework.yml
+            service: eureka-east-server1
