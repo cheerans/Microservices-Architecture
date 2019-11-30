@@ -8,7 +8,7 @@
 # EACH LINE IN DOCKER COMPOSE is equaialent to arguments in docker run
 # Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
 
-version: '1'
+version: '2.2'
 services:
     eureka-east-server1:
         container_name: mlserver_east_framework
