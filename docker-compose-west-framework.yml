@@ -29,7 +29,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir:/var/www/mlservicedatadir
+            - mlservicedatadir-west
         logging:
             driver: json-file
 #        deploy:
@@ -60,7 +60,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir:/var/www/mlservicedatadir
+            - mlservicedatadir-west
         logging:
             driver: json-file
 #        deploy:
@@ -93,7 +93,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir:/var/www/mlservicedatadir
+            - mlservicedatadir-west
         logging:
             driver: json-file
         depends_on:
@@ -130,7 +130,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir:/var/www/mlservicedatadir
+            - mlservicedatadir-west
         logging:
             driver: json-file
 #        deploy:
