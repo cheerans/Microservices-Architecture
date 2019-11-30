@@ -97,7 +97,12 @@ services:
         logging:
             driver: json-file
         depends_on:
-            eureka-east-server1,eureka-east-server2,zipkinserver-east-server1
+            eureka-east-server1:
+                condition: service_healthy            
+            eureka-east-server2:
+                condition: service_healthy            
+            zipkinserver-east-server1:
+                condition: service_healthy
         deploy:
             replicas: 1
             update_config:
