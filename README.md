@@ -68,7 +68,7 @@ Please click the link above for details. This is the Microservice implementation
   
   However again the intricacy is that this port is only available on the docker container IP Address and not on local host. The following will obtain docker containers IP Address. 
   
-  `docker inspect --format '{{ .NetworkSettings.Networks.nat.IPAddress }}' <container>`  
+  `docker inspect -f {{ .NetworkSettings.IPAddress }} <container>`  
   
   Hence forth typing `dockerip:8080` in internet explorer provides the access to local docker container via browser.
   
