@@ -144,7 +144,7 @@ services:
 #                constraints: [node.role == worker]
 networks:
     ml-cloud-network-west:
-        driver: bridge
+        external: false
 volumes:
-    mlservicedatadir:
-        external: true          
+    mlservicedatadir-west: /var/www/mlservicedatadir-west
+        external: false        
