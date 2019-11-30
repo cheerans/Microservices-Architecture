@@ -28,7 +28,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir-west
+            - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        deploy:
@@ -58,7 +58,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir-west
+            - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        deploy:
@@ -90,7 +90,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir-west
+            - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
         depends_on:
@@ -126,7 +126,7 @@ services:
         networks:
             - ml-cloud-network-west
         volumes:
-            - mlservicedatadir-west
+            - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        deploy:
@@ -140,7 +140,4 @@ services:
 #                constraints: [node.role == worker]
 networks:
     ml-cloud-network-west:
-        external: false
-volumes:
-    mlservicedatadir-west: /var/www/mlservicedatadir-west
-        external: false        
+        external: false 
