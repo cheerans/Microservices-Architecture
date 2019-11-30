@@ -17,11 +17,11 @@ services:
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=east
-            EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8761
-            EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8762
+            - REGION=east
+            - EUREKA-SERVER-HOST=localhost
+            - EUREKA-SERVER-PORT=8761
+            - EUREKA-PEER-SERVER-HOST=localhost
+            - EUREKA-PEER-SERVER-PORT=8762
         expose:
             - 8761
         ports:
@@ -48,11 +48,11 @@ services:
             dockerfile: DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=east
-            EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8762
-            EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8761
+            - REGION=east
+            - EUREKA-SERVER-HOST=localhost
+            - EUREKA-SERVER-PORT=8762
+            - EUREKA-PEER-SERVER-HOST=localhost
+            - EUREKA-PEER-SERVER-PORT=8761
         expose:
             - 8762
         ports:
@@ -79,13 +79,13 @@ services:
             dockerfile: DockerFile.msapigateway
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
-            SERVER-PORT=8091
-            SERVER-HOST=localhost
-            REGION=east
-            EUREKA-SERVER1-HOST=localhost
-            EUREKA-SERVER1-PORT=8761
-            EUREKA-SERVER2-HOST=localhost
-            EUREKA-SERVER2-PORT=8762       
+            - SERVER-PORT=8091
+            - SERVER-HOST=localhost
+            - REGION=east
+            - EUREKA-SERVER1-HOST=localhost
+            - EUREKA-SERVER1-PORT=8761
+            - EUREKA-SERVER2-HOST=localhost
+            - EUREKA-SERVER2-PORT=8762       
         expose:
             - 8091
         ports:
@@ -114,13 +114,13 @@ services:
             dockerfile: DockerFile.zipkinserver
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
-            SERVER-PORT=9411
-            SERVER-HOST=localhost
-            REGION=east
-            EUREKA-SERVER1-HOST=localhost
-            EUREKA-SERVER1-PORT=8761
-            EUREKA-SERVER2-HOST=localhost
-            EUREKA-SERVER2-PORT=8762
+            - SERVER-PORT=9411
+            - SERVER-HOST=localhost
+            - REGION=east
+            - EUREKA-SERVER1-HOST=localhost
+            - EUREKA-SERVER1-PORT=8761
+            - EUREKA-SERVER2-HOST=localhost
+            - EUREKA-SERVER2-PORT=8762
         expose:
             - 9411
         ports:
