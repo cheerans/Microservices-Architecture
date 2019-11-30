@@ -24,7 +24,7 @@ services:
         networks:	
             - ml-cloud-network-west	
         volumes:	
-            - mlservicedatadir:/var/www/mlservicedatadir	
+            - userdata:/var/www/mlservicedatadir
         logging:	
             driver: json-file	
 #        deploy:
@@ -46,7 +46,4 @@ services:
             - "4000:4000"                
 networks:
   ml-cloud-network-west: 
-    external: true
-volumes:
-  mlservicedatadir-west:
     external: true
