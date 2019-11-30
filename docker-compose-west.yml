@@ -45,5 +45,8 @@ services:
         ports:
             - "4000:4000"                
 networks:
-  ml-cloud-network-west: 
-    external: true
+    ml-cloud-network-west: 
+        external: true
+volumes:
+    userdata:
+        external: true
