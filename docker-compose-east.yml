@@ -22,7 +22,7 @@ services:
     networks:
       - ml-cloud-network-east
     volumes:
-      - ./userdata:/var/www/mlservicedatadir
+      - userdata:/var/www/mlservicedatadir
     logging:
       driver: json-file
 # docker swarm ???
