@@ -143,4 +143,3 @@ networks:
         external: false
 volumes:
     mlservicedatadir-east: /var/www/mlservicedatadir-east
-        external: false          
