@@ -1,3 +1,4 @@
+export COMPOSE_CONVERT_WINDOWS_PATHS=1
 docker network create ml-cloud-network-east
 docker volume create userdata
 docker-compose -f "$PWD//docker-compose-east-framework.yml" up msapigateway-east-server1
