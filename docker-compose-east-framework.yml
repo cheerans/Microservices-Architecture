@@ -143,4 +143,4 @@ networks:
         external: true
 volumes:
     userdata:
-        externa: true
+        external: true
