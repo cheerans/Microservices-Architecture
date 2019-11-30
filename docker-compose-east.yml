@@ -30,7 +30,7 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
-        restart_policy:
+      restart_policy:
             condition: on-failure
       placement:
         constraints:
