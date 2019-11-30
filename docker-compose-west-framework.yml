@@ -141,3 +141,6 @@ services:
 networks:
     ml-cloud-network-west:
         external: false 
+volumes:
+    userdata:
+        external: true
