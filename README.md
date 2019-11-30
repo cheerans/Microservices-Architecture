@@ -88,13 +88,13 @@ Please click the link above for details. This is the Microservice implementation
 # Some useful docker commands
 
 * docker container ls
-* docker container stop <hash>           # Gracefully stop the specified container
-* docker container kill <hash>         # Force shutdown of the specified container
-* docker container rm <hash>        # Remove specified container from this machine
-* docker container rm $(docker container ls -a -q)         # Remove all containers
-* docker image ls -a                             # List all images on this machine
-* docker image rm <image id>            # Remove specified image from this machine
-* docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+* docker container stop <hash> - Gracefully stop the specified container
+* docker container kill <hash> - Force shutdown of the specified container
+* docker container rm <hash> - Remove specified container from this machine
+* docker container rm $(docker container ls -a -q) - Remove all containers
+* docker image ls -a - List all images on this machine
+* docker image rm <image id> - Remove specified image from this machine
+* docker image rm $(docker image ls -a -q) - Remove all images from this machine
 * docker login
 
 * docker exec -it mycontainer sh 
@@ -103,7 +103,7 @@ Please click the link above for details. This is the Microservice implementation
         
 * docker run -P -d --name employee --link mycontainer microservicedemo/employee 
         --link links to an existing container
-        -d means run as a deamon in background
+        -d means run as a daemon in background
         -P tells Docker to expose any container-declared port in the ephemeral range
         
 * docker run -P -d –name mycontainer mongo
