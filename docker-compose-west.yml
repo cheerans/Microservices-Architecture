@@ -44,9 +44,9 @@ services:
             - mlserver-west
         ports:
             - "4000:4000"                
-networks:	
-    ml-cloud-network-west:	
-        driver: bridge	
-volumes:	
-    mlservicedatadir:	
-        external: true	
+networks:
+  ml-cloud-network-west: 
+    external: true
+volumes:
+  mlservicedatadir-west:
+    external: true
