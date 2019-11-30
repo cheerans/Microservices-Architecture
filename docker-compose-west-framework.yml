@@ -98,12 +98,9 @@ services:
         logging:
             driver: json-file
         depends_on:
-            eureka-west-server1:
-                condition: service_healthy            
-            eureka-west-server2:
-                condition: service_healthy            
-            zipkinserver-west-server1:
-                condition: service_healthy
+            - eureka-west-server1           
+            - eureka-west-server2           
+            - zipkinserver-west-server1
         deploy:
             replicas: 1
             update_config:
