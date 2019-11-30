@@ -22,7 +22,7 @@ services:
     networks:
       - ml-cloud-network-east
     volumes:
-      - mlservicedatadir-east
+      - ./userdata:/var/www/mlservicedatadir
     logging:
       driver: json-file
 # docker swarm ???
@@ -46,7 +46,4 @@ services:
       - '4000:4000'
 networks:
   ml-cloud-network-east: 
-    external: true
-volumes:
-  mlservicedatadir-east:
     external: true
