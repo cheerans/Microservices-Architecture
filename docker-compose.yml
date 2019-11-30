@@ -1,6 +1,22 @@
 version: '2.2'
 services:
-    web:
+    eureka-east-server1:
         extends:
             file: docker-compose-east-framework.yml
             service: eureka-east-server1
+    eureka-east-server2:
+        extends:
+            file: docker-compose-east-framework.yml
+            service: eureka-east-server2            
+    msapigateway-east-server1:
+        extends:
+            file: docker-compose-east-framework.yml
+            service: msapigateway-east-server1        
+    zipkinserver-east-server1:
+        extends:
+            file: docker-compose-east-framework.yml
+            service: zipkinserver-east-server1   
+    zipkinserver-east-server1:
+        extends:
+            file: docker-compose-east-framework.yml
+            service: zipkinserver-east-server1             
