@@ -28,7 +28,7 @@ services:
         networks:
             - ml-cloud-network-east
         volumes:
-            - mlservicedatadir-east
+            - ./userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        deploy:
@@ -58,7 +58,7 @@ services:
         networks:
             - ml-cloud-network-east
         volumes:
-            - mlservicedatadir-east
+            - ./userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        deploy:
@@ -90,7 +90,7 @@ services:
         networks:
             - ml-cloud-network-east
         volumes:
-            - mlservicedatadir-east
+            - ./userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
         depends_on:
@@ -126,7 +126,7 @@ services:
         networks:
             - ml-cloud-network-east
         volumes:
-            - mlservicedatadir-east
+            - ./userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        deploy:
@@ -141,5 +141,3 @@ services:
 networks:
     ml-cloud-network-east:
         external: false
-volumes:
-    mlservicedatadir-east: /var/www/mlservicedatadir-east
