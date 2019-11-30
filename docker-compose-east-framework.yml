@@ -98,9 +98,9 @@ services:
             driver: json-file
         depends_on:
             eureka-east-server1:
-                condition: service_healthy            
+                condition: service_healthy
             eureka-east-server2:
-                condition: service_healthy            
+                condition: service_healthy
             zipkinserver-east-server1:
                 condition: service_healthy
         deploy:
