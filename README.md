@@ -87,34 +87,34 @@ Please click the link above for details. This is the Microservice implementation
 
 # Some useful docker commands
 
-docker container ls
-docker container stop <hash>           # Gracefully stop the specified container
-docker container kill <hash>         # Force shutdown of the specified container
-docker container rm <hash>        # Remove specified container from this machine
-docker container rm $(docker container ls -a -q)         # Remove all containers
-docker image ls -a                             # List all images on this machine
-docker image rm <image id>            # Remove specified image from this machine
-docker image rm $(docker image ls -a -q)   # Remove all images from this machine
-docker login
+* docker container ls
+* docker container stop <hash>           # Gracefully stop the specified container
+* docker container kill <hash>         # Force shutdown of the specified container
+* docker container rm <hash>        # Remove specified container from this machine
+* docker container rm $(docker container ls -a -q)         # Remove all containers
+* docker image ls -a                             # List all images on this machine
+* docker image rm <image id>            # Remove specified image from this machine
+* docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+* docker login
 
-docker exec -it mycontainer sh 
+* docker exec -it mycontainer sh 
         -i means interactively 
         -t using tty opens a shell named mycontainer(just a dummy name
         
-docker run -P -d --name employee --link mycontainer microservicedemo/employee 
+* docker run -P -d --name employee --link mycontainer microservicedemo/employee 
         --link links to an existing container
         -d means run as a deamon in background
         -P tells Docker to expose any container-declared port in the ephemeral range
         
-docker run -P -d –name mycontainer mongo
+* docker run -P -d –name mycontainer mongo
         Runs mongodb in mycontainer. There are ‘official’ Docker images of many popular software packages. 
         MongoDB’s is simply ‘mongo’ – you know it’s an official image by the lack of an owner name (e.g. owner/image)
 
-docker ps - shows process
-docker port - all docker ports
-docker inspect - all config dump
-docker logs -f "container name" - shows logs of the container
-docker stats [container name/ID] - 
+* docker ps - shows process
+* docker port - all docker ports
+* docker inspect - all config dump
+* docker logs -f "container name" - shows logs of the container
+* docker stats [container name/ID] - 
 
 # Happy coding!
 
