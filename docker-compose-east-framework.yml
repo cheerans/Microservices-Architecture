@@ -140,4 +140,7 @@ services:
 #                constraints: [node.role == worker]
 networks:
     ml-cloud-network-east:
-        external: false
+        external: true
+volumes:
+    userdata:
+        externa: true
