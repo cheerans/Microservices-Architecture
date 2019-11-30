@@ -16,7 +16,7 @@ services:
         extends:
             file: docker-compose-east-framework.yml
             service: zipkinserver-east-server1   
-    zipkinserver-east-server1:
+    mlserver-east:
         extends:
-            file: docker-compose-east-framework.yml
-            service: zipkinserver-east-server1             
+            file: docker-compose-east.yml
+            service: mlserver-east
