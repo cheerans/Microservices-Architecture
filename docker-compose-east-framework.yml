@@ -32,15 +32,15 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        deploy:
-            replicas: 1
-            update_config:
-                parallelism: 1
-                delay: 10s
-            restart_policy: 
-                condition: on-failure
-            placement:
-                constraints: [node.role == worker]
+#        deploy:
+#            replicas: 1
+#            update_config:
+#                parallelism: 1
+#                delay: 10s
+#            restart_policy: 
+#                condition: on-failure
+#            placement:
+#                constraints: [node.role == worker]
     eureka-east-server2:
         container_name: mlserver_east_framework
         build:
@@ -63,15 +63,15 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        deploy:
-            replicas: 1
-            update_config:
-                parallelism: 1
-                delay: 10s
-            restart_policy: 
-                condition: on-failure
-            placement:
-                constraints: [node.role == worker]
+#        deploy:
+#            replicas: 1
+#            update_config:
+#                parallelism: 1
+#                delay: 10s
+#            restart_policy: 
+#                condition: on-failure
+#            placement:
+#                constraints: [node.role == worker]
     msapigateway-east-server1:
         container_name: mlserver_east_framework
         build:
@@ -100,15 +100,15 @@ services:
             - eureka-east-server1
             - eureka-east-server2
             - zipkinserver-east-server1
-        deploy:
-            replicas: 1
-            update_config:
-                parallelism: 1
-                delay: 10s
-            restart_policy: 
-                condition: on-failure
-            placement:
-                constraints: [node.role == worker]
+#        deploy:
+#            replicas: 1
+#            update_config:
+#                parallelism: 1
+#                delay: 10s
+#            restart_policy: 
+#                condition: on-failure
+#            placement:
+#                constraints: [node.role == worker]
     zipkinserver-east-server1:
         container_name: mlserver_east_framework
         build:
@@ -133,15 +133,15 @@ services:
             - mlservicedatadir:/var/www/mlservicedatadir
         logging:
             driver: json-file
-        deploy:
-            replicas: 1
-            update_config:
-                parallelism: 1
-                delay: 10s
-            restart_policy: 
-                condition: on-failure
-            placement:
-                constraints: [node.role == worker]
+#        deploy:
+#            replicas: 1
+#            update_config:
+#                parallelism: 1
+#                delay: 10s
+#            restart_policy: 
+#                condition: on-failure
+#            placement:
+#                constraints: [node.role == worker]
 networks:
     ml-cloud-network-east:
         driver: bridge
