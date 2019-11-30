@@ -1,3 +1,4 @@
+version: '2.2'
 services:	
     mlserver-east:	
         container_name: mlserver_east
