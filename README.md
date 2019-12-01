@@ -41,6 +41,8 @@ You can run the app quickly by doing the following
 * chmod 755 run-docker-compose.sh
 * ./run-docker-compose.sh
 
+A cool place to run it would be, docker collaborated - https://labs.play-with-docker.com/
+
 [Spring Eureka Server](MLEurekaServer/README.md)
 
 Please click the link above for details. This server manages our service registry and discovery. Our Microservices registers with Eureka servers. The consumer applciations and ZUUL proxy queries Eureka server for discovery.
