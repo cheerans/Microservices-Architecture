@@ -34,7 +34,10 @@ The Micro Service Server, SCALE UP OR DOWN up as many on port 8080, 8083,8085,80
 
 Please click the link above for details. This document details our scaling strategies.
 
-The components of this design are
+You can run the app quickly by doing the following
+
+chmod 755 run-docker-compose.sh
+./run-docker-compose.sh
 
 [Spring Eureka Server](MLEurekaServer/README.md)
 
