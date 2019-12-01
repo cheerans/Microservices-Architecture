@@ -12,8 +12,10 @@ docker-compose can be used to scale the application vertically. Vertical Scaling
 
 You can run the app quickly by doing the following
 
-chmod 755 run-docker-compose.sh
-./run-docker-compose.sh
+* git clone https://github.com/cheerans/Microservices-Architecture.git
+* cd Microservices-Architecture
+* chmod 755 run-docker-compose.sh
+* ./run-docker-compose.sh
 
 The following will scale an service
 docker-compose scale mlserver-east=5
