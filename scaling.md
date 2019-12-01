@@ -17,5 +17,7 @@ You can run the app quickly by doing the following
 * chmod 755 run-docker-compose.sh
 * ./run-docker-compose.sh
 
+A cool place to run it would be, docker collaborated - https://labs.play-with-docker.com/
+
 The following will scale an service
 docker-compose scale mlserver-east=5
