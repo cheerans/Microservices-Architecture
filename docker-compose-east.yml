@@ -39,7 +39,7 @@ services:
 #        constraints:
 #          - 'node.role == worker'
   nginx:
-    image: 'nginx:latest'
+    image: nginx:latest
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf
     ports:
