@@ -36,6 +36,8 @@ Please click the link above for details. This document details our scaling strat
 
 You can run the app quickly by doing the following
 
+* git clone https://github.com/cheerans/Microservices-Architecture.git
+* cd Microservices-Architecture
 * chmod 755 run-docker-compose.sh
 * ./run-docker-compose.sh
 
