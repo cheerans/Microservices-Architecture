@@ -40,7 +40,7 @@ services:
         depends_on:
             - mlserver-west
         ports:
-            - "4000:4000"                
+            - "80:80"                
 networks:
     ml-cloud-network-west: 
         external: true
