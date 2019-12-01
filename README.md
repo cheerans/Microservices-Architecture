@@ -36,8 +36,8 @@ Please click the link above for details. This document details our scaling strat
 
 You can run the app quickly by doing the following
 
-chmod 755 run-docker-compose.sh
-./run-docker-compose.sh
+* chmod 755 run-docker-compose.sh
+* ./run-docker-compose.sh
 
 [Spring Eureka Server](MLEurekaServer/README.md)
 
