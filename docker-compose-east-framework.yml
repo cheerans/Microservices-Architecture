@@ -13,7 +13,7 @@ services:
     eureka-east-server1:
         build:
             context: .
-            dockerfile: ZipkinServer/docker/DockerFile.eureka
+            dockerfile: /ZipkinServer/docker/DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
