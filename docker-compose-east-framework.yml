@@ -11,9 +11,6 @@
 version: '3.7'
 services:
     eureka-east-server1:
-        build:
-            context: .
-            dockerfile: MLEurekaServer/docker/DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
@@ -41,9 +38,6 @@ services:
 #            placement:
 #                constraints: [node.role == worker]
     eureka-east-server2:
-        build:
-            context: .
-            dockerfile: MLEurekaServer/docker/DockerFile.eureka
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
@@ -71,9 +65,6 @@ services:
 #            placement:
 #                constraints: [node.role == worker]
     msapigateway-east-server1:
-        build:
-            context: .
-            dockerfile: MSApiGateway/docker/DockerFile.msapigateway
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
             - SERVER-PORT=8091
@@ -107,9 +98,6 @@ services:
 #            placement:
 #                constraints: [node.role == worker]
     zipkinserver-east-server1:
-        build:
-            context: .
-            dockerfile: ZipkinServer/docker/DockerFile.zipkinserver
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
             - SERVER-PORT=9411
