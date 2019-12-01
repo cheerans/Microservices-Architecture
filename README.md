@@ -90,6 +90,7 @@ Please click the link above for details. This is the Microservice implementation
 * docker container ls
 * docker container stop <hash> - Gracefully stop the specified container
 * docker container kill <hash> - Force shutdown of the specified container
+* docker container kill $(docker ps -q)
 * docker container rm <hash> - Remove specified container from this machine
 * docker container rm $(docker container ls -a -q) - Remove all containers
 * docker image ls -a - List all images on this machine
