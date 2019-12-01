@@ -10,7 +10,10 @@ master and peer. One Erureka master will run on master machine and peer eureka s
  
 docker-compose can be used to scale the application vertically. Vertical Scaling means, scale up / down instances on a given machine.
 
-docker-compose -f $PWD//docker-compose-east-framework.yml up msapigateway-east-server1
-docker-compose -f $PWD//docker-compose-east.yml up mlserver-east
+You can run the app quickly by doing the following
 
+chmod 755 run-docker-compose.sh
+./run-docker-compose.sh
+
+The following will scale an service
 docker-compose scale mlserver-east=5
