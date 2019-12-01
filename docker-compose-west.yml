@@ -23,7 +23,7 @@ services:
         networks:	
             - ml-cloud-network-west	
         volumes:	
-            - userdata:/var/www/mlservicedatadir
+            - userdata: /var/www/mlservicedatadir
         logging:	
             driver: json-file	
 #        deploy:
@@ -38,7 +38,7 @@ services:
     nginx:
         image: nginx:latest
         volumes:
-            - ./nginx.conf:/etc/nginx/nginx.conf
+            - ./nginx.conf: /etc/nginx/nginx.conf
         ports:
             - "80:80"                
 networks:
