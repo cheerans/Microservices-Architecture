@@ -1,9 +1,0 @@
-docker build --no-cache=true -f docker/MLDockerFile.server  -t scheeran/mlservice-server-img:latest --rm=true
-
-#Create a docker volume to run the image from
-docker volume create --name=mlservice-cloud-volume
-
-#Run docker
-docker run --name=mlservice-server-instance --publish=8765:8765 --volume=mlservice-cloud-volume:/config mlservice-server-img:latest
-
-HEALTHCHECK --interval=5m --timeout=3s CMD curl -f http://localhost/ || exit 1
