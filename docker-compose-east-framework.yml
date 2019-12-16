@@ -126,6 +126,12 @@ services:
 #                condition: on-failure
 #            placement:
 #                constraints: [node.role == worker]
+delay:
+    image: ubuntu:14.04
+    command: >
+      /bin/bash -c "
+        sleep 30;
+      "
 networks:
     ml-cloud-network-east:
         external: true
