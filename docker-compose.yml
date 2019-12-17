@@ -10,6 +10,14 @@ services:
             timeout: 10s
             retries: 5
         restart: always
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+              memory: 50M
+            reservations:
+              cpus: '0.0001'
+              memory: 20M        
     eureka-east-server2:
         extends:
             file: docker-compose-east-framework.yml
@@ -19,7 +27,15 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        restart: always            
+        restart: always     
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+              memory: 50M
+            reservations:
+              cpus: '0.0001'
+              memory: 20M                
         depends_on:
             - eureka-east-server1
     msapigateway-east-server1:
@@ -43,7 +59,15 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        restart: always                 
+        restart: always    
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+              memory: 50M
+            reservations:
+              cpus: '0.0001'
+              memory: 20M                
     mlserver-east:
         extends:
             file: docker-compose-east.yml
@@ -53,7 +77,15 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        restart: always                 
+        restart: always        
+        deploy:
+          resources:
+            limits:
+              cpus: '0.1'
+              memory: 250M
+            reservations:
+              cpus: '0.1'
+              memory: 50M                
         depends_on:
             - eureka-east-server2
             - zipkinserver-east-server1   
