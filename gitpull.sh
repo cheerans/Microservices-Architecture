@@ -7,4 +7,3 @@ chmod 755 *.sh
 dos2unix *.sh
 alias git="source ./gitpull.sh"
 alias k="./kill.sh"
-exit
