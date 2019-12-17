@@ -1,5 +1,6 @@
 #!/bin/bash
 
+shopt -s expand_aliases
 git stash
 git pull
 chmod 755 *.sh
