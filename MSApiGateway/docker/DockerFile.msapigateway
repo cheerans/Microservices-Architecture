@@ -39,7 +39,7 @@ ENV CLASSPATH .:/home/mldocker/bin/msapi-gateway-latest.jar
 
 EXPOSE 8091 8092
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom",  \
+ENTRYPOINT ["java  -XX:MaxRAM=300m -Xmx256m","-Djava.security.egd=file:/dev/./urandom",  \
                    "-D${SERVER-PORT:8091} \
                     -D${SERVER-HOST:localhost} \
                     -D${REGION:East} \
