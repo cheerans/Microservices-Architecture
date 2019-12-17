@@ -39,7 +39,7 @@ ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
 EXPOSE 8080 8083 8085 8087
 
-ENTRYPOINT ["java -XX:MaxRAM=300m -Xmx256m", "-Djava.security.egd=file:/dev/./urandom", \
+ENTRYPOINT ["java -XX:MaxRAM=700m -Xmx512m", "-Djava.security.egd=file:/dev/./urandom", \
                     "-D${ZUULPROXYADDRESS:http://localhost:8092} \
                      -D${SERVER-PORT:8080} \
                      -D${SERVER-HOST:localhost} \
