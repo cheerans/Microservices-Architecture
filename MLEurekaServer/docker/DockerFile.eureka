@@ -41,7 +41,7 @@ ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
 
 EXPOSE 8761 8762 8763 8764
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
+ENTRYPOINT ["java -XX:MaxRAM=300m -Xmx256m", "-Djava.security.egd=file:/dev/./urandom", \
                     "-D${REGION:East} \
                      -D${EUREKA-SERVER-HOST:localhost} \
                      -D${EUREKA-SERVER-PORT:8761} \
