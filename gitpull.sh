@@ -6,7 +6,6 @@ git pull
 chmod 755 *.sh
 dos2unix *.sh
 shopt -s expand_aliases
-source ~/.bashrc
 eval $(alias git="source ./gitpull.sh")
 alias git="source ./gitpull.sh"
 alias k="./kill.sh"
