@@ -4,5 +4,5 @@ git stash
 git pull
 chmod 755 *.sh
 dos2unix *.sh
-sh alias git="./gitpull.sh"
-sh alias k="./kill.sh"
+echo 'alias git="./gitpull.sh"'
+echo 'alias k="./kill.sh"'
