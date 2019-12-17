@@ -47,7 +47,15 @@ services:
             interval: 30s
             timeout: 10s
             retries: 5
-        restart: always                 
+        restart: always    
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+              memory: 50M
+            reservations:
+              cpus: '0.0001'
+              memory: 20M             
         depends_on:
             - mlserver-east
     zipkinserver-east-server1:
@@ -81,10 +89,10 @@ services:
         deploy:
           resources:
             limits:
-              cpus: '0.1'
+              cpus: '0.01'
               memory: 250M
             reservations:
-              cpus: '0.1'
+              cpus: '0.01'
               memory: 50M                
         depends_on:
             - eureka-east-server2
