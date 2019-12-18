@@ -28,8 +28,7 @@ services:
               cpus: '0.0001'            
         depends_on:
             - eureka-east-server1:
-                condition: service_healthy
-            
+                condition: service_healthy            
     msapigateway-east-server1:
         extends:
             file: docker-compose-east-framework.yml
