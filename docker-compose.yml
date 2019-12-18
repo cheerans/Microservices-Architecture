@@ -5,7 +5,7 @@ services:
             file: docker-compose-east-framework.yml
             service: eureka-east-server1
         healthcheck:
-          test: "exit 0"
+          test: ["CMD", "curl", "-f", "http://localhost:8761"]
         restart: always
         deploy:
           resources:
@@ -18,7 +18,7 @@ services:
             file: docker-compose-east-framework.yml
             service: eureka-east-server2
         healthcheck:
-          test: "exit 0"
+          test: ["CMD", "curl", "-f", "http://localhost:8762"]
         restart: always
         deploy:
           resources:
@@ -34,7 +34,7 @@ services:
             file: docker-compose-east-framework.yml
             service: msapigateway-east-server1
         healthcheck:
-          test: "exit 0"
+          test: ["CMD", "curl", "-f", "http://localhost:8091"]
         restart: always   
         deploy:
           resources:
@@ -50,7 +50,7 @@ services:
             file: docker-compose-east-framework.yml
             service: zipkinserver-east-server1
         healthcheck:
-          test: "exit 0"
+          test: ["CMD", "curl", "-f", "http://localhost:9411"]
         restart: always  
         deploy:
           resources:
@@ -63,7 +63,7 @@ services:
             file: docker-compose-east.yml
             service: mlserver-east
         healthcheck:
-          test: "exit 0"
+          test: ["CMD", "curl", "-f", "http://localhost:8091"]
         restart: always      
         deploy:
           resources:
