@@ -34,9 +34,7 @@ services:
         deploy:
           resources:
             limits:
-              cpus: '0.001'
-            reservations:
-              cpus: '0.0001'          
+              cpus: '0.001'        
 #        deploy:
 #            replicas: 1
 #            update_config:
@@ -70,9 +68,7 @@ services:
         deploy:
           resources:
             limits:
-              cpus: '0.001'
-            reservations:
-              cpus: '0.0001'             
+              cpus: '0.001'         
 #        deploy:
 #            replicas: 1
 #            update_config:
@@ -112,9 +108,7 @@ services:
         deploy:
           resources:
             limits:
-              cpus: '0.001'
-            reservations:
-              cpus: '0.0001'             
+              cpus: '0.001'          
 #        deploy:
 #            replicas: 1
 #            update_config:
@@ -150,9 +144,7 @@ services:
         deploy:
           resources:
             limits:
-              cpus: '0.01'
-            reservations:
-              cpus: '0.001'             
+              cpus: '0.01'          
 #        deploy:
 #            replicas: 1
 #            update_config:
