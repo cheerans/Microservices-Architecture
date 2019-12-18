@@ -31,6 +31,12 @@ services:
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8761"]
         restart: always      
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+            reservations:
+              cpus: '0.0001'          
 #        deploy:
 #            replicas: 1
 #            update_config:
@@ -60,7 +66,13 @@ services:
             driver: json-file
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8762"]
-        restart: always                 
+        restart: always     
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+            reservations:
+              cpus: '0.0001'             
 #        deploy:
 #            replicas: 1
 #            update_config:
@@ -96,7 +108,13 @@ services:
             - zipkinserver-east-server1
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8091"]
-        restart: always                 
+        restart: always       
+        deploy:
+          resources:
+            limits:
+              cpus: '0.001'
+            reservations:
+              cpus: '0.0001'             
 #        deploy:
 #            replicas: 1
 #            update_config:
@@ -128,7 +146,13 @@ services:
             driver: json-file
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:9411"]
-        restart: always                 
+        restart: always   
+        deploy:
+          resources:
+            limits:
+              cpus: '0.01'
+            reservations:
+              cpus: '0.001'             
 #        deploy:
 #            replicas: 1
 #            update_config:
