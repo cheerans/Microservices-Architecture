@@ -34,7 +34,8 @@ services:
         deploy:
             resources:
                 requests:
-                    cpus: '0.001'
+                    cpus: '0.001' 
+         mem_limit: 150m                    
 #        deploy:
 #            replicas: 1
 #            update_config:
