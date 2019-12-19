@@ -30,6 +30,10 @@ services:
             driver: json-file
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8761"]
+          interval: 60s
+          timeout: 30s
+          retries: 3
+          start_period: 180s          
         restart: always                     
     eureka-east-server2:
         image: santhoshcheeran/mleurekaserverrepo:latest
@@ -51,6 +55,10 @@ services:
             driver: json-file
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8762"]
+          interval: 60s
+          timeout: 30s
+          retries: 3
+          start_period: 180s
         restart: always     
     msapigateway-east-server1:
         image: santhoshcheeran/msapigatewayrepo:latest
@@ -78,6 +86,10 @@ services:
             - zipkinserver-east-server1
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8091"]
+          interval: 60s
+          timeout: 30s
+          retries: 3
+          start_period: 180s          
         restart: always       
     zipkinserver-east-server1:
         image: santhoshcheeran/zipkinserverrepo:latest
@@ -101,6 +113,10 @@ services:
             driver: json-file
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:9411"]
+          interval: 60s
+          timeout: 30s
+          retries: 3
+          start_period: 180s          
         restart: always   
 networks:
     ml-cloud-network-east:
