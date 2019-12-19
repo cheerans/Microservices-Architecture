@@ -33,11 +33,8 @@ services:
         restart: always      
         deploy:
             resources:
-                limits:
+                requests:
                     cpus: '0.001'
-        CpuShares: 10
-        CpuPeriod: 100000
-        CpuQuota: 1000
 #        deploy:
 #            replicas: 1
 #            update_config:
