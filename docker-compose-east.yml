@@ -23,6 +23,10 @@ services:
       - nginx
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
+      interval: 60s
+      timeout: 30s
+      retries: 3
+      start_period: 180s      
     restart: always         
     networks:
       - ml-cloud-network-east
@@ -30,17 +34,6 @@ services:
       - userdata:/var/www/mlservicedatadir
     logging:
       driver: json-file
-# docker swarm ???
-#    deploy:
-#      replicas: 2
-#      update_config:
-#        parallelism: 1
-#        delay: 10s
-#      restart_policy:
-#            condition: on-failure
-#      placement:
-#        constraints:
-#          - 'node.role == worker'
   nginx:
     image: nginx:latest
     volumes:
