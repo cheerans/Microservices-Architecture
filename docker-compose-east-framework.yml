@@ -30,8 +30,7 @@ services:
             driver: json-file
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8761"]
-        restart: always      
-        mem_limit: 150m                    
+        restart: always                     
 #        deploy:
 #            replicas: 1
 #            update_config:
