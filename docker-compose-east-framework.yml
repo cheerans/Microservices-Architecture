@@ -31,10 +31,6 @@ services:
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8761"]
         restart: always      
-        deploy:
-            resources:
-                requests:
-                    cpus: '0.001' 
         mem_limit: 150m                    
 #        deploy:
 #            replicas: 1
