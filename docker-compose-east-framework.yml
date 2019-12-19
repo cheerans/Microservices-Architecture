@@ -112,8 +112,7 @@ services:
           test: ["CMD", "curl", "-f", "http://localhost:9411"]
           interval: 120s
           timeout: 60s
-          retries: 3        
-          start_period: 180s          
+          retries: 3               
         restart: always   
 networks:
     ml-cloud-network-east:
