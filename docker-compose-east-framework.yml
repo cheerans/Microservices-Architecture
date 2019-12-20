@@ -52,6 +52,8 @@ services:
             - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
+        depends_on:
+            - eureka-east-server1            
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8762"]
           interval: 120s
@@ -79,8 +81,6 @@ services:
         logging:
             driver: json-file
         depends_on:
-            - eureka-east-server1
-            - eureka-east-server2
             - zipkinserver-east-server1
         healthcheck:
           test: ["CMD", "curl", "-f", "http://localhost:8091"]
@@ -114,6 +114,8 @@ services:
           timeout: 60s
           retries: 10           
         restart: on-failure   
+        depends_on:
+            - eureka-east-server2        
 networks:
     ml-cloud-network-east:
         external: true
