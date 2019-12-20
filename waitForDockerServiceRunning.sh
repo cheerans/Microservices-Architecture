@@ -6,6 +6,7 @@ status=$(docker inspect -f {{.State.Health.Status}} $Container_ID)
 while [[ $status == "healthy" ]]
 do
   echo "waiting for "$Container_ID" to start ....\r\n"
+  echo $status
   status=$(docker inspect -f {{.State.Health.Status}} $Container_ID)
   sleep 1
 done
