@@ -10,6 +10,7 @@ do
     break
   else
     echo "waiting for "$Container_ID" to start ...."
+    echo $(docker container ls)
     sleep 20
   fi
 done
