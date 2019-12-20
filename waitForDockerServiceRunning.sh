@@ -8,7 +8,7 @@ while status=docker inspect -f {{.State.Health.Status}} $Container_ID;
 do
   if [ "$status" = "healthy" ] then
     break
-  elif
+  elif then
     echo "waiting for "$Container_ID" to start ...."
     sleep 1
   fi
