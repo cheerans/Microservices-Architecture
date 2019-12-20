@@ -32,7 +32,7 @@ services:
           test: ["CMD", "curl", "-f", "http://localhost:8761"]
           interval: 120s
           timeout: 60s
-          retries: 3          
+          retries: 10          
         restart: on-failure                     
     eureka-east-server2:
         image: santhoshcheeran/mleurekaserverrepo:latest
@@ -56,7 +56,7 @@ services:
           test: ["CMD", "curl", "-f", "http://localhost:8762"]
           interval: 120s
           timeout: 60s
-          retries: 3        
+          retries: 10       
         restart: on-failure     
     msapigateway-east-server1:
         image: santhoshcheeran/msapigatewayrepo:latest
@@ -86,7 +86,7 @@ services:
           test: ["CMD", "curl", "-f", "http://localhost:8091"]
           interval: 120s
           timeout: 60s
-          retries: 3               
+          retries: 10             
         restart: on-failure       
     zipkinserver-east-server1:
         image: santhoshcheeran/zipkinserverrepo:latest
@@ -112,7 +112,7 @@ services:
           test: ["CMD", "curl", "-f", "http://localhost:9411"]
           interval: 120s
           timeout: 60s
-          retries: 3               
+          retries: 10           
         restart: on-failure   
 networks:
     ml-cloud-network-east:
