@@ -10,7 +10,7 @@ do
     break
   else
     echo "waiting for "$Container_ID" to start ...."
-    sleep 1
+    sleep 20
   fi
 done
 echo $Container_ID "- is already running"
