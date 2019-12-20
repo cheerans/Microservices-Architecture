@@ -2,9 +2,11 @@
 
 Container_ID=$1
 echo $Container_ID
-while ! docker inspect -f {{.State.Health.Status}} $Container_ID | grep "healthy" 
+status=$(docker inspect -f {{.State.Health.Status}} $Container_ID)
+while [ $status = "healthy" ]
 do
   echo "waiting for "$Container_ID" to start ....\r\n"
+  status=$(docker inspect -f {{.State.Health.Status}} $Container_ID)
   sleep 1
 done
 
