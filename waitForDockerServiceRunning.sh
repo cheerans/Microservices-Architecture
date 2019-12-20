@@ -6,7 +6,7 @@ status=
 echo $status
 while status=docker inspect -f {{.State.Health.Status}} $Container_ID;
 do
-  if [ "$status" = "healthy" ] then
+  if [ "$status" = "healthy" ]; then
     break
   else
     echo "waiting for "$Container_ID" to start ...."
