@@ -33,7 +33,7 @@ services:
           interval: 120s
           timeout: 60s
           retries: 3          
-        restart: always                     
+        restart: on-failure                     
     eureka-east-server2:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
@@ -57,7 +57,7 @@ services:
           interval: 120s
           timeout: 60s
           retries: 3        
-        restart: always     
+        restart: on-failure     
     msapigateway-east-server1:
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
@@ -87,7 +87,7 @@ services:
           interval: 120s
           timeout: 60s
           retries: 3               
-        restart: always       
+        restart: on-failure       
     zipkinserver-east-server1:
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
@@ -113,7 +113,7 @@ services:
           interval: 120s
           timeout: 60s
           retries: 3               
-        restart: always   
+        restart: on-failure   
 networks:
     ml-cloud-network-east:
         external: true
