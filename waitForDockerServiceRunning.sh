@@ -1,11 +1,11 @@
 #!/bin/bash
 
 Container_ID=$1
-echo $Container_ID
+echo Container_ID
 while [ $(docker inspect -f {{.State.Health.Status}} $Container_ID) -ne "healthy" ]
 do
-  echo "waiting for " + $Container_ID + " to start ....\r\n"
+  echo "waiting for " + Container_ID + " to start ....\r\n"
   sleep 60
 done
 
-echo $Container_ID + "- is already running"
+echo Container_ID + "- is already running"
