@@ -2,14 +2,15 @@
 
 Container_ID=$1
 echo $Container_ID
-status=$(docker inspect -f {{.State.Health.Status}} $Container_ID)
+status=
 echo $status
-while [ "$status" = "healthy" ]
+while status=docker inspect -f {{.State.Health.Status}} $Container_ID;
 do
-  echo "waiting for "$Container_ID" to start ....\r\n"
-  echo $status
-  status=$(docker inspect -f {{.State.Health.Status}} $Container_ID)
-  sleep 1
+  if [ "$status" = "healthy" ] then
+    break
+  elif
+    echo "waiting for "$Container_ID" to start ...."
+    sleep 1
+  fi
 done
-
 echo $Container_ID "- is already running"
