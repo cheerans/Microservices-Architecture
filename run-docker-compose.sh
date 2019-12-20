@@ -8,7 +8,7 @@ docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d  eu
 ./waitForDockerServiceRunning.sh  microservices-architecture_eureka-east-server1_1
 
 docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d  eureka-east-server2
-./waitForDockerServiceRunning.sh  microservices-architecture_eureka-east-server1_2
+./waitForDockerServiceRunning.sh  microservices-architecture_eureka-east-server2_1
 
 docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d zipkinserver-east-server1
 ./waitForDockerServiceRunning.sh microservices-architecture_zipkinserver-east-server1_1
