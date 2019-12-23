@@ -33,10 +33,10 @@ For running on local box in Eclipse, with VM arguments, find all the -e argument
 
 The application can be run as follows
 
-`docker run --name=zipkinserver-east-server1 -it --rm -p 9411:9411 -e "SERVER-PORT=9411" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/zipkinserverrepo`
+`docker run --name=zipkinserver-east-server1 -it --rm -p 9411:9411 -e "SERVER-PORT=9411" -e "SERVER-HOST=localhost" -e "REGION=east" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/zipkinserverrepo`
 
 ### West Server 1,2
 
 The application can be run as follows
 
-`docker run --name=zipkinserver-west-server1 -it --rm -p 9412:9412 -e "SERVER-PORT=9412" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/zipkinserverrepo`
+`docker run --name=zipkinserver-west-server1 -it --rm -p 9412:9412 -e "SERVER-PORT=9412" -e "SERVER-HOST=localhost" -e "REGION=west" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/zipkinserverrepo`
