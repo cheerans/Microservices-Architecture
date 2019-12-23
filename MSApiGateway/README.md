@@ -12,6 +12,10 @@ Login to docker, before pushing image using the following command - docker login
 
 docker push santhoshcheeran/msapigatewayrepo
 
+For running on local box in Eclipse, with VM arguments, find all the -e arguments in the section below and do a replace as follows
+
+`-e "EUREKA-PEER-SERVER-HOST=localhost" - Replace it as -D"EUREKA-PEER-SERVER-HOST=localhost"`
+
 ### East Server
 
 `docker run --name=msapigateway-east-server1 -it --rm -p 8091:8091 -e "SERVER-PORT=8091" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/msapigatewayrepo`
