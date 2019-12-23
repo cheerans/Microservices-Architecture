@@ -14,7 +14,7 @@ docker push santhoshcheeran/msapigatewayrepo
 
 For running on local box in Eclipse, with VM arguments, find all the -e arguments in the section below and do a replace as follows
 
-`-e "EUREKA-PEER-SERVER-HOST=localhost" - Replace it as -D"EUREKA-PEER-SERVER-HOST=localhost"`
+`-e "EUREKA-PEER-SERVER-HOST=localhost" - Replace it as -DEUREKA-PEER-SERVER-HOST=localhost`
 
 ### East Server
 
