@@ -25,16 +25,18 @@ Login to docker, before pushing image using the following command - `docker logi
 
 `docker push santhoshcheeran/zipkinserverrepo`
 
-Servers are run with following VM arguments.
+For running on local box in Eclipse, with VM arguments, find all the -e arguments in the section below and do a replace as follows
+
+`-e "EUREKA-PEER-SERVER-HOST=localhost" - Replace it as -D"EUREKA-PEER-SERVER-HOST=localhost"`
 
 ### East Server 1,2
 
-The application can be run with following VM arguments 
+The application can be run as follows
 
 `docker run --name=zipkinserver-east-server1 -it --rm -p 9411:9411 -e "SERVER-PORT=9411" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/zipkinserverrepo`
 
 ### West Server 1,2
 
-The application can be run with following VM arguments 
+The application can be run as follows
 
 `docker run --name=zipkinserver-west-server1 -it --rm -p 9412:9412 -e "SERVER-PORT=9412" -e "SERVER-HOST=localhost" -e "REGION=West" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/zipkinserverrepo`
