@@ -18,8 +18,8 @@ For running on local box in Eclipse, with VM arguments, find all the -e argument
 
 ### East Server
 
-`docker run --name=mlservice-east -it --rm -p 8091:8091 -e "ZUULPROXYADDRESS=http://localhost:8091" -e "SERVER-PORT=8080" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/mlservicerepo`
+`docker run --name=mlservice-east -it --rm -p 8091:8091 -e "ZUULPROXYADDRESS=http://localhost:8091" -e "SERVER-PORT=8080" -e "SERVER-HOST=localhost" -e "REGION=east" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8761" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8762" -P santhoshcheeran/mlservicerepo`
 
 ### West Server
 
-`docker run --name=mlservice-west -it --rm -p 8092:8092 -e "ZUULPROXYADDRESS=http://localhost:8092" -e "SERVER-PORT=8081" -e "SERVER-HOST=localhost" -e "REGION=East" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/mlservicerepo`
+`docker run --name=mlservice-west -it --rm -p 8092:8092 -e "ZUULPROXYADDRESS=http://localhost:8092" -e "SERVER-PORT=8081" -e "SERVER-HOST=localhost" -e "REGION=west" -e "EUREKA-SERVER1-HOST=localhost" -e "EUREKA-SERVER1-PORT=8763" -e "EUREKA-SERVER2-HOST=localhost" -e "EUREKA-SERVER2-PORT=8764" -P santhoshcheeran/mlservicerepo`
