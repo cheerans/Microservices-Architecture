@@ -44,14 +44,14 @@ For running on local box in Eclipse, with VM arguments, find all the -e argument
 
 Run as follows
 
-`docker run --name=eurekaserver-instance-east1 -it --rm -p 8761:8761 -e "REGION=East"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8761" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8762" -P santhoshcheeran/mleurekaserverrepo`
+`docker run --name=eurekaserver-instance-east1 -it --rm -p 8761:8761 -e "REGION=east"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8761" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8762" -P santhoshcheeran/mleurekaserverrepo`
 
-`docker run --name=eurekaserver-instance-east2 -it --rm -p 8762:8762 -e "REGION=East"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8762" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8761" -P santhoshcheeran/mleurekaserverrepo`
+`docker run --name=eurekaserver-instance-east2 -it --rm -p 8762:8762 -e "REGION=east"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8762" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8761" -P santhoshcheeran/mleurekaserverrepo`
 
 ### Eureka West Server 3,4
 
 Run as follows
 
-`docker run --name=eurekaserver-instance-west1 -it --rm -p 8763:8763 -e "REGION=West"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8763" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8764" -P santhoshcheeran/mleurekaserverrepo`
+`docker run --name=eurekaserver-instance-west1 -it --rm -p 8763:8763 -e "REGION=west"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8763" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8764" -P santhoshcheeran/mleurekaserverrepo`
 
-`docker run --name=eurekaserver-instance-west2 -it --rm -p 8764:8764 -e "REGION=West"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8764" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8763" -P santhoshcheeran/mleurekaserverrepo`
+`docker run --name=eurekaserver-instance-west2 -it --rm -p 8764:8764 -e "REGION=west"  -e "EUREKA-SERVER-HOST=localhost" -e "EUREKA-SERVER-PORT=8764" -e "EUREKA-PEER-SERVER-HOST=localhost" -e "EUREKA-PEER-SERVER-PORT=8763" -P santhoshcheeran/mleurekaserverrepo`
