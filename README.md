@@ -16,6 +16,11 @@ Microservice is a very abused term and Microservices are not supposed to be Micr
 
 A better design is split Microservices per large homogeneous entity relationship. Eg: Order Entry System in one Microservice, Product Catalog and Inventory Management in another Microservice. Making Product Description iteself an independent microservice in Netflix model does provides ease of independent deployment and speed to market, but it involves large infrastructure. Each tiny Microservice  will have to run in it's own docker container.
 
+Accessing the Microservice (Via ZUUL)
+=====================================
+
+When everything is running, hit the url - http://localhost:8091/api-gateway/mls/getDecision1
+
 ![alt text](CICD.png)
 
 # Conservative Microservices Architecture and achieving Dream performance
