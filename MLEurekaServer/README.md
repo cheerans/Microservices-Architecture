@@ -36,7 +36,9 @@ Login to docker, before pushing image using the following command - `docker logi
 
 `docker push santhoshcheeran/mlservicerepo`
 
-Servers are run with following VM arguments.
+For running on local box in Eclipse, with VM arguments, find all the -e arguments in the section below and do a replace as follows
+
+`-e "EUREKA-PEER-SERVER-HOST=localhost" - Replace it as -D"EUREKA-PEER-SERVER-HOST=localhost"`
 
 ### Eureka East Server 1,2
 
