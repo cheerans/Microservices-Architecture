@@ -4,8 +4,8 @@ Container_ID=$1
 echo $Container_ID
 status=
 echo $status
-while status=$(docker inspect -f {{.State.Health.Status}} $Container_ID);
-do
+while status=$(docker inspect  -f {{.State.Health.Status}} --filter name=^/$Container_ID);
+do--filter name=^/
   if [ "$status" = "healthy" ]; then
     break
   else
