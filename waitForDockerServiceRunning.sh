@@ -5,7 +5,7 @@ echo $Container_ID
 status=
 echo $status
 while status=$(docker inspect  -f {{.State.Health.Status}} $Container_ID);
-do--filter name=^/
+do
   if [ "$status" = "healthy" ]; then
     break
   else
