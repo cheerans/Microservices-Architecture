@@ -26,7 +26,7 @@ services:
       interval: 120s
       timeout: 60s
       retries: 3  
-    restart: unhealthy         
+    restart: on-failure         
     networks:
       - ml-cloud-network-east
     volumes:
