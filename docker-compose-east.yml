@@ -20,7 +20,7 @@ services:
     ports:
       - 8080
     depends_on:
-      - nginx
+      #- nginx
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
       interval: 120s
