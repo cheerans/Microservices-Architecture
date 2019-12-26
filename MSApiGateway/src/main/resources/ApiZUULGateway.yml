@@ -19,9 +19,9 @@ zuul:
   #Service will be mapped under the /api URI
   prefix: /api-gateway
   routes:
-    mls:
+    mlservice:
       path: /mls/**
-      serviceId: mls
+      serviceId: mlservice
       stripPrefix: true      
 ribbon:
     eureka:
