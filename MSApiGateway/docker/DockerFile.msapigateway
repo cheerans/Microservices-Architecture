@@ -42,7 +42,7 @@ EXPOSE 8091 8092
 ENTRYPOINT ["java  -XX:MaxRAM=300m -Xmx256m","-Djava.security.egd=file:/dev/./urandom",  \
                    "-D${SERVER-PORT:8091} \
                     -D${SERVER-HOST:localhost} \
-                    -D${REGION:East} \
+                    -D${REGION:east} \
                     -D${EUREKA-SERVER1-HOST:localhost} \
                     -D${EUREKA-SERVER1-PORT:8761} \
                     -D${EUREKA-SERVER2-HOST:localhost} \
