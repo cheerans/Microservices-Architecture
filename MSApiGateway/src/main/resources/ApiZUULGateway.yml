@@ -15,9 +15,22 @@ eureka:
     preferSameZoneEureka: true 
     serviceUrl:
       defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/ 
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api-gateway
+  routes:
+    mls:
+      path: /mls/**
+      serviceId: mls
+      stripPrefix: true      
 ribbon:
     eureka:
         enabled: true
         MaxAutoRetries: 0
         MaxAutoRetriesNextServer: 0
         ReadTimeout: 10000
+        PoolMaxThreads: 500
+        MaxTotalConnections: 500
+        MaxConnectionsPerHost: 50
+        MaxHttpConnectionsPerHost: 50
+        MaxTotalHttpConnections: 500
