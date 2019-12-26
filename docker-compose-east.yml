@@ -19,7 +19,7 @@ services:
       - 8080
     ports:
       - 8080
-    depends_on:
+    #depends_on:
       #- nginx
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8080"]
