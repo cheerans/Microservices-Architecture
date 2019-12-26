@@ -14,9 +14,9 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=localhost
+            - EUREKA-SERVER-HOST=0.0.0.0
             - EUREKA-SERVER-PORT=8761
-            - EUREKA-PEER-SERVER-HOST=localhost
+            - EUREKA-PEER-SERVER-HOST=0.0.0.0
             - EUREKA-PEER-SERVER-PORT=8762
         expose:
             - 8761
@@ -29,7 +29,7 @@ services:
         logging:
             driver: json-file
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:8761"]
+          test: ["CMD", "curl", "-f", "http://0.0.0.0:8761"]
           interval: 120s
           timeout: 60s
           retries: 10          
@@ -38,9 +38,9 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=localhost
+            - EUREKA-SERVER-HOST=0.0.0.0
             - EUREKA-SERVER-PORT=8762
-            - EUREKA-PEER-SERVER-HOST=localhost
+            - EUREKA-PEER-SERVER-HOST=0.0.0.0
             - EUREKA-PEER-SERVER-PORT=8761
         expose:
             - 8762
@@ -55,7 +55,7 @@ services:
 #        depends_on:
 #            - eureka-east-server1            
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:8762"]
+          test: ["CMD", "curl", "-f", "http://0.0.0.0:8762"]
           interval: 120s
           timeout: 60s
           retries: 10       
@@ -64,11 +64,11 @@ services:
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
             - SERVER-PORT=8091
-            - SERVER-HOST=localhost
+            - SERVER-HOST=0.0.0.0
             - REGION=east
-            - EUREKA-SERVER1-HOST=localhost
+            - EUREKA-SERVER1-HOST=0.0.0.0
             - EUREKA-SERVER1-PORT=8761
-            - EUREKA-SERVER2-HOST=localhost
+            - EUREKA-SERVER2-HOST=0.0.0.0
             - EUREKA-SERVER2-PORT=8762       
         expose:
             - 8091
@@ -81,7 +81,7 @@ services:
         logging:
             driver: json-file
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:8091"]
+          test: ["CMD", "curl", "-f", "http://0.0.0.0:8091"]
           interval: 120s
           timeout: 60s
           retries: 10             
@@ -90,11 +90,11 @@ services:
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
             - SERVER-PORT=9411
-            - SERVER-HOST=localhost
+            - SERVER-HOST=0.0.0.0
             - REGION=east
-            - EUREKA-SERVER1-HOST=localhost
+            - EUREKA-SERVER1-HOST=0.0.0.0
             - EUREKA-SERVER1-PORT=8761
-            - EUREKA-SERVER2-HOST=localhost
+            - EUREKA-SERVER2-HOST=0.0.0.0
             - EUREKA-SERVER2-PORT=8762
         expose:
             - 9411
@@ -107,7 +107,7 @@ services:
         logging:
             driver: json-file
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://localhost:9411"]
+          test: ["CMD", "curl", "-f", "http://0.0.0.0:9411"]
           interval: 120s
           timeout: 60s
           retries: 10           
