@@ -12,7 +12,7 @@ services:
             - EUREKA-SERVER1-PORT=8763
             - EUREKA-SERVER2-HOST=localhost
             - EUREKA-SERVER2-PORT=8764
-            - JAVA_OPTS=-Xms256m -Xmx512            
+            - JAVA_OPTS=-Xms256m -Xmx512m
         expose:	
             - 8081
         # cannot use "8081:8081" - because the format will bind 8080 to 8080 and docker compose cannot use scale, as only one server can use this port
