@@ -41,7 +41,7 @@ ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
 
 EXPOSE 8761 8762 8763 8764
 
-ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
+ARG JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
 
 CMD ["sh", "-c", "echo ${JAVA_OPTS}"]
 
