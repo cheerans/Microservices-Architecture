@@ -2,21 +2,21 @@ spring:
     application:
         name: msapigateway
 server:
-    port: ${SERVER-PORT}
+    port: ${SERVER-PORT:8091}
     contextPath: /  
 eureka:
   instance:
-    hostname: ${SERVER-HOST}
+    hostname: ${SERVER-HOST:0.0.0.0}
   client:
     preferSameZoneEureka: true
     registerWithEureka: true
     fetchRegistry: true
-    region: ${REGION}
+    region: ${REGION:east}
     preferSameZoneEureka: true 
     serviceUrl:
-      defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/ 
+      defaultZone: http://${EUREKA-SERVER1-HOST:0.0.0.0}:${EUREKA-SERVER1-PORT:8761}/eureka,http://${EUREKA-SERVER2-HOST:0.0.0.0}:${EUREKA-SERVER2-PORT:8762}/eureka 
 zuul:
-  #Service will be mapped under the /api URI
+  #Service will be mapped under http://localhost:8091/api-gateway/mls/getDecision1
   prefix: /api-gateway
   routes:
     mlservice:
