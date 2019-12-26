@@ -2,16 +2,16 @@ spring:
     application:
         name: mleurekaserver
 server:
-    port: ${EUREKA-SERVER-PORT}
+    port: ${EUREKA-SERVER-PORT:8761}
     contextPath: /  
 eureka:
     instance:
-        hostname: ${EUREKA-SERVER-HOST}
+        hostname: ${EUREKA-SERVER-HOST:0.0.0.0}
     client:
         registerWithEureka: false
         fetchRegistry: false 
-        region: ${REGION} 
+        region: ${REGION:east} 
         availabilityZones: 
-            ${REGION}: http://${EUREKA-SERVER-HOST}:${EUREKA-SERVER-PORT}/eureka/,http://${EUREKA-PEER-SERVER-HOST}:${EUREKA-PEER-SERVER-PORT}/eureka/ 
+            ${REGION:east}: http://${EUREKA-SERVER-HOST:0.0.0.0}:${EUREKA-SERVER-PORT:8761}/eureka,http://${EUREKA-PEER-SERVER-HOST:0.0.0.0}:${EUREKA-PEER-SERVER-PORT:8762}/eureka 
         service-url:
-            defaultZone: http://${EUREKA-PEER-SERVER-HOST}:${EUREKA-PEER-SERVER-PORT}/eureka/
+            defaultZone: http://${EUREKA-PEER-SERVER-HOST:0.0.0.0}:${EUREKA-PEER-SERVER-PORT:8761}/eureka/
