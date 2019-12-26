@@ -39,7 +39,9 @@ ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
 EXPOSE 8080 8083 8085 8087
 
-ENTRYPOINT ["java", "${JAVA_OPTS:-Xms256m -Xmx512}", "-Djava.security.egd=file:/dev/./urandom", \
+ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
+
+ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
                     "-D${ZUULPROXYADDRESS:http://0.0.0.0:8092} \
                      -D${SERVER-PORT:8080} \
                      -D${SERVER-HOST:0.0.0.0} \
