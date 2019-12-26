@@ -43,7 +43,7 @@ ENTRYPOINT ["java -XX:MaxRAM=700m -Xmx512m", "-Djava.security.egd=file:/dev/./ur
                     "-D${ZUULPROXYADDRESS:http://localhost:8092} \
                      -D${SERVER-PORT:8080} \
                      -D${SERVER-HOST:localhost} \
-                     -D${REGION:East} \
+                     -D${REGION:east} \
                      -D${EUREKA-SERVER1-PORT:8761} \
                      -D${EUREKA-SERVER1-HOST:localhost} \
                      -D${EUREKA-SERVER2-PORT:8762} \
