@@ -18,6 +18,7 @@ services:
             EUREKA-SERVER-PORT=8763
             EUREKA-PEER-SERVER-HOST=localhost
             EUREKA-PEER-SERVER-PORT=8764
+            JAVA_OPTS=-Xms256m -Xmx512
         expose:
             - 8763
         ports:
@@ -45,6 +46,7 @@ services:
             EUREKA-SERVER-PORT=8764
             EUREKA-PEER-SERVER-HOST=localhost
             EUREKA-PEER-SERVER-PORT=8763
+            JAVA_OPTS=-Xms256m -Xmx512
         expose:
             - 8764
         ports:
@@ -73,7 +75,8 @@ services:
             EUREKA-SERVER1-HOST=localhost
             EUREKA-SERVER1-PORT=8763
             EUREKA-SERVER2-HOST=localhost
-            EUREKA-SERVER2-PORT=8764       
+            EUREKA-SERVER2-PORT=8764
+            JAVA_OPTS=-Xms256m -Xmx512            
         expose:
             - 8092
         ports:
@@ -107,6 +110,7 @@ services:
             EUREKA-SERVER1-PORT=8763
             EUREKA-SERVER2-HOST=localhost
             EUREKA-SERVER2-PORT=8764
+            JAVA_OPTS=-Xms256m -Xmx512            
         expose:
             - 9412
         ports:
