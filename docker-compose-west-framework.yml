@@ -13,12 +13,12 @@ services:
     eureka-west-server1:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=west
-            EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8763
-            EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8764
-            JAVA_OPTS=-Xms256m -Xmx512
+            - REGION=west
+            - EUREKA-SERVER-HOST=localhost
+            - EUREKA-SERVER-PORT=8763
+            - EUREKA-PEER-SERVER-HOST=localhost
+            - EUREKA-PEER-SERVER-PORT=8764
+            - JAVA_OPTS=-Xms256m -Xmx512
         expose:
             - 8763
         ports:
@@ -41,12 +41,12 @@ services:
     eureka-west-server2:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
-            REGION=west
-            EUREKA-SERVER-HOST=localhost
-            EUREKA-SERVER-PORT=8764
-            EUREKA-PEER-SERVER-HOST=localhost
-            EUREKA-PEER-SERVER-PORT=8763
-            JAVA_OPTS=-Xms256m -Xmx512
+            - REGION=west
+            - EUREKA-SERVER-HOST=localhost
+            - EUREKA-SERVER-PORT=8764
+            - EUREKA-PEER-SERVER-HOST=localhost
+            - EUREKA-PEER-SERVER-PORT=8763
+            - JAVA_OPTS=-Xms256m -Xmx512
         expose:
             - 8764
         ports:
@@ -69,14 +69,14 @@ services:
     msapigateway-west-server1:
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
-            SERVER-PORT=8092
-            SERVER-HOST=localhost
-            REGION=west
-            EUREKA-SERVER1-HOST=localhost
-            EUREKA-SERVER1-PORT=8763
-            EUREKA-SERVER2-HOST=localhost
-            EUREKA-SERVER2-PORT=8764
-            JAVA_OPTS=-Xms256m -Xmx512            
+            - SERVER-PORT=8092
+            - SERVER-HOST=localhost
+            - REGION=west
+            - EUREKA-SERVER1-HOST=localhost
+            - EUREKA-SERVER1-PORT=8763
+            - EUREKA-SERVER2-HOST=localhost
+            - EUREKA-SERVER2-PORT=8764
+            - JAVA_OPTS=-Xms256m -Xmx512            
         expose:
             - 8092
         ports:
@@ -103,14 +103,14 @@ services:
     zipkinserver-west-server1:
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
-            SERVER-PORT=9412
-            SERVER-HOST=localhost
-            REGION=west
-            EUREKA-SERVER1-HOST=localhost
-            EUREKA-SERVER1-PORT=8763
-            EUREKA-SERVER2-HOST=localhost
-            EUREKA-SERVER2-PORT=8764
-            JAVA_OPTS=-Xms256m -Xmx512            
+            - SERVER-PORT=9412
+            - SERVER-HOST=localhost
+            - REGION=west
+            - EUREKA-SERVER1-HOST=localhost
+            - EUREKA-SERVER1-PORT=8763
+            - EUREKA-SERVER2-HOST=localhost
+            - EUREKA-SERVER2-PORT=8764
+            - JAVA_OPTS=-Xms256m -Xmx512            
         expose:
             - 9412
         ports:
