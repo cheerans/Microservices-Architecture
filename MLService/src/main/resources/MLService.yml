@@ -2,20 +2,20 @@ spring:
     application:
         name: mlservice
 server:
-    port: ${SERVER-PORT}
+    port: ${SERVER-PORT:8080}
     contextPath: /
 eureka:
     instance:
-        hostname: ${SERVER-HOST}
+        hostname: ${SERVER-HOST:0.0.0.0}
     client:
         registerWithEureka: true
         fetchRegistry: true
-        region: ${REGION}
+        region: ${REGION:east}
         preferSameZoneEureka: true 
         healthcheck:
             enabled: true        
         serviceUrl:
-            defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/ 
+            defaultZone: http://${EUREKA-SERVER1-HOST:0.0.0.0}:${EUREKA-SERVER1-PORT:8761}/eureka,http://${EUREKA-SERVER2-HOST:0.0.0.0}:${EUREKA-SERVER2-PORT:8762}/eureka
     server:
         waitTimeInMsWhenSyncEmpty: 0
-        port: 8080
+        port: ${SERVER-PORT:8080}
