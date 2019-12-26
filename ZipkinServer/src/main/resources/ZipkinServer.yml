@@ -5,16 +5,16 @@ spring:
     application:
         name: zipkin
 server:
-    port: ${SERVER-PORT}
+    port: ${SERVER-PORT:9411}
     contextPath: /  
 eureka:
     instance:
-      hostname: ${SERVER-HOST}
+      hostname: ${SERVER-HOST:0.0.0.0}
     client:
         registerWithEureka: true
         fetchRegistry: true
-        region: ${REGION}
+        region: ${REGION:east}
         serviceUrl:
-            defaultZone: http://${EUREKA-SERVER1-HOST}:${EUREKA-SERVER1-PORT}/eureka/,http://${EUREKA-SERVER2-HOST}:${EUREKA-SERVER2-PORT}/eureka/             
+            defaultZone: http://${EUREKA-SERVER1-HOST:0.0.0.0}:${EUREKA-SERVER1-PORT:8761}/eureka,http://${EUREKA-SERVER2-HOST:0.0.0.0}:${EUREKA-SERVER2-PORT:8762}/eureka             
     server:
         waitTimeInMsWhenSyncEmpty: 0        
