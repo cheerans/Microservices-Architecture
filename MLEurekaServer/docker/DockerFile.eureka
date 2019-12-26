@@ -43,7 +43,9 @@ EXPOSE 8761 8762 8763 8764
 
 ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
 
-ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
+CMD ["sh", "-c", "echo ${JAVA_OPTS}"]
+
+ENTRYPOINT ["java", "${JAVA_OPTS}", "-Djava.security.egd=file:/dev/./urandom", \
                     "-D${REGION:east} \
                      -D${EUREKA-SERVER-HOST:0.0.0.0} \
                      -D${EUREKA-SERVER-PORT:8761} \
