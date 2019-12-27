@@ -4,7 +4,7 @@ export COMPOSE_CONVERT_WINDOWS_PATHS=1
 docker network create "ml-cloud-network-east"
 docker volume create "userdata"
 
-docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d  eureka-east-server1
+docker-compose --compatibility -f "docker-compose-east-framework.yml" up -d eureka-east-server1 --name eureka-server
 ./waitForDockerServiceRunning.sh  microservices-architecture_eureka-east-server1_1
 
 docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d zipkinserver-east-server1
