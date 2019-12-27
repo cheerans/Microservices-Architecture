@@ -41,6 +41,8 @@ EXPOSE 9411 9412
 
 ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
 
+# it does look like the environment varaibles pass directly
+# without the following lines
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
                     "-DJAVA_OPTS=${JAVA_OPTS:-Xms256m -Xmx512m} \
                      -DSERVER-PORT=${SERVER-PORT:9411} \ 
