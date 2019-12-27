@@ -28,7 +28,7 @@ services:
         logging:
             driver: json-file
         networks:
-            internal:
+            ml-cloud-network-east:
                 aliases:
                     - eureka-east-1            
         healthcheck:
@@ -57,9 +57,9 @@ services:
 #        depends_on:
 #            - eureka-east-server1    
         networks:
-            internal:
+            ml-cloud-network-east:
                 aliases:
-                    - eureka-east-2
+                    - eureka-east-2ml-cloud-network-east
         healthcheck:
           test: ["CMD", "curl", "-f", "http://eureka-east-2:8762"]
           interval: 120s
@@ -86,7 +86,7 @@ services:
         logging:
             driver: json-file
         networks:
-            internal:
+            ml-cloud-network-east:
                 aliases:
                     - msapigateway-east-1            
         healthcheck:
@@ -115,7 +115,7 @@ services:
         logging:
             driver: json-file
         networks:
-            internal:
+            ml-cloud-network-east:
                 aliases:
                     - zipkinserver-east-1               
         healthcheck:
