@@ -1,7 +1,7 @@
 #!/bin/bash
 
 export COMPOSE_CONVERT_WINDOWS_PATHS=1
-docker network create overlay "ml-cloud-network-east"
+docker network create "ml-cloud-network-east"
 docker volume create "userdata"
 
 docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d  eureka-east-server1
