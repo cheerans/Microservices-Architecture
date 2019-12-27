@@ -39,8 +39,6 @@ ENV CLASSPATH .:/home/mldocker/bin/msapi-gateway-latest.jar
 
 EXPOSE 8091 8092
 
-ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
-
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom",  \
                    "-DJAVA_OPTS=${JAVA_OPTS:-Xms256m -Xmx512m} \
                     -DSERVER-PORT=${SERVER-PORT:8091} \
