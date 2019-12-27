@@ -46,9 +46,9 @@ EXPOSE 8761 8762 8763 8764
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
                     "-DJAVA_OPTS=${JAVA_OPTS:-Xms256m -Xmx512m} \
                      -DREGION=${REGION:east} \
-                     -DEUREKA-SERVER-HOST=${EUREKA-SERVER-HOST:0.0.0.0} \
+                     -DEUREKA-SERVER-HOST=${EUREKA-SERVER-HOST:127.0.0.1} \
                      -DEUREKA-SERVER-PORT=${EUREKA-SERVER-PORT:8761} \
-                     -DEUREKA-PEER-SERVER-HOST=${EUREKA-PEER-SERVER-HOST:0.0.0.0} \
+                     -DEUREKA-PEER-SERVER-HOST=${EUREKA-PEER-SERVER-HOST:127.0.0.1} \
                      -DEUREKA-PEER-SERVER-PORT=${EUREKA-PEER-SERVER-PORT:8762}",\
                      "-jar",\
                      "eureka-server-latest.jar"]
