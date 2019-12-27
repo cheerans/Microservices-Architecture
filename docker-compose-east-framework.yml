@@ -58,7 +58,7 @@ services:
         networks:
             ml-cloud-network-east:
                 aliases:
-                    - eureka-east-2ml-cloud-network-east
+                    - eureka-east-2
         healthcheck:
           test: ["CMD", "curl", "-f", "http://eureka-east-2:8762"]
           interval: 120s
