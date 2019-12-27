@@ -17,7 +17,7 @@ services:
             - EUREKA-SERVER-PORT=8761
             - EUREKA-PEER-SERVER-HOST=eureka-east-2
             - EUREKA-PEER-SERVER-PORT=8762
-            - JAVA_OPTS=-Xms256m -Xmx512m
+            - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
             - 8761
         ports:
@@ -44,7 +44,7 @@ services:
             - EUREKA-SERVER-PORT=8762
             - EUREKA-PEER-SERVER-HOST=eureka-east-1
             - EUREKA-PEER-SERVER-PORT=8761
-            - JAVA_OPTS=-Xms256m -Xmx512m
+            - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
             - 8762
         ports:
@@ -75,7 +75,7 @@ services:
             - EUREKA-SERVER1-PORT=8761
             - EUREKA-SERVER2-HOST=eureka-east-2
             - EUREKA-SERVER2-PORT=8762       
-            - JAVA_OPTS=-Xms256m -Xmx512m
+            - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
             - 8091
         ports:
@@ -104,7 +104,7 @@ services:
             - EUREKA-SERVER1-PORT=8761
             - EUREKA-SERVER2-HOST=eureka-east-2
             - EUREKA-SERVER2-PORT=8762
-            - JAVA_OPTS=-Xms256m -Xmx512m
+            - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
             - 9411
         ports:
