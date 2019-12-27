@@ -27,7 +27,7 @@ services:
         logging:
             driver: json-file
         networks:
-            external:
+            ml-cloud-network-east:
                 aliases:
                     - eureka-east-1            
         healthcheck:
@@ -56,7 +56,7 @@ services:
 #        depends_on:
 #            - eureka-east-server1    
         networks:
-            external:
+            ml-cloud-network-east:
                 aliases:
                     - eureka-east-2ml-cloud-network-east
         healthcheck:
@@ -85,7 +85,7 @@ services:
         logging:
             driver: json-file
         networks:
-            external:
+            ml-cloud-network-east:
                 aliases:
                     - msapigateway-east-1            
         healthcheck:
@@ -114,7 +114,7 @@ services:
         logging:
             driver: json-file
         networks:
-            external:
+            ml-cloud-network-east:
                 aliases:
                     - zipkinserver-east-1               
         healthcheck:
@@ -124,9 +124,8 @@ services:
           retries: 10           
         restart: on-failure        
 networks:
-    default:
-        external:
-            name: ml-cloud-network-east
+    ml-cloud-network-east: 
+        external: true
 volumes:
     userdata:
         external: true
