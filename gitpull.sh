@@ -8,5 +8,5 @@ dos2unix *.sh
 alias run="./run-docker-compose.sh"
 alias git="./gitpull.sh"
 alias k="./kill.sh"
-alias rmi="docker rmi -f $(docker images -q)"
-alias rmc="docker rm -f $(docker ps -a -q)"
+alias rmi='docker rmi -f $(docker images -q)'
+alias rmc='docker rm -f $(docker ps -a -q)'
