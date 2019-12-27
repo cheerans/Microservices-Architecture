@@ -14,9 +14,9 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=0.0.0.0
+            - EUREKA-SERVER-HOST=127.0.0.1
             - EUREKA-SERVER-PORT=8761
-            - EUREKA-PEER-SERVER-HOST=0.0.0.0
+            - EUREKA-PEER-SERVER-HOST=127.0.0.1
             - EUREKA-PEER-SERVER-PORT=8762
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
@@ -30,7 +30,7 @@ services:
         logging:
             driver: json-file
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://0.0.0.0:8761"]
+          test: ["CMD", "curl", "-f", "http://127.0.0.1:8761"]
           interval: 120s
           timeout: 60s
           retries: 10          
@@ -39,9 +39,9 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=0.0.0.0
+            - EUREKA-SERVER-HOST=127.0.0.1
             - EUREKA-SERVER-PORT=8762
-            - EUREKA-PEER-SERVER-HOST=0.0.0.0
+            - EUREKA-PEER-SERVER-HOST=127.0.0.1
             - EUREKA-PEER-SERVER-PORT=8761
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
@@ -57,7 +57,7 @@ services:
 #        depends_on:
 #            - eureka-east-server1            
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://0.0.0.0:8762"]
+          test: ["CMD", "curl", "-f", "http://127.0.0.1:8762"]
           interval: 120s
           timeout: 60s
           retries: 10       
@@ -66,11 +66,11 @@ services:
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
             - SERVER-PORT=8091
-            - SERVER-HOST=0.0.0.0
+            - SERVER-HOST=127.0.0.1
             - REGION=east
-            - EUREKA-SERVER1-HOST=0.0.0.0
+            - EUREKA-SERVER1-HOST=127.0.0.1
             - EUREKA-SERVER1-PORT=8761
-            - EUREKA-SERVER2-HOST=0.0.0.0
+            - EUREKA-SERVER2-HOST=127.0.0.1
             - EUREKA-SERVER2-PORT=8762       
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
@@ -84,7 +84,7 @@ services:
         logging:
             driver: json-file
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://0.0.0.0:8091"]
+          test: ["CMD", "curl", "-f", "http://127.0.0.1:8091"]
           interval: 120s
           timeout: 60s
           retries: 10             
@@ -93,11 +93,11 @@ services:
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
             - SERVER-PORT=9411
-            - SERVER-HOST=0.0.0.0
+            - SERVER-HOST=127.0.0.1
             - REGION=east
-            - EUREKA-SERVER1-HOST=0.0.0.0
+            - EUREKA-SERVER1-HOST=127.0.0.1
             - EUREKA-SERVER1-PORT=8761
-            - EUREKA-SERVER2-HOST=0.0.0.0
+            - EUREKA-SERVER2-HOST=127.0.0.1
             - EUREKA-SERVER2-PORT=8762
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
@@ -111,7 +111,7 @@ services:
         logging:
             driver: json-file
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://0.0.0.0:9411"]
+          test: ["CMD", "curl", "-f", "http://127.0.0.1:9411"]
           interval: 120s
           timeout: 60s
           retries: 10           
