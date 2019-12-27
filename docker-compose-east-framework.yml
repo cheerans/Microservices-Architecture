@@ -14,23 +14,25 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=127.0.0.1
+            - EUREKA-SERVER-HOST=0.0.0.0
             - EUREKA-SERVER-PORT=8761
-            - EUREKA-PEER-SERVER-HOST=127.0.0.1
+            - EUREKA-PEER-SERVER-HOST=eureka-east-2
             - EUREKA-PEER-SERVER-PORT=8762
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
             - 8761
         ports:
             - "8761:8761"
-        networks:
-            - ml-cloud-network-east
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
+        networks:
+            internal:
+                aliases:
+                    - eureka-east-1            
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://127.0.0.1:8761"]
+          test: ["CMD", "curl", "-f", "http://eureka-east-1:8761"]
           interval: 120s
           timeout: 60s
           retries: 10          
@@ -39,25 +41,27 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=127.0.0.1
+            - EUREKA-SERVER-HOST=eureka-east-2
             - EUREKA-SERVER-PORT=8762
-            - EUREKA-PEER-SERVER-HOST=127.0.0.1
+            - EUREKA-PEER-SERVER-HOST=eureka-east-1
             - EUREKA-PEER-SERVER-PORT=8761
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
             - 8762
         ports:
             - "8762:8762"
-        networks:
-            - ml-cloud-network-east
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
 #        depends_on:
-#            - eureka-east-server1            
+#            - eureka-east-server1    
+        networks:
+            internal:
+                aliases:
+                    - eureka-east-2
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://127.0.0.1:8762"]
+          test: ["CMD", "curl", "-f", "http://eureka-east-2:8762"]
           interval: 120s
           timeout: 60s
           retries: 10       
@@ -66,25 +70,27 @@ services:
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
             - SERVER-PORT=8091
-            - SERVER-HOST=127.0.0.1
+            - SERVER-HOST=0.0.0.0
             - REGION=east
-            - EUREKA-SERVER1-HOST=127.0.0.1
+            - EUREKA-SERVER1-HOST=eureka-east-1
             - EUREKA-SERVER1-PORT=8761
-            - EUREKA-SERVER2-HOST=127.0.0.1
+            - EUREKA-SERVER2-HOST=eureka-east-2
             - EUREKA-SERVER2-PORT=8762       
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
             - 8091
         ports:
             - "8091:8091"
-        networks:
-            - ml-cloud-network-east
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
+        networks:
+            internal:
+                aliases:
+                    - msapigateway-east-1            
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://127.0.0.1:8091"]
+          test: ["CMD", "curl", "-f", "http://msapigateway-east-1:8091"]
           interval: 120s
           timeout: 60s
           retries: 10             
@@ -93,32 +99,35 @@ services:
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
             - SERVER-PORT=9411
-            - SERVER-HOST=127.0.0.1
+            - SERVER-HOST=0.0.0.0
             - REGION=east
-            - EUREKA-SERVER1-HOST=127.0.0.1
+            - EUREKA-SERVER1-HOST=eureka-east-1
             - EUREKA-SERVER1-PORT=8761
-            - EUREKA-SERVER2-HOST=127.0.0.1
+            - EUREKA-SERVER2-HOST=eureka-east-2
             - EUREKA-SERVER2-PORT=8762
             - JAVA_OPTS=-Xms256m -Xmx512m
         expose:
             - 9411
         ports:
             - "9411:9411"
-        networks:
-            - ml-cloud-network-east
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
             driver: json-file
+        networks:
+            internal:
+                aliases:
+                    - zipkinserver-east-1               
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://127.0.0.1:9411"]
+          test: ["CMD", "curl", "-f", "http://zipkinserver-east-1:9411"]
           interval: 120s
           timeout: 60s
           retries: 10           
         restart: on-failure        
 networks:
-    ml-cloud-network-east:
-        external: true
+    default:
+        external:
+            name: ml-cloud-network-east
 volumes:
     userdata:
         external: true
