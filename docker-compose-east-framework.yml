@@ -9,13 +9,6 @@ er# to deploy the app on the cloud hosted swarm
 # Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
 
 version: '3.3'
-networks:
-    default:
-        external:
-            name: ml-cloud-network-east
-volumes:
-    userdata:
-        external: true
 services:
     eureka-east-server1:
         image: santhoshcheeran/mleurekaserverrepo:latest
@@ -64,7 +57,7 @@ services:
 #        depends_on:
 #            - eureka-east-server1    
         networks:
-            ml-cloud-network-east:
+            external:
                 aliases:
                     - eureka-east-2ml-cloud-network-east
         healthcheck:
@@ -93,7 +86,7 @@ services:
         logging:
             driver: json-file
         networks:
-            ml-cloud-network-east:
+            external:
                 aliases:
                     - msapigateway-east-1            
         healthcheck:
@@ -122,7 +115,7 @@ services:
         logging:
             driver: json-file
         networks:
-            ml-cloud-network-east:
+            external:
                 aliases:
                     - zipkinserver-east-1               
         healthcheck:
@@ -131,3 +124,10 @@ services:
           timeout: 60s
           retries: 10           
         restart: on-failure        
+networks:
+    default:
+        external:
+            name: ml-cloud-network-east
+volumes:
+    userdata:
+        external: true
