@@ -39,16 +39,17 @@ ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
 EXPOSE 8080 8083 8085 8087
 
-ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
-
+# it does look like the environment varaibles pass directly
+# without the following lines
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
-                    "-D${ZUULPROXYADDRESS:http://0.0.0.0:8092} \
-                     -D${SERVER-PORT:8080} \
-                     -D${SERVER-HOST:0.0.0.0} \
-                     -D${REGION:east} \
-                     -D${EUREKA-SERVER1-PORT:8761} \
-                     -D${EUREKA-SERVER1-HOST:0.0.0.0} \
-                     -D${EUREKA-SERVER2-PORT:8762} \
-                     -D${EUREKA-SERVER2-HOST:0.0.0.0}",\
+                    "-DJAVA_OPTS=${JAVA_OPTS:-Xms256m -Xmx512m} \
+                     -DZUULPROXYADDRESS=${ZUULPROXYADDRESS:http://0.0.0.0:8091} \
+                     -DSERVER-PORT=${SERVER-PORT:8080} \
+                     -DSERVER-HOST=${SERVER-HOST:0.0.0.0} \
+                     -DREGION=${REGION:east} \
+                     -DEUREKA-SERVER1-PORT=${EUREKA-SERVER1-PORT:8761} \
+                     -DEUREKA-SERVER1-HOST=${EUREKA-SERVER1-HOST:0.0.0.0} \
+                     -DEUREKA-SERVER2-PORT=${EUREKA-SERVER2-PORT:8762} \
+                     -DEUREKA-SERVER2-HOST=${EUREKA-SERVER2-HOST:0.0.0.0}",\
                      "-jar",\
                      "ml-service-latest.jar"]
