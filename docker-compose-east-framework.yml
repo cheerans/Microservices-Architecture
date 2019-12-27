@@ -1,4 +1,4 @@
-# to deploy the app on the cloud hosted swarm
+er# to deploy the app on the cloud hosted swarm
 # Open docker compose and see, it has services listed
 # it runs on swarm created already
 #docker stack deploy -c docker-compose-east.yml ml_cloud_stack
@@ -35,7 +35,7 @@ services:
         logging:
             driver: json-file
         networks:
-            ml-cloud-network-east:
+            external:
                 aliases:
                     - eureka-east-1            
         healthcheck:
