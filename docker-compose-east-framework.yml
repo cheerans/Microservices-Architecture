@@ -9,6 +9,13 @@
 # Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
 
 version: '3.3'
+networks:
+    default:
+        external:
+            name: ml-cloud-network-east
+volumes:
+    userdata:
+        external: true
 services:
     eureka-east-server1:
         image: santhoshcheeran/mleurekaserverrepo:latest
@@ -124,10 +131,3 @@ services:
           timeout: 60s
           retries: 10           
         restart: on-failure        
-networks:
-    default:
-        external:
-            name: ml-cloud-network-east
-volumes:
-    userdata:
-        external: true
