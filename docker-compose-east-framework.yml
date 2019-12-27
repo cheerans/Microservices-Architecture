@@ -7,7 +7,6 @@ er# to deploy the app on the cloud hosted swarm
 
 # EACH LINE IN DOCKER COMPOSE is equaialent to arguments in docker run
 # Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
-
 version: '3.3'
 services:
     eureka-east-server1:
