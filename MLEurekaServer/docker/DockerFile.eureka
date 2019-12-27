@@ -41,6 +41,8 @@ ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
 
 EXPOSE 8761 8762 8763 8764
 
+# it does look like the environment varaibles pass directly
+# without the following lines
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
                     "-DJAVA_OPTS=${JAVA_OPTS:-Xms256m -Xmx512m} \
                      -DREGION=${REGION:east} \
