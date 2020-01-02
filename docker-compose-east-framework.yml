@@ -89,7 +89,7 @@ services:
                 aliases:
                     - msapigateway-east-1            
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://msapigateway-east-1:8091"]
+          test: ["CMD", "curl", "-f", "http://msapigateway-east-1:8091/health"]
           interval: 120s
           timeout: 60s
           retries: 10             
