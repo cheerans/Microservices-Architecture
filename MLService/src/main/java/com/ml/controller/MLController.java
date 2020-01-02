@@ -58,6 +58,11 @@ public class MLController {
 	
 	private  RestTemplate plainRestTemplate = new RestTemplateBuilder().build();
 	
+	@RequestMapping(value="/health", method = RequestMethod.GET, produces = "application/json")	
+	public @ResponseBody String health(HttpServletRequest request) throws Exception{			
+		return "healthy" + ":" + request.getLocalPort();
+	}
+	
 	
 	@HystrixCommand(fallbackMethod = "getDecision4Postfallback")
 	@RequestMapping(value="/getDecision4", method = RequestMethod.POST, produces = "application/json")	
