@@ -12,8 +12,13 @@ eureka:
         fetchRegistry: true
         region: ${REGION:east}
         preferSameZoneEureka: true 
-        healthcheck:
-            enabled: true        
+        # By default, Eureka uses the client heartbeat to determine if a client is up. Unless specified otherwise, the Discovery Client 
+        # does not propagate the current health check status of the application, per the Spring Boot Actuator. Consequently, after 
+        # successful registration, Eureka always announces that the application is in 'UP' state. This behavior can be altered by enabling 
+        # Eureka health checks, which results in propagating application status to Eureka. As a consequence, every other application does 
+        # not send traffic to applications in states other then 'UP'. The following example shows how to enable health checks for the 
+        # client:
+        # healthcheck: enabled: true
         serviceUrl:
             defaultZone: http://${EUREKA-SERVER1-HOST:0.0.0.0}:${EUREKA-SERVER1-PORT:8761}/eureka,http://${EUREKA-SERVER2-HOST:0.0.0.0}:${EUREKA-SERVER2-PORT:8762}/eureka
     server:
