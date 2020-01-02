@@ -129,6 +129,8 @@ Please click the link above for details. This is the Microservice implementation
 * docker logs -f "container name" - shows logs of the container
 * docker stats [container name/ID] - 
 
+* docker exec container_name curl http://localhost:8761 - does curl inside a container
+
 # Happy coding!
 
 Good Luck and spend time and code slow, but smart.
