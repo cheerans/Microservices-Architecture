@@ -1,0 +1,37 @@
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.log4j.Logger;
+import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.client.RestTemplateBuilder;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
+import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.ml.core.impl.DecisionPredicate;
+import com.ml.core.impl.DecisionTreeLogic;
+import com.ml.core.impl.PrintTree;
+import com.ml.dto.DataColumn;
+import com.ml.dto.DataHolder;
+import com.ml.dto.DataRow;
+import com.ml.utils.ServiceStatus;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+
+@RestController
+public class APIGatewayController {
+	
+	@RequestMapping(value="/health", method = RequestMethod.GET, produces = "application/json")	
+	public @ResponseBody String health(HttpServletRequest request) throws Exception{			
+		return "healthy" + ":" + request.getLocalPort();
+	}
+}
