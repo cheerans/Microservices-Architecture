@@ -22,7 +22,7 @@ services:
     #depends_on:
       #- nginx
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://mlserver-east-1:8080/getDecision1"]
+      test: ["CMD", "curl", "-f", "http://mlserver-east-1:8080/health"]
       interval: 120s
       timeout: 60s
       retries: 3  
