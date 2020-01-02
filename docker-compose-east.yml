@@ -1,7 +1,6 @@
 version: '3.3'
 services:
   mlserver-east:
-    container_name: mlserver_east
 #    build:
 #      context: .
 #      dockerfile: MLService/docker/DockerFile.mlservice
