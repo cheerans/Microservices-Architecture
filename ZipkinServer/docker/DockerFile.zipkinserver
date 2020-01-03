@@ -8,7 +8,10 @@ RUN mkdir /var/www && mkdir /var/www/mlservicedatadir
 
 CMD ["sh", "-c", "echo ${JAVA_HOME}"]
 
-RUN apt-get -qq update && apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
+RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+RUN apt-get -qqo Acquire::Check-Valid-Until=false update
+RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
