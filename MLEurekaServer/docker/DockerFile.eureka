@@ -13,7 +13,7 @@ CMD ["sh", "-c", "echo ${JAVA_HOME}"]
 
 run apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
 
-sed -i '/deb http:\/\/\(deb\|httpredir\).debian.org\/debian jessie.* main/d' /etc/apt/sources.list
+run sed -i '/deb http:\/\/\(deb\|httpredir\).debian.org\/debian jessie.* main/d' /etc/apt/sources.list
 RUN apt-get -qqo Acquire::Check-Valid-Until=false update 
 run apt-get -qqy install git 
 run apt-get -qqy install curl 
