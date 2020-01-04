@@ -13,7 +13,7 @@ services:
         image: santhoshcheeran/mleurekaserverrepo:latest
         environment:
             - REGION=east
-            - EUREKA-SERVER-HOST=0.0.0.0
+            - EUREKA-SERVER-HOST=eureka-east-1
             - EUREKA-SERVER-PORT=8761
             - EUREKA-PEER-SERVER-HOST=eureka-east-2
             - EUREKA-PEER-SERVER-PORT=8762
@@ -69,7 +69,7 @@ services:
         image: santhoshcheeran/msapigatewayrepo:latest
         environment:
             - SERVER-PORT=8091
-            - SERVER-HOST=0.0.0.0
+            - SERVER-HOST=msapigateway-east-1
             - REGION=east
             - EUREKA-SERVER1-HOST=eureka-east-1
             - EUREKA-SERVER1-PORT=8761
@@ -98,7 +98,7 @@ services:
         image: santhoshcheeran/zipkinserverrepo:latest
         environment:
             - SERVER-PORT=9411
-            - SERVER-HOST=0.0.0.0
+            - SERVER-HOST=zipkinserver-east-1
             - REGION=east
             - EUREKA-SERVER1-HOST=eureka-east-1
             - EUREKA-SERVER1-PORT=8761
