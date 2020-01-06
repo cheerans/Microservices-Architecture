@@ -1,7 +1,7 @@
 FROM centos:7
 FROM openjdk:8
 
-setenforce 0
+run setenforce 0
 RUN rm -rf /etc/nginx/sites-enabled/default
 
 run apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
