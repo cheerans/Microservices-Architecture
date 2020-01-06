@@ -16,9 +16,9 @@ services:
       - EUREKA-SERVER2-PORT=8762
       - JAVA_OPTS=-Xms128m -Xmx256m
     expose:
-      - 8080
+      - ${SERVER-PORT}
     ports:
-      - 8080
+      - "${SERVER-PORT}:${SERVER-PORT}"
     depends_on:
       - nginx
     healthcheck:
