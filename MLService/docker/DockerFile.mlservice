@@ -41,6 +41,8 @@ WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
 
+EXPOSE ${SERVER-PORT:8080}
+
 # it does look like the environment varaibles pass directly
 # without the following lines
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
