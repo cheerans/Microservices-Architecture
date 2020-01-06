@@ -41,8 +41,8 @@ services:
         ml-cloud-network-east:
             aliases:
                 - nginx-east-1     
-    volumes:
-      - ./nginxconf:/etc/nginx
+    #volumes:
+      #- ./nginxconf:/etc/nginx
     ports:
       - '80:80'
 networks:
