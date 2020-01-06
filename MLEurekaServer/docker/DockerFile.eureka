@@ -2,9 +2,6 @@ FROM centos:7
 FROM openjdk:8
 FROM maven:3.3
 
-ARG EXPOSE_PORT=${EUREKA-SERVER-PORT:8761}
-EXPOSE ${EXPOSE_PORT}
-
 # This will be mount as a volume 
 # for persisting any data across runs
 # volumes will be available as directories on docker
@@ -47,9 +44,6 @@ run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
-
-ENV EUREKA-SERVER-PORT=${EUREKA-SERVER-PORT:-8761}
-EXPOSE ${EUREKA-SERVER-PORT}
 
 # it does look like the environment varaibles pass directly
 # without the following lines
