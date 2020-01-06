@@ -14,8 +14,6 @@ CMD ["sh", "-c", "sudo groupadd docker"]
 CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
 CMD ["sh", "-c", "sudo newgrp docker"]
 
-run cat /etc/nginx/nginx.conf
-RUN mkdir /etc/nginx
 RUN rm -rf /etc/nginx/sites-enabled/default
 # forward request and error logs to docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log
