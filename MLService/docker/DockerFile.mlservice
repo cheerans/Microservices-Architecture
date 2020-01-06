@@ -36,11 +36,10 @@ LABEL orbiter="true"
 ARG VERSION=1.0
 
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls target/ && cp target/ml-service-${VERSION}.jar /home/mldocker/bin/ml-service-latest.jar
+run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/ml-service-latest.jar
-
-EXPOSE 8080 8083 8085 8087
 
 # it does look like the environment varaibles pass directly
 # without the following lines
