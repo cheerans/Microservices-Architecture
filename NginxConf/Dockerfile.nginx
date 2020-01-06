@@ -26,7 +26,7 @@ RUN mkdir /home/mldocker/src
 WORKDIR /home/mldocker/src
 run rm -rf /home/mldocker/src/Microservices-Architecture && git clone https://github.com/cheerans/Microservices-Architecture
 WORKDIR /home/mldocker/src/Microservices-Architecture
-cp nginxconf/nginx.conf /etc/nginx
+cp NginxConf/nginx.conf /etc/nginx
 
 LABEL Description="nginx"
 LABEL Version="1.0"
