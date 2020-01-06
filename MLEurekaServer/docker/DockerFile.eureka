@@ -40,6 +40,7 @@ LABEL orbiter="true"
 ARG VERSION=1.0
 
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls target/ && cp target/eureka-server-${VERSION}.jar /home/mldocker/bin/eureka-server-latest.jar
+run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
