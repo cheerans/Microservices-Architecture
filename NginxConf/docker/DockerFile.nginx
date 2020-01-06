@@ -2,9 +2,6 @@ FROM centos:7
 FROM openjdk:8
 
 RUN rm -rf /etc/nginx/sites-enabled/default
-# forward request and error logs to docker log collector
-RUN ln -sf /dev/stdout /var/log/nginx/access.log
-RUN ln -sf /dev/stderr /var/log/nginx/error.log
 
 run apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
 
