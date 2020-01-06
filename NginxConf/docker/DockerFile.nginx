@@ -1,7 +1,7 @@
 FROM centos:7
 FROM openjdk:8
 
-run sudo chown -R /etc/nginx/sites-enabled/default
+CMD ["sh", "-c", "sudo chown -R /etc/nginx/sites-enabled/default"]
 RUN rm -rf /etc/nginx/sites-enabled/default
 
 run apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
