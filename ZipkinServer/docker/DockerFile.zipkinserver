@@ -25,8 +25,6 @@ WORKDIR /home/mldocker/src
 run rm -rf /home/mldocker/src/Microservices-Architecture && git clone https://github.com/cheerans/Microservices-Architecture
 WORKDIR /home/mldocker/src/Microservices-Architecture
 
-
-#ENV DOCKER_HOST=tcp://localhost:2345
 WORKDIR /home/mldocker/src/Microservices-Architecture/ZipkinServer
 run mkdir /home/mldocker/.m2 && mkdir /home/mldocker/.m2/repository && mvn -Dhttps.protocols=TLSv1.2 -e clean package -Dmaven.test.skip=true
 
@@ -42,8 +40,6 @@ WORKDIR /home/mldocker/bin
 ENV CLASSPATH .:/home/mldocker/bin/zipkin-server-latest.jar
 
 ENV JAVA_OPTS="${JAVA_OPTS:-Xms256m -Xmx512}"
-
-EXPOSE ${SERVER-PORT:9411}
 
 # it does look like the environment varaibles pass directly
 # without the following lines
