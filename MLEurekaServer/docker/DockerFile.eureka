@@ -48,8 +48,8 @@ WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
 
-ARG EXPOSE_PORT=${EUREKA-SERVER-PORT:-8761}
-EXPOSE ${EXPOSE_PORT}
+ENV EUREKA-SERVER-PORT=${EUREKA-SERVER-PORT:-8761}
+EXPOSE ${EUREKA-SERVER-PORT}
 
 # it does look like the environment varaibles pass directly
 # without the following lines
