@@ -1,5 +1,5 @@
 FROM centos:7
-FROM openjdk:8
+#FROM openjdk:8
 
 run apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
 
