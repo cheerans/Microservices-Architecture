@@ -1,4 +1,4 @@
-FROM ubuntu
+FROM centos:7
 
 # install nginx
 RUN apt-get update && apt-get install -y nginx
