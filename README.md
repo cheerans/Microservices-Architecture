@@ -19,7 +19,12 @@ A better design is split Microservices per large homogeneous entity relationship
 Accessing the Microservice (Via ZUUL)
 =====================================
 
-When everything is running, hit the url - http://localhost:8091/api-gateway/mls/getDecision1
+When everything is running, hit the url as follows -
+
+* Do the following command in docker 
+  * docker-machine ip --> which usually yields 192.168.99.100
+  
+* http://192.168.99.100:8091/api-gateway/mls/getDecision1
 
 ![alt text](CICD.png)
 
