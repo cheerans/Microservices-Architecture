@@ -21,10 +21,10 @@ Accessing the Microservice (Via ZUUL)
 
 When everything is running, hit the url as follows -
 
-* Do the following command in docker 
-  * docker-machine ip --> which usually yields 192.168.99.100
-  
-* http://192.168.99.100:8091/api-gateway/mls/getDecision1
+* Do the following command in docker (you got to understand docker is != localhost or 0.0.0.0)
+  * docker-machine ip 
+   * (which usually yields 192.168.99.100)
+  * http://192.168.99.100:8091/api-gateway/mls/getDecision1
 
 ![alt text](CICD.png)
 
