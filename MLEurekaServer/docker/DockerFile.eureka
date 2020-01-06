@@ -45,6 +45,8 @@ WORKDIR /home/mldocker/bin
 
 ENV CLASSPATH .:/home/mldocker/bin/eureka-server-latest.jar
 
+EXPOSE ${EUREKA-SERVER-PORT:8761}
+
 # it does look like the environment varaibles pass directly
 # without the following lines
 ENTRYPOINT ["java", "-Djava.security.egd=file:/dev/./urandom", \
