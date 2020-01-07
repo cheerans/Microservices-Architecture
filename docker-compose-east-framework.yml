@@ -5,7 +5,7 @@
 
 #https://github.com/dockersamples/example-voting-app
 
-# EACH LINE IN DOCKER COMPOSE is equaialent to arguments in docker run
+# EACH LINE IN DOCKER COMPOSE is equialent to arguments in docker run
 # Why docker compose ??? To aggregate all docker runs, like a dockerrun.bat
 version: '3.3'
 services:
@@ -46,9 +46,9 @@ services:
             - EUREKA-PEER-SERVER-PORT=8761
             - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
-            - ${EUREKA-SERVER-PORT}
+            - 8762
         ports:
-            - "${EUREKA-SERVER-PORT}:${EUREKA-SERVER-PORT}"
+            - "8762:8762"
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
@@ -77,9 +77,9 @@ services:
             - EUREKA-SERVER2-PORT=8762       
             - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
-            - ${SERVER-PORT}
+            - 8091
         ports:
-            - "${SERVER-PORT}:${SERVER-PORT}"
+            - "8091:8091"
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
@@ -106,9 +106,9 @@ services:
             - EUREKA-SERVER2-PORT=8762
             - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
-            - ${SERVER-PORT}
+            - 9411
         ports:
-            - "${SERVER-PORT}:${SERVER-PORT}"
+            - "9411:9411"
         volumes:
             - userdata:/var/www/mlservicedatadir
         logging:
