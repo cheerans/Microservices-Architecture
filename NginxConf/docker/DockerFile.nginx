@@ -32,8 +32,8 @@ CMD ["sh", "-c", "sudo chown -R /var/log/nginx"]
 CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx/error.log"]
 CMD ["sh", "-c", "sudo chown -R /var/lib/nginx"]
 
-cat NginxConf/nginx.conf
-ls -ltr /etc/nginx/nginx.conf
+run cat NginxConf/nginx.conf
+run ls -ltr /etc/nginx/nginx.conf
 
 LABEL Description="nginx"
 LABEL Version="1.0"
