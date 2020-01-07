@@ -29,7 +29,8 @@ CMD ["sh", "-c", "sudo rm -rf /etc/nginx/sites-enabled/default"]
 #CMD ["sh", "-c", "ln -sf /dev/stderr /var/log/nginx/error.log"]
 CMD ["sh", "-c", "sudo mv NginxConf/nginx.conf /etc/nginx"]
 CMD ["sh", "-c", "sudo chown -R /var/log/nginx"]
-CMD ["sh", "-c", "sudo chown -R /var/lib/nginx/body"]
+CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx/error.log"]
+CMD ["sh", "-c", "sudo chown -R /var/lib/nginx"]
 
 LABEL Description="nginx"
 LABEL Version="1.0"
