@@ -32,6 +32,8 @@ CMD ["sh", "-c", "sudo chown -R /var/log/nginx"]
 CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx/error.log"]
 CMD ["sh", "-c", "sudo chown -R /var/lib/nginx"]
 
+CMD ["sh", "-c", "sudo cat /etc/nginx/nginx.conf"]
+
 LABEL Description="nginx"
 LABEL Version="1.0"
 LABEL orbiter="true"
