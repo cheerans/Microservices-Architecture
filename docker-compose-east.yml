@@ -36,7 +36,7 @@ services:
     logging:
       driver: json-file
   nginx:
-    image: santhoshcheeran/nginxrepo:latest
+    image: 'santhoshcheeran/nginxrepo:latest'
     networks:
         ml-cloud-network-east:
             aliases:
