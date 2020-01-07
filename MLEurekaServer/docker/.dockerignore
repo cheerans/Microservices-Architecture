@@ -1,0 +1,5 @@
+.*
+docker*.yml
+*.md
+**/*.class
+DockerFile.*
