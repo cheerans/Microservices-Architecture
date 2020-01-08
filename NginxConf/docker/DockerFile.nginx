@@ -37,8 +37,10 @@ CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx/error.log"]
 CMD ["sh", "-c", "sudo chown -R www-data:www-data  /var/lib/nginx"]
 
 CMD ["sh", "-c", "sudo /etc/init.d/name"]
-
 CMD ["sh", "-c", "sudo  mkdir -p /var/lib/nginx/{body,fastcgi}"]
+CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx/body"]
+CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx/fastcgi"]
+CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx"]
 
 run cat NginxConf/nginx.conf
 run cat /etc/nginx/nginx.conf
