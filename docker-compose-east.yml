@@ -36,13 +36,13 @@ services:
     logging:
       driver: json-file
   nginx:
-    image: 'santhoshcheeran/nginxrepo:latest'
+    image: 'nginx:latest'
     networks:
         ml-cloud-network-east:
             aliases:
                 - nginx-east-1     
-    #volumes:
-      #- ./nginxconf:/etc/nginx
+    volumes:
+      - ./NginxConf/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - '80:8888'
 networks:
