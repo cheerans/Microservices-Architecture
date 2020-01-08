@@ -42,7 +42,7 @@ services:
             aliases:
                 - nginx-east-1     
     volumes:
-      - ./NginxConf:/etc/nginx
+      - ./NginxConf/ :/etc/nginx/
     ports:
       - '80:8888'
 networks:
