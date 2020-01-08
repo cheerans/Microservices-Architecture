@@ -42,7 +42,7 @@ services:
             aliases:
                 - nginx-east-1     
     volumes:
-        - ./nginx/conf.d:/etc/nginx/conf.d
+        - nginx/conf.d:/etc/nginx/conf.d
     ports:
       - '80:80'
     command: /bin/sh -c "nginx -g 'daemon off;'"
