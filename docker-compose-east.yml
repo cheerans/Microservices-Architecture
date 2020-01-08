@@ -49,8 +49,7 @@ services:
       - '80:8888'
 configs:
   nginx_cnf:
-    file: ./NginxConf/nginx.conf
-    external: true      
+    file: ./NginxConf/nginx.conf  
 networks:
     ml-cloud-network-east: 
         external: true
