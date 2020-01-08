@@ -52,4 +52,6 @@ run rm -rf /home/mldocker/src/Microservices-Architecture
 
 EXPOSE 80 443
 #CMD ["sh", "-c", "sudo nginx -V daemon off;"]
-CMD ["sudo nginx", "-V", "daemon off;"]
+#CMD ["sudo nginx", "-V", "daemon off;"]
+
+run sudo nginx -V daemon off;
