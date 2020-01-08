@@ -52,9 +52,9 @@ networks:
         external: true
 configs:
     nginx_cfg_src:
-        file:./NginxConf/nginx.conf
+        file: ./NginxConf/nginx.conf
     nginx_cfg_dest:
-        file:/etc/nginx/nginx.conf        
+        file: /etc/nginx/nginx.conf        
 volumes:
     userdata:
         external: true
