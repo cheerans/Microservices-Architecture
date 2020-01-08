@@ -53,7 +53,7 @@ networks:
     ml-cloud-network-east: 
         external: true
 configs:
-    /etc/nginx/nginx.conf:
+    config_src:
         file: ./NginxConf/nginx.conf    
 volumes:
     userdata:
