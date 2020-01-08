@@ -50,6 +50,7 @@ networks:
     ml-cloud-network-east: 
         external: true
 volumes:
-    nginx-conf: nginx/conf.d/app.conf
+    nginx-conf: 
+        file:nginx/conf.d/app.conf
     userdata:
         external: true
