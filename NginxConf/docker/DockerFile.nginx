@@ -38,7 +38,7 @@ CMD ["sh", "-c", "sudo chown -R www-data:www-data  /var/lib/nginx"]
 
 CMD ["sh", "-c", "sudo /etc/init.d/name"]
 
-run mkdir -p /var/lib/nginx/{body,fastcgi}
+CMD ["sh", "-c", "sudo  mkdir -p /var/lib/nginx/{body,fastcgi}"]
 
 run cat NginxConf/nginx.conf
 run cat /etc/nginx/nginx.conf
