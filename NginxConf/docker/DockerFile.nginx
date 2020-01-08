@@ -54,6 +54,8 @@ CMD ["sh", "-c", "sudo  mkdir -p /var/lib/nginx/{body,fastcgi}"]
 CMD ["sh", "-c", "sudo chown -R mldocker:mldocker /var/log/nginx/body"]
 CMD ["sh", "-c", "sudo chown -R mldocker:mldocker /var/log/nginx/fastcgi"]
 CMD ["sh", "-c", "sudo chown -R mldocker:mldocker /var/log/nginx"]
+CMD ["sh", "-c", "sudo  mkdir -p /var/cache"]
+CMD ["sh", "-c", "sudo  mkdir -p /var/cache/nginx"]
 CMD ["sh", "-c", "sudo  mkdir -p /var/cache/nginx/client_temp"]
 CMD ["sh", "-c", "sudo chown -R mldocker:mldocker /var/cache/nginx/client_temp"]
 
