@@ -36,6 +36,8 @@ CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx"]
 CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx/error.log"]
 CMD ["sh", "-c", "sudo chown -R www-data:www-data  /var/lib/nginx"]
 
+CMD ["sh", "-c", "sudo /etc/init.d/name"]
+
 run cat NginxConf/nginx.conf
 run cat /etc/nginx/nginx.conf
 run ls -ltr /etc/nginx
