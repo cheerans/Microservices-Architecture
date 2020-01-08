@@ -38,7 +38,7 @@ services:
   nginx:
     image: 'nginx:latest'
     networks:
-        ml-cloud-network-e./NginxConf/nginx.confst:
+        ml-cloud-network-east:
             aliases:
                 - nginx-east-1     
     #volumes:
