@@ -38,12 +38,15 @@ services:
   nginx:
     image: 'nginx:latest'
     networks:
-        ml-cloud-network-east:
+        ml-cloud-network-e./NginxConf/nginx.confst:
             aliases:
                 - nginx-east-1     
     #volumes:
     configs:
-      - /etc/nginx/nginx.conf
+        source: 
+            - ./NginxConf/nginx.conf
+        target:
+            - /etc/nginx/nginx.conf
     ports:
       - '80:8888'
 networks:
