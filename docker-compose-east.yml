@@ -44,7 +44,7 @@ services:
     #volumes:
     configs:
         - source: nginx_cnf
-          target: /etc/nginx/nginx.conf
+          target: /etc/nginx
     ports:
       - '80:8888'
 configs:
