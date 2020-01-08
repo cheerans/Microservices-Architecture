@@ -51,4 +51,4 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/src/Microservices-Architecture
 
 EXPOSE 80 443
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-V", "daemon off;"]
