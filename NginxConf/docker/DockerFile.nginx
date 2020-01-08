@@ -59,6 +59,9 @@ CMD ["sh", "-c", "sudo  mkdir -p /var/cache/nginx"]
 CMD ["sh", "-c", "sudo  mkdir -p /var/cache/nginx/client_temp"]
 CMD ["sh", "-c", "sudo chown -R mldocker:mldocker /var/cache/nginx/client_temp"]
 
+RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
+    chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
+
 
 LABEL Description="nginx"
 LABEL Version="1.0"
