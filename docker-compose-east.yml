@@ -43,13 +43,18 @@ services:
                 - nginx-east-1     
     #volumes:
     configs:
-      - ./NginxConf/nginx.conf
-      - /etc/nginx/nginx.conf
+      - nginx_cfg_src
+      - nginx_cfg_dest
     ports:
       - '80:8888'
 networks:
     ml-cloud-network-east: 
         external: true
+configs:
+    nginx_cfg_src:
+        file:./NginxConf/nginx.conf
+    nginx_cfg_dest:
+        file:/etc/nginx/nginx.conf        
 volumes:
     userdata:
         external: true
