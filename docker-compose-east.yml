@@ -45,6 +45,7 @@ services:
         - ./nginx/conf.d:/etc/nginx/conf.d
     ports:
       - '80:80'
+    command: /bin/sh -c "nginx -g 'daemon off;'"
 networks:
     ml-cloud-network-east: 
         external: true
