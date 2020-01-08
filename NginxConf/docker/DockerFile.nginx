@@ -1,5 +1,6 @@
 FROM centos:7
 FROM openjdk:8
+FROM nginx:stable
 
 run apt-key adv --keyserver keyserver.ubuntu.com --recv-keys AA8E81B4331F7F50
 
@@ -7,10 +8,9 @@ RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-bac
 RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
 RUN apt-get -qqo Acquire::Check-Valid-Until=false update
 run apt-get install -qqy  \
-                          nginx \
-                          git \
-                          curl \
-                          git-core
+                    git \
+                    curl \
+                    git-core
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -24,25 +24,14 @@ WORKDIR /home/mldocker/src
 run rm -rf /home/mldocker/src/Microservices-Architecture && git clone https://github.com/cheerans/Microservices-Architecture
 WORKDIR /home/mldocker/src/Microservices-Architecture
 
-CMD ["sh", "-c", "sudo rm -rf /etc/nginx/sites-enabled/default"]
-#CMD ["sh", "-c", "ln -sf /dev/stdout /var/log/nginx/access.log	"]
-#CMD ["sh", "-c", "ln -sf /dev/stderr /var/log/nginx/error.log"]
 CMD ["sh", "-c", "sudo rm /etc/nginx/nginx.conf"]
-COPY --chown=www-data:www-data  NginxConf/nginx.conf /etc/nginx
+COPY ./NginxConf/nginx.conf /etc/nginx/nginx.conf
 CMD ["sh", "-c", "sudo rm /etc/nginx/conf.d/default.conf"]
-CMD ["sh", "-c", "sudo rm /etc/nginx/conf.d/examplessl.conf"]
-CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx"]
-CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx"]
-CMD ["sh", "-c", "sudo chown -R www-data:www-data  /var/log/nginx/error.log"]	
-CMD ["sh", "-c", "sudo chmod 755 /var/log/nginx/error.log"]	
-CMD ["sh", "-c", "sudo chown -R www-data:www-data  /var/lib/nginx"]	
 
+RUN touch /var/run/nginx.pid && \
+chown -R www-data:www-data /var/run/nginx.pid && \
+chown -R www-data:www-data /var/cache/nginx
 
-CMD ["sh", "-c", "sudo /etc/init.d/name"]	
-CMD ["sh", "-c", "sudo  mkdir -p /var/lib/nginx/{body,fastcgi}"]
-CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx/body"]
-CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx/fastcgi"]
-CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx"]
 LABEL Description="nginx"
 LABEL Version="1.0"
 LABEL orbiter="true"
@@ -51,7 +40,4 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/src/Microservices-Architecture
 
 EXPOSE 80 443
-CMD ["sh", "-c", "sudo nginx -g daemon off;"]
-#CMD ["sudo nginx", "-V", "daemon off;"]
-
-#run sudo nginx -V daemon off;
+CMD ["nginx", "-g", "daemon off;"]
