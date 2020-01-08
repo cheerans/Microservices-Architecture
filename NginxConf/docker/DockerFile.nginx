@@ -42,10 +42,6 @@ CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx/body"]
 CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx/fastcgi"]
 CMD ["sh", "-c", "sudo chown -R www-data:www-data /var/log/nginx"]
 
-run cat NginxConf/nginx.conf
-run cat /etc/nginx/nginx.conf
-run ls -ltr /etc/nginx
-
 LABEL Description="nginx"
 LABEL Version="1.0"
 LABEL orbiter="true"
