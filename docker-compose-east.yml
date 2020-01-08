@@ -44,7 +44,7 @@ services:
     #volumes:
       #- ./nginxconf:/etc/nginx
     ports:
-      - '80:8888
+      - '80:8888'
 networks:
     ml-cloud-network-east: 
         external: true
