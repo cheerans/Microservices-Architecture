@@ -47,6 +47,9 @@ services:
           target: /etc/nginx/nginx.conf
     ports:
       - '80:8888'
+configs:
+  ./NginxConf/nginx.conf:
+    external: true      
 networks:
     ml-cloud-network-east: 
         external: true
