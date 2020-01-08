@@ -43,12 +43,13 @@ services:
                 - nginx-east-1     
     #volumes:
     configs:
-        - source: ./NginxConf/nginx.conf
+        - source: nginx_cnf
           target: /etc/nginx/nginx.conf
     ports:
       - '80:8888'
 configs:
-  ./NginxConf/nginx.conf:
+  nginx_cnf:
+    file: ./NginxConf/nginx.conf
     external: true      
 networks:
     ml-cloud-network-east: 
