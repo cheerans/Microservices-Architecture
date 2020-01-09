@@ -1,3 +1,5 @@
+#https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/
+
 FROM centos:7
 FROM openjdk:8
 FROM nginx:stable
@@ -60,6 +62,8 @@ CMD ["sh", "-c", "sudo chown -R mldocker:mldocker /var/cache/nginx/client_temp"]
 # NGINX has a big problem, when running ports, it has to run as root etc
 RUN chgrp -R root /var/cache/nginx /var/run /var/log/nginx && \
     chmod -R 770 /var/cache/nginx /var/run /var/log/nginx
+    
+    #https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/
 
 
 LABEL Description="nginx"
