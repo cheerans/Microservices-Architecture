@@ -16,7 +16,7 @@ docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d zip
 docker-compose  --compatibility -f "docker-compose-east.yml" up -d mlserver-east
 ./waitForDockerServiceRunning.sh microservices-architecture_mlserver-east_1
 
-docker-compose  --compatibility -f "docker-compose-east.yml" up -d mlserver-east
+docker-compose  --compatibility -f "docker-compose-east.yml" up --scale mlserver-east=2
 ./waitForDockerServiceRunning.sh microservices-architecture_mlserver-east_2
 
 docker-compose  --compatibility -f "docker-compose-east-framework.yml" up -d msapigateway-east-server1
