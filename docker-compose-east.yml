@@ -1,4 +1,4 @@
-version: '3.7'
+version: '3.3'
 services:
   mlserver-east:
 #    build:
@@ -44,8 +44,9 @@ services:
                 
     #$ docker exec -it microservices-architecture_nginx_1 sh
     # ls /etc/nginx/conf.d/
+    # nothing is there, is this a docker version issue ?
     volumes:
-      - ./nginx/conf.d:/etc/nginx/conf.d  
+      - ./nginx/conf.d/:/etc/nginx/conf.d/ 
     ports:
       - '80:80'
     command: /bin/sh -c "nginx -g 'daemon off;'"
