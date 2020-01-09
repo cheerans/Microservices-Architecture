@@ -1,4 +1,4 @@
-version: '3.3'
+version: '3.7'
 services:
   mlserver-east:
 #    build:
@@ -41,10 +41,11 @@ services:
         ml-cloud-network-east:
             aliases:
                 - nginx-east-1     
+                
+    #$ docker exec -it microservices-architecture_nginx_1 sh
+    # ls /etc/nginx/conf.d/
     volumes:
-      - type: bind
-        source: ./nginx/conf.d
-        target: /etc/nginx/conf.d  
+      - ./nginx/conf.d:/etc/nginx/conf.d  
     ports:
       - '80:80'
     command: /bin/sh -c "nginx -g 'daemon off;'"
