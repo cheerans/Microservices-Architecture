@@ -46,10 +46,10 @@ services:
     # ls /etc/nginx/conf.d/
     # nothing is there, is this a docker version issue ?
     volumes:
-      - type: bind
-          source:./nginx/conf.d
-          target:/etc/nginx/conf.d
-          read_only:true
+        - type: bind
+          source: ./nginx/conf.d
+          target: /etc/nginx/conf.d
+          read_only: true
     ports:
       - '80:80'
     command: /bin/sh -c "nginx -g 'daemon off;'"
