@@ -45,10 +45,11 @@ services:
     #$ docker exec -it microservices-architecture_nginx_1 sh
     # ls /etc/nginx/conf.d/
     # nothing is there, is this a docker version issue ?
+    # The operation is mapping a docker host file to a container file
     volumes:
         - type: bind
-          source: ./nginx/conf.d
-          target: /etc/nginx/conf.d
+          source: ./nginx/conf.d/app.conf
+          target: /etc/nginx/conf.d/app.conf
           read_only: true
     ports:
       - '80:80'
