@@ -43,8 +43,8 @@ services:
                 - nginx-east-1     
     volumes:
       - type: bind
-        source: ./nginx/conf.d/app.conf
-        target: /etc/nginx/conf.d/app.conf    
+        source: ./nginx/conf.d
+        target: /etc/nginx/conf.d  
     ports:
       - '80:80'
     command: /bin/sh -c "nginx -g 'daemon off;'"
