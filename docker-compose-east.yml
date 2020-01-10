@@ -8,7 +8,7 @@ services:
     environment:
       - ZUULPROXYADDRESS=http://msapigateway-east-1:8091
       - SERVER-PORT=8080
-      - SERVER-HOST=mlserver-east-1
+      - SERVER-HOST=mlserver-east
       - REGION=east
       - EUREKA-SERVER1-HOST=eureka-east-1
       - EUREKA-SERVER1-PORT=8761
@@ -22,7 +22,7 @@ services:
     #depends_on:
     #  - nginx
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://mlserver-east-1:8080/health"]
+      test: ["CMD", "curl", "-f", "http://mlserver-east:8080/health"]
       interval: 120s
       timeout: 60s
       retries: 3  
@@ -30,7 +30,7 @@ services:
     networks:
         ml-cloud-network-east:
             aliases:
-                - mlserver-east-1 
+                - mlserver-east
     volumes:
       - userdata:/var/www/mlservicedatadir
     logging:
