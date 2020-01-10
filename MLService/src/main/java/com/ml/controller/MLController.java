@@ -59,8 +59,9 @@ public class MLController {
 	private  RestTemplate plainRestTemplate = new RestTemplateBuilder().build();
 	
 	@RequestMapping(value="/health", method = RequestMethod.GET, produces = "application/json")	
-	public @ResponseBody String health(HttpServletRequest request) throws Exception{			
-		return "healthy" + ":" + request.getRemotePort();
+	public @ResponseBody String health(HttpServletRequest request) throws Exception{	
+		
+		return "healthy" + ":" + request.getLocalPort();
 	}
 	
 	
@@ -68,35 +69,35 @@ public class MLController {
 	@RequestMapping(value="/getDecision4", method = RequestMethod.POST, produces = "application/json")	
 	public @ResponseBody String getDecision4(HttpServletRequest request,@RequestBody String data) throws Exception{	
 		
-		return "getDecision4" + ":" + request.getRemotePort();
+		return "getDecision4" + ":" + getServerCred(request);
 	}
 	
 	@HystrixCommand(fallbackMethod = "getDecision4fallback")
 	@RequestMapping(value="/getDecision4", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision4Get(HttpServletRequest request) throws Exception{	
 		
-		return "getDecision4" + ":" + request.getRemotePort();
+		return "getDecision4" + ":" + getServerCred(request);
 	}	
 	
 	@HystrixCommand(fallbackMethod = "getDecision3fallback")
 	@RequestMapping(value="/getDecision3", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision3(HttpServletRequest request) throws Exception{	
 		
-		return "getDecision3" + ":" + request.getRemotePort() + "-(W Zuul)" + plainRestTemplate.getForEntity(ZUULPROXYADDRESS + "/api-gateway/mlservice/getDecision4",String.class).getBody();
+		return "getDecision3" + ":" + getServerCred(request) + "-(W Zuul)" + plainRestTemplate.getForEntity(ZUULPROXYADDRESS + "/api-gateway/mlservice/getDecision4",String.class).getBody();
 	}
    
 	@HystrixCommand(fallbackMethod = "getDecision2fallback")
 	@RequestMapping(value="/getDecision2", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision2(HttpServletRequest request) throws Exception{	
 		
-		return "getDecision2" + ":" + request.getRemotePort() + "-(WOut Zuul)" + restTemplate.getForEntity("http://mlservice/getDecision3",String.class).getBody();
+		return "getDecision2" + ":" + getServerCred(request) + "-(WOut Zuul)" + restTemplate.getForEntity("http://mlservice/getDecision3",String.class).getBody();
 	}
     
 	@HystrixCommand(fallbackMethod = "getDecision1fallback")
 	@RequestMapping(value="/getDecision1", method = RequestMethod.GET, produces = "application/json")	
 	public @ResponseBody String getDecision1(HttpServletRequest request) throws Exception{	
 		
-		return "getDecision1" + ":" + request.getRemotePort() + "-(WOut Zuul)" + restTemplate.getForEntity("http://mlservice/getDecision2",String.class).getBody();
+		return "getDecision1" + ":" + getServerCred(request) + "-(WOut Zuul)" + restTemplate.getForEntity("http://mlservice/getDecision2",String.class).getBody();
 	}
 	
 	public @ResponseBody String getDecision4Postfallback(HttpServletRequest request,@RequestBody String data) throws Exception{	
@@ -163,5 +164,16 @@ public class MLController {
 		mav.addObject("url", req.getRequestURL());
 		mav.setViewName("error");
 	    return mav;
-	}	
+	}
+	
+	private String getServerCred(HttpServletRequest request){
+		
+		StringBuffer cred = new StringBuffer();
+		cred.append(request.getLocalPort());
+		cred.append("-");
+		cred.append(request.getRemotePort());
+		cred.append("-");	
+		cred.append(request.getServerPort());			
+		return cred.toString();
+	}
 }
