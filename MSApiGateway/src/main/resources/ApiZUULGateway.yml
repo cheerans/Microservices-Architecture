@@ -1,6 +1,8 @@
 spring:
     application:
         name: msapigateway
+    zipkin:
+        baseUrl: ${ZIPKIN-URL}
 server:
     port: ${SERVER-PORT:8091}
     contextPath: /  
