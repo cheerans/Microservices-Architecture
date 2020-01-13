@@ -1,6 +1,8 @@
 spring:
     application:
         name: mlservice
+    zipkin:
+        baseUrl: ${ZIPKIN-URL}        
 server:
     port: ${SERVER-PORT:8080}
     contextPath: /
