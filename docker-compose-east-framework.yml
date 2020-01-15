@@ -75,7 +75,7 @@ services:
             - EUREKA-SERVER1-PORT=8761
             - EUREKA-SERVER2-HOST=eureka-east-2
             - EUREKA-SERVER2-PORT=8762
-            - ZIPKIN-URL=http://zipkin:9411
+            - ZIPKIN-URL=http://zipkin-server-east:9411
             - JAVA_OPTS=-Xms128m -Xmx256m
         expose:
             - 8091
@@ -118,9 +118,9 @@ services:
         networks:
             ml-cloud-network-east:
                 aliases:
-                    - zipkin               
+                    - zipkin-server-east               
         healthcheck:
-          test: ["CMD", "curl", "-f", "http://zipkin:9411"]
+          test: ["CMD", "curl", "-f", "http://zipkin-server-east:9411"]
           interval: 120s
           timeout: 60s
           retries: 10           
