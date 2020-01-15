@@ -96,7 +96,8 @@ services:
           retries: 10             
         restart: on-failure       
     zipkinserver-east-server1:
-        image: santhoshcheeran/zipkinserverrepo:latest
+        #image: santhoshcheeran/zipkinserverrepo:latest
+        image: openzipkin/zipkin:latest
         environment:
             - SERVER-PORT=9411
             - SERVER-HOST=zipkinserver-east-1
