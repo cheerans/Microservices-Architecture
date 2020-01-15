@@ -4,7 +4,7 @@ spring:
     zipkin:
         baseUrl: ${ZIPKIN-URL:http://localhost:9411}        
 server:
-    port: ${SERVER-PORT:8080}:
+    port: ${SERVER-PORT:8080}
     contextPath: /
 eureka:
     instance:
