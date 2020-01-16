@@ -171,9 +171,9 @@ public class MLController {
 		StringBuffer cred = new StringBuffer();
 		cred.append(request.getLocalPort());
 		cred.append("-");
-		cred.append(request.getRemotePort());
+		cred.append(request.getLocalAddr());
 		cred.append("-");	
-		cred.append(request.getServerPort());			
+		cred.append(request.getLocalName());			
 		return cred.toString();
 	}
 }
