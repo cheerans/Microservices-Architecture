@@ -11,13 +11,13 @@ class DockerService(object):
 
     def get_req_rate(self,service_name):
 
-        content = urllib3.urlopen('http://localhost:8091/actuator/metrics/req.count')
+        content = urllib3.PoolManager.request('GET','http://localhost:8091/actuator/metrics/req.count')
         content = content.read()
         return content
 
     def get_cpu_usage(self,service_name):
 
-        content = urllib3.urlopen('http://localhost:8091/actuator/metrics/req.count')
+        content = urllib3.PoolManager.request('GET','http://localhost:8091/actuator/metrics/req.count')
         content = content.read()
         return content
 
