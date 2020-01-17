@@ -6,10 +6,8 @@ from docker.types import ServiceMode
 
 from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
 
-
 def jsons(resp):
     pass
-
 
 class DockerService(object):
     def __init__(self):
