@@ -1,0 +1,6 @@
+poll_interval_seconds: 10
+autoscale_config:
+  - service_name: mlserver-east
+    scale_min: 1
+    scale_max: 3
+    scale_step: 1
