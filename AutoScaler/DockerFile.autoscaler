@@ -1,5 +1,39 @@
 FROM python:3
-# modify this
-ADD my_script.py /
-RUN pip install pystrich
+FROM centos:7
+
+# This will be mount as a volume 
+# for persisting any data across runs
+RUN mkdir /var/www && mkdir /var/www/mlservicedatadir
+
+CMD ["sh", "-c", "echo ${JAVA_HOME}"]
+
+RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-backports main" > /etc/apt/sources.list.d/jessie-backports.list
+RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
+RUN apt-get -qqo Acquire::Check-Valid-Until=false update
+RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
+
+RUN useradd -ms /bin/bash mldocker
+USER mldocker
+CMD ["sh", "-c", "sudo groupadd docker"]
+CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
+CMD ["sh", "-c", "sudo newgrp docker"]
+
+# creating here as mldocker user has no rights
+RUN mkdir /home/mldocker/src
+WORKDIR /home/mldocker/src
+run rm -rf /home/mldocker/src/Microservices-Architecture  &&  git clone https://github.com/cheerans/Microservices-Architecture
+WORKDIR /home/mldocker/src/Microservices-Architecture
+
+WORKDIR /home/mldocker/src/Microservices-Architecture/AutoScaler
+
+LABEL Description="AutoScaler"
+LABEL Version="1.0"
+ARG VERSION=1.0
+
+run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp ./* /home/mldocker/bin/
+run rm -rf /home/mldocker/src/Microservices-Architecture
+WORKDIR /home/mldocker/bin
+
+RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
+
 CMD [ "python", "./com/autoscaler/app/AutoScalerApp.py" ]
