@@ -37,13 +37,20 @@ class AutoScaleStrategy(object):
 
     def decide_scale_thread(self, service_name, scale_min, scale_max, scale_step):
 
-        req_rate_start = self.traffic_map[service_name+"req_rate"]
-        cpu_usage_start = self.traffic_map[service_name+"cpu_usage"]
+        req_rate_key = service_name + "_" + "req_rate"
+        cpu_usage_key = service_name + "_" + "cpu_usage"
+
+        req_rate_start = None
+        if req_rate_key in self.traffic_map:
+            req_rate_start = self.traffic_map[req_rate_key]
+        cpu_usage_start = None
+        if cpu_usage_key in self.traffic_map:
+            cpu_usage_start = self.traffic_map[cpu_usage_key]
         req_rate_end = self.dockerSvc.get_req_rate(service_name)
         cpu_usage_end = self.dockerSvc.get_cpu_usage(service_name)
 
-        self.traffic_map[service_name + "req_rate"]=req_rate_end
-        self.traffic_map[service_name + "cpu_usage"]=cpu_usage_end
+        self.traffic_map[req_rate_key]=req_rate_end
+        self.traffic_map[cpu_usage_key]=cpu_usage_end
 
         if req_rate_start is None or cpu_usage_start is None:
             return
