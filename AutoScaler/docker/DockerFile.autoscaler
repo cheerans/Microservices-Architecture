@@ -15,6 +15,7 @@ RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy instal
 
 RUN apt-get -qqy install python python-pip
 RUN pip install --upgrade pip
+RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -37,7 +38,5 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp -r ./* /home/mldocker/bin/
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
-
-RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
 
 CMD [ "python", "./com/autoscaler/app/AutoScalerApp.py" ]
