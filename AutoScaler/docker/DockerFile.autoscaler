@@ -2,13 +2,6 @@ FROM python:3
 FROM centos:7
 FROM openjdk:8
 
-WORKDIR /app
-ADD . /app
-RUN set -xe \
-    && apt-get update \
-    && apt-get install python-pip
-RUN pip install --upgrade pip
-
 # This will be mount as a volume 
 # for persisting any data across runs
 RUN mkdir /var/www && mkdir /var/www/mlservicedatadir
@@ -19,6 +12,9 @@ RUN echo "deb [check-valid-until=no] http://archive.debian.org/debian jessie-bac
 RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt/sources.list
 RUN apt-get -qqo Acquire::Check-Valid-Until=false update
 RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
+
+RUN apt-get install python-pip
+RUN pip install --upgrade pip
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
