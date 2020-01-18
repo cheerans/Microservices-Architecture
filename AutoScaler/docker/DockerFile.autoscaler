@@ -22,6 +22,8 @@ RUN source venv/bin/activate
 RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
 run pip install virtualenv && python -m venv venv
 
+CMD ["sh", "-c", "source venv/bin/activate"]
+
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
 CMD ["sh", "-c", "sudo groupadd docker"]
