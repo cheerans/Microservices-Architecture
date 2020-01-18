@@ -42,4 +42,4 @@ WORKDIR /home/mldocker/bin
 run ls -ltr /home/mldocker/bin
 run ls -ltr /home/mldocker/bin/com/autoscaler
 
-CMD [ "python", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
+CMD [ "python", "/home/mldocker/bin/com/autoscaler/AutoScalerApp.py" ]
