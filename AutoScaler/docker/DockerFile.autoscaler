@@ -17,7 +17,7 @@ RUN apt-get -qqy install python-pip
 RUN pip install --upgrade pip 
 run pip install virtualenv
 
-RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
+RUN pip install APScheduler==2.1.2 && pip install pytz && pip install PyYAML && pip install urllib3
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
