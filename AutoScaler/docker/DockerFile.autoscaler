@@ -17,7 +17,7 @@ RUN apt-get -qqy install python python-pip
 RUN pip install --upgrade pip 
 
 RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
-run pip install virtualenv && virtualenv venv
+run pip install virtualenv && virtualenv venv && source venv/bin/activate
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -41,7 +41,6 @@ run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp 
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 
-run ls -ltr /home/mldocker/bin
-run ls -ltr /home/mldocker/bin/com/autoscaler
+run ls -ltr /opt/venv/bin
 
 CMD [ "/opt/venv/bin/python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
