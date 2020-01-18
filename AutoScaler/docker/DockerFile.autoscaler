@@ -44,9 +44,9 @@ run virtualenv venv && pwd
 #run source venv/bin/activate
 
 run whereis python
-run ls -ltr venv/bin/python/
+run ls -ltr venv/bin
 
 RUN PATH=/home/mldocker/bin:$PATH
 RUN export PATH
 
-CMD [ "/home/mldocker/bin/venv/bin/python/python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
+CMD [ "/home/mldocker/bin/venv/bin/python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
