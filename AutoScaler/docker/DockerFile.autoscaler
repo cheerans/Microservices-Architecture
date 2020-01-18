@@ -15,6 +15,7 @@ RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy instal
 
 RUN apt-get -qqy install python python-pip
 RUN pip install --upgrade pip 
+run pip install virtualenv
 
 RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
 
@@ -31,7 +32,7 @@ run rm -rf /home/mldocker/src/Microservices-Architecture  &&  git clone https://
 WORKDIR /home/mldocker/src/Microservices-Architecture
 
 WORKDIR /home/mldocker/src/Microservices-Architecture/AutoScaler
-run pip install virtualenv && virtualenv venv && pwd
+run virtualenv venv && pwd
 #&& source venv/bin/activate
 
 LABEL Description="AutoScaler"
