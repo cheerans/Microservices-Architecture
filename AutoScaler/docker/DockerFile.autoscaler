@@ -20,9 +20,7 @@ RUN pip install --upgrade pip
 # activate the virtualenv
 RUN source venv/bin/activate
 RUN pip install APScheduler && pip install pytz && pip install PyYAML && pip install urllib3
-run  pip install virtualenv && python -m venv venv
-
-CMD ["sh", "-c", "source venv/bin/activate"]
+run pip install virtualenv && python -m venv venv
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -49,4 +47,4 @@ WORKDIR /home/mldocker/bin
 run ls -ltr /home/mldocker/bin
 run ls -ltr /home/mldocker/bin/com/autoscaler
 
-CMD [ "python", "/home/mldocker/bin/com/autoscaler/AutoScalerApp.py" ]
+CMD [ "/opt/venv/bin/python", "/home/mldocker/bin/com/autoscaler/AutoScalerApp.py" ]
