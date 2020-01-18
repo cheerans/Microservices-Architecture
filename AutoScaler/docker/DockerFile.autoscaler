@@ -46,4 +46,4 @@ WORKDIR /home/mldocker/bin
 run whereis python
 run ls -ltr /venv/bin/python
 
-CMD [ "/venv/bin/python/python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
+CMD [ "python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
