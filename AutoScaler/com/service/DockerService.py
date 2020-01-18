@@ -15,7 +15,8 @@ class DockerService(object):
 
     def get_req_rate(self,service_name):
         req_rate = None
-        resp = urllib3.PoolManager().request('GET','http://localhost:8091/actuator/metrics/req.count')
+        req_count_url = os.environ["REQ_COUNT_URL"]
+        resp = urllib3.PoolManager().request('GET',req_count_url)
         resp = resp.data
         resp=json.loads(resp)
         if 'measurements' in resp:
@@ -27,7 +28,8 @@ class DockerService(object):
     def get_cpu_usage(self,service_name):
 
         req_rate = None
-        resp = urllib3.PoolManager().request('GET','http://localhost:8091/actuator/metrics/req.count')
+        cpu_usage_url = os.environ["CPU_USAGE_URL"]
+        resp = urllib3.PoolManager().request('GET',cpu_usage_url)
         resp = resp.data
         resp=json.loads(resp)
         if 'measurements' in resp:
