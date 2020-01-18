@@ -33,7 +33,7 @@ WORKDIR /home/mldocker/src/Microservices-Architecture
 
 WORKDIR /home/mldocker/src/Microservices-Architecture/AutoScaler
 run virtualenv venv && pwd
-run source venv/bin/activate
+#run source venv/bin/activate
 
 LABEL Description="AutoScaler"
 LABEL Version="1.0"
