@@ -42,6 +42,7 @@ run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 run virtualenv venv && pwd
 #run source venv/bin/activate
+RUN /bin/bash -c "source /usr/local/bin/virtualenvwrapper.sh"
 
 run whereis python
 run ls -ltr venv/bin
