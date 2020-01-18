@@ -39,4 +39,6 @@ run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp 
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 
+CMD ["sh", "-c", "ls -ltr ./com/autoscaler/app"]
+
 CMD [ "python", "/home/mldocker/bin/com/autoscaler/app/AutoScalerApp.py" ]
