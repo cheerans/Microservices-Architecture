@@ -15,7 +15,7 @@ RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy instal
 
 RUN apt-get -qqy install python-pip
 RUN pip install --upgrade pip 
-run pip install virtualenv && pip install APScheduler==2.1.2 && pip install pytz && pip install PyYAML && pip install urllib3
+run pip install virtualenv && pip uninstall APScheduler && pip install APScheduler==2.1.2 && pip install pytz && pip install PyYAML && pip install urllib3
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
