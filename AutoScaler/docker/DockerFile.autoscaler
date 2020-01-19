@@ -14,7 +14,7 @@ RUN apt-get -qqo Acquire::Check-Valid-Until=false update
 RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
 
 RUN apt-get -qqy install python-pip
-RUN pip install --upgrade pip 
+RUN pip install --upgrade pip && pip install APScheduler==2.1.2 && pip install pytz && pip install PyYAML && pip install urllib3
 run pip install virtualenv
 
 RUN useradd -ms /bin/bash mldocker
@@ -38,7 +38,7 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp -r ./* /home/mldocker/bin/
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
-run virtualenv venv && pip install APScheduler==2.1.2 && pip install pytz && pip install PyYAML && pip install urllib3
+run virtualenv venv
 #run source venv/bin/activate
 # Setting these environment variables are the same as running
 # source venv/bin/activate.
@@ -46,6 +46,7 @@ ENV VIRTUAL_ENV venv
 ENV PATH venv/bin:$PATH
 
 run whereis python
+run ls -ltr venv
 run ls -ltr venv/bin
 
 RUN PATH=/home/mldocker/bin:$PATH
