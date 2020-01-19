@@ -11,7 +11,7 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableDiscoveryClient
 @EnableZuulProxy
 @EnableWebMvc
-@ComponentScan(basePackages = "com.ml.client")
+@ComponentScan(basePackages = {"com.ml.client","com.ml.config"})
 public class ApiZUULGateway {
 
     public static void main(String[] args) {
