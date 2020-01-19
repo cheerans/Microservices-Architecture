@@ -13,9 +13,10 @@ RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt
 RUN apt-get -qqo Acquire::Check-Valid-Until=false update
 RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
 
-RUN apt-get -qqy install python-pip
-RUN pip install --upgrade pip 
-run pip install virtualenv && pip uninstall APScheduler && pip install APScheduler==2.1.2 && pip install pytz && pip install PyYAML && pip install urllib3
+RUN apt-get -qqy pip3 install pipenv
+#RUN pip3 install --upgrade pip 
+#run pip3 install virtualenv && 
+run pipenv uninstall APScheduler && pipenv install APScheduler==2.1.2 && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -38,7 +39,7 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp -r ./* /home/mldocker/bin/
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
-run virtualenv venv
+#run virtualenv venv
 #run source venv/bin/activate
 # Setting these environment variables are the same as running
 # source venv/bin/activate.
