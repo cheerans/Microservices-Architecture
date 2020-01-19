@@ -42,8 +42,7 @@ ARG VERSION=1.0
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp -r ./* /home/mldocker/bin/
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
-run pipenv install APScheduler==2.1.2 && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
-run pipenv shell
+run pipenv install APScheduler==2.1.2 && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3 && pipenv
 
 #run virtualenv venv
 #run source venv/bin/activate
