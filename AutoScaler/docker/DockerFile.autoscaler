@@ -13,13 +13,10 @@ RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt
 RUN apt-get -qqo Acquire::Check-Valid-Until=false update
 RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
 
-
 run apt-get install -y python3-pip 
 run python3 -m pip install --no-cache-dir --upgrade pip 
 run python3 -m pip install pipenv
 run python3 -m pip install --upgrade pipenv
-#RUN pip install --upgrade pip 
-#run pip install virtualenv && 
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
@@ -44,18 +41,7 @@ run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 run pipenv install APScheduler && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
 
-#run virtualenv venv
-#run source venv/bin/activate
-# Setting these environment variables are the same as running
-# source venv/bin/activate.
-#ENV VIRTUAL_ENV venv
-#ENV PATH venv/bin:$PATH
-
-#run whereis python
-#run ls -ltr venv
-#run ls -ltr venv/bin
-
-RUN PATH=/home/mldocker/bin:$PATH
-RUN export PATH
+RUN export PATH="/home/mldocker/bin:$PATH"
+RUN export PYTHONPATH="/home/mldocker/bin:$PATH"
 
 CMD [ "pipenv", "run", "python","-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp.py" ]
