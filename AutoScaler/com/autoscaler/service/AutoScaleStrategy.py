@@ -29,6 +29,9 @@ class AutoScaleStrategy(object):
         autoscale_rules = self.config['autoscale_config']
         for autoscale_rule in autoscale_rules:
             service_name = autoscale_rule['service_name']
+            
+            logger.info("SERVICE_NAME {}".format(service_name))
+            
             scale_min = autoscale_rule['scale_min']
             scale_max = autoscale_rule['scale_max']
             scale_step = autoscale_rule['scale_step']
