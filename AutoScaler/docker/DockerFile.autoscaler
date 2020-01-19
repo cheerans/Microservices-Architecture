@@ -41,7 +41,7 @@ run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 run pipenv install APScheduler && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3 && pipenv install docker
 
-RUN export PATH="/home/mldocker/bin:$PATH"
-RUN export PYTHONPATH=${PYTHONPATH}:${PWD}:/home/mldocker/bin/com/autoscaler/service
+#RUN export PATH="/home/mldocker/bin:$PATH"
+#RUN export PYTHONPATH=${PYTHONPATH}:${PWD}
 
 CMD [ "pipenv", "run", "python3","-m","com.autoscaler.AutoScalerApp" ]
