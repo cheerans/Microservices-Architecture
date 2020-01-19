@@ -16,7 +16,7 @@ RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy instal
 
 run apt-get install -y python3-pip 
 run python3 -m pip install --no-cache-dir --upgrade pip 
-run cd /app
+run mkdir /app && cd /app
 run python3 -m pip install pipenv
 run python3 -m pip install --upgrade pipenv
 #RUN pip install --upgrade pip 
