@@ -3,11 +3,10 @@ import os
 
 from apscheduler.schedulers.blocking import BlockingScheduler
 from pytz import utc
-
-from com.autoscaler.service.DockerService import DockerService
 import yaml
-
 from com.autoscaler.service.AutoScaleStrategy import AutoScaleStrategy
+from com.autoscaler.service.DockerService import DockerService
+
 
 DEFAULT_LOG_LEVEL = 'info'
 
