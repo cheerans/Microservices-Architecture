@@ -58,4 +58,4 @@ run pipenv install APScheduler==2.1.2 && pipenv install pytz && pipenv install P
 RUN PATH=/home/mldocker/bin:$PATH
 RUN export PATH
 
-CMD [ "python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
+CMD [ "pipenv", "run", "python", "-m", "/home/mldocker/bin/com/autoscaler/AutoScalerApp" ]
