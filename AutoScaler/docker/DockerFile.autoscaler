@@ -43,17 +43,18 @@ run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp 
 run rm -rf /home/mldocker/src/Microservices-Architecture
 WORKDIR /home/mldocker/bin
 run pipenv install APScheduler==2.1.2 && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
+run pipenv shell
 
 #run virtualenv venv
 #run source venv/bin/activate
 # Setting these environment variables are the same as running
 # source venv/bin/activate.
-ENV VIRTUAL_ENV venv
-ENV PATH venv/bin:$PATH
+#ENV VIRTUAL_ENV venv
+#ENV PATH venv/bin:$PATH
 
-run whereis python
-run ls -ltr venv
-run ls -ltr venv/bin
+#run whereis python
+#run ls -ltr venv
+#run ls -ltr venv/bin
 
 RUN PATH=/home/mldocker/bin:$PATH
 RUN export PATH
