@@ -7,6 +7,8 @@ from docker.types import ServiceMode
 
 from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
 
+logger = logging.getLogger(__name__)
+
 def jsons(resp):
     pass
 
@@ -17,6 +19,7 @@ class DockerService(object):
     def get_req_rate(self,service_name):
         req_rate = None
         req_count_url = os.environ["REQ_COUNT_URL"]
+        logger.info("REQ_COUNT_URL {}".format(req_count_url))
         resp = urllib3.PoolManager().request('GET',req_count_url)
         resp = resp.data
         resp=json.loads(resp)
@@ -30,6 +33,7 @@ class DockerService(object):
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
+        logger.info("CPU_USAGE_URL {}".format(CPU_USAGE_URL))
         resp = urllib3.PoolManager().request('GET',cpu_usage_url)
         resp = resp.data
         resp=json.loads(resp)
