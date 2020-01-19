@@ -13,9 +13,9 @@ RUN sed -i '/deb http:\/\/deb.debian.org\/debian jessie-updates main/d' /etc/apt
 RUN apt-get -qqo Acquire::Check-Valid-Until=false update
 RUN apt-get -qqy install git && apt-get -qqy install curl && apt-get -qqy install git-core
 
-RUN apt-get -qqy pip3 install pipenv
-#RUN pip3 install --upgrade pip 
-#run pip3 install virtualenv && 
+RUN apt-get -qqy pip install pipenv
+#RUN pip install --upgrade pip 
+#run pip install virtualenv && 
 run pipenv uninstall APScheduler && pipenv install APScheduler==2.1.2 && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
 
 RUN useradd -ms /bin/bash mldocker
