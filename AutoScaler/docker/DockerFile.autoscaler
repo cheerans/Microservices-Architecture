@@ -42,6 +42,6 @@ WORKDIR /home/mldocker/bin
 run pipenv install APScheduler && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
 
 RUN export PATH="/home/mldocker/bin:$PATH"
-RUN export PYTHONPATH=${PYTHONPATH}:${PWD}
+RUN export PYTHONPATH=${PYTHONPATH}:${PWD}:/home/mldocker/bin/com/autoscaler/service
 
 CMD [ "pipenv", "run", "python3","-m","com.autoscaler.AutoScalerApp" ]
