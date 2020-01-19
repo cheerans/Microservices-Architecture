@@ -38,7 +38,7 @@ ARG VERSION=1.0
 
 run rm -rf /home/mldocker/bin && mkdir /home/mldocker/bin && pwd && ls ./ && cp -r ./* /home/mldocker/bin/
 run rm -rf /home/mldocker/src/Microservices-Architecture
-WORKDIR /home/mldocker/bin
+WORKDIR /home/mldocker/bin/com/autoscaler
 run pipenv install APScheduler && pipenv install pytz && pipenv install PyYAML && pipenv install urllib3
 
 RUN export PATH="/home/mldocker/bin:$PATH"
