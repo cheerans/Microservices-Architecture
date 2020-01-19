@@ -4,7 +4,7 @@ import os
 from apscheduler.schedulers.blocking import BlockingScheduler
 from pytz import utc
 
-from com.autoscaler.service import DockerService.DockerService
+from com.autoscaler.service.DockerService import DockerService
 import yaml
 
 from com.autoscaler.service.AutoScaleStrategy import AutoScaleStrategy
