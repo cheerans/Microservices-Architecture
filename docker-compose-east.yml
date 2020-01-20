@@ -41,7 +41,7 @@ services:
     environment:
       - CONFIG_FILE=./properties/ScaleServicesConfig.yml
       - REQ_COUNT_URL=http://msapigateway-east-1:8091/actuator/metrics/req.count
-      - CPU_USAGE_URL=http://msapigateway-east-1:8091/actuator/metrics/req.count
+      - CPU_USAGE_URL=http://msapigateway-east-1:8091/actuator/metrics/process.cpu.usage
       - REGION=east
       - JAVA_OPTS=-Xms128m -Xmx256m 
     logging:
