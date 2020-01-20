@@ -44,6 +44,12 @@ services:
       - CPU_USAGE_URL=http://msapigateway-east-1:8091/actuator/metrics/process.cpu.usage
       - REGION=east
       - JAVA_OPTS=-Xms128m -Xmx256m 
+    networks:
+        ml-cloud-network-east:
+            aliases:
+                - autoscaler-east
+    volumes:
+      - userdata:/var/www/mlservicedatadir      
     logging:
       driver: json-file      
 #  nginx: # read https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/
