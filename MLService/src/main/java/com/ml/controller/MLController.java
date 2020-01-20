@@ -169,11 +169,11 @@ public class MLController {
 	private String getServerCred(HttpServletRequest request){
 		
 		StringBuffer cred = new StringBuffer();
-		cred.append(request.getLocalPort());
+		cred.append(environment.getProperty("spring.cloud.client.hostname"));
 		cred.append("-");
-		cred.append(request.getLocalAddr());
+		cred.append(environment.getProperty("spring.cloud.client.ip-address"));
 		cred.append("-");	
-		cred.append(request.getLocalName());			
+		cred.append(request.getServerPort());			
 		return cred.toString();
 	}
 }
