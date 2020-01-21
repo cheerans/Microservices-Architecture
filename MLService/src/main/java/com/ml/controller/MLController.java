@@ -40,6 +40,9 @@ public class MLController {
     private static Logger log = Logger.getLogger(MLController.class);
     
     private String ZUULPROXYADDRESS = null;
+    
+    @Autowired
+    Environment environment;
 	
 	@Bean
 	@LoadBalanced
@@ -167,7 +170,7 @@ public class MLController {
 	}
 	
 	private String getServerCred(HttpServletRequest request){
-		
+
 		StringBuffer cred = new StringBuffer();
 		cred.append(environment.getProperty("spring.cloud.client.hostname"));
 		cred.append("-");
