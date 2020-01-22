@@ -22,8 +22,7 @@ class DockerService(object):
         req_count_url = os.environ["REQ_COUNT_URL"]
         logger.info("REQ_COUNT_URL {}".format(req_count_url))
         resp = urllib3.PoolManager().request('GET',req_count_url)
-        resp = resp.data.json()
-        #resp=json.loads(resp)
+        resp = json.loads(resp.data.decode('utf-8'))
         if 'measurements' in resp:
             resp=next(filter(lambda x: x['statistic'] == 'COUNT', resp['measurements']))
             if 'value' in resp:
@@ -36,8 +35,7 @@ class DockerService(object):
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
         logger.info("CPU_USAGE_URL {}".format(cpu_usage_url))
         resp = urllib3.PoolManager().request('GET',cpu_usage_url)
-        resp = resp.data.json()
-        #resp=json.loads(resp)
+        resp = json.loads(resp.data.decode('utf-8'))
         if 'measurements' in resp:
             resp=next(filter(lambda x: x['statistic'] == 'COUNT', resp['measurements']))
             if 'value' in resp:
