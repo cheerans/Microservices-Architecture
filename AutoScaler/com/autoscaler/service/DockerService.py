@@ -36,6 +36,7 @@ class DockerService(object):
         logger.info("CPU_USAGE_URL {}".format(cpu_usage_url))
         resp = urllib3.PoolManager().request('GET',cpu_usage_url)
         resp = json.loads(resp.data.decode('utf-8'))
+        logger.info("RESP_CPU_USAGE {}".format(resp))
         if 'measurements' in resp:
             resp=next(filter(lambda x: x['statistic'] == 'COUNT', resp['measurements']))
             if 'value' in resp:
