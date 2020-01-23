@@ -115,6 +115,7 @@ Please click the link above for details. This is the Microservice implementation
 * docker image rm <image id> - Remove specified image from this machine
 * docker image rm $(docker image ls -a -q) - Remove all images from this machine
 * docker login
+* docker ps --filter "name=mlserver-east"
 
 * docker exec -it mycontainer sh 
         -i means interactively 
