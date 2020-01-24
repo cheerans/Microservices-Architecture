@@ -32,6 +32,9 @@ class AutoScaleStrategy(object):
             
             logger.info("SERVICE_NAME {}".format(service_name))
             
+            containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
+            logger.info("CONTAINERS_LIST {}".format(containerLst))
+            
             scale_min = autoscale_rule['scale_min']
             scale_max = autoscale_rule['scale_max']
             scale_step = autoscale_rule['scale_step']
