@@ -47,8 +47,8 @@ class DockerService(object):
         
         containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
         logger.info("CONTAINERS_LIST {}".format(containerLst))
-        #for container in containerLst:
-            #container.attrs
+        for container in containerLst:
+            logger.info("REQ_COUNT_URL {}".format(container.attrs['HostConfig']['CpuPercent']))
             
         if (not services):
             raise ServiceNotFoundException(service_name)
