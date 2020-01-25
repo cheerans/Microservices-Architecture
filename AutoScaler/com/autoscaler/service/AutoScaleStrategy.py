@@ -2,13 +2,14 @@ import threading
 from datetime import datetime, time
 import logging
 
+import docker
+
 from com.autoscaler.constants.Constants import DELTA_CPU, DELTA_REQ
 
 logger = logging.getLogger(__name__)
 
 
 class AutoScaleStrategy(object):
-
     traffic_map = {}
 
     def __init__(self, config, dockerSvc, scheduler, datetime_module=None):
@@ -29,16 +30,17 @@ class AutoScaleStrategy(object):
         autoscale_rules = self.config['autoscale_config']
         for autoscale_rule in autoscale_rules:
             service_name = autoscale_rule['service_name']
-            
+
             logger.info("SERVICE_NAME {}".format(service_name))
-            
+            self.docker_engine = docker.from_env()
             containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
             logger.info("CONTAINERS_LIST {}".format(containerLst))
-            
+
             scale_min = autoscale_rule['scale_min']
             scale_max = autoscale_rule['scale_max']
             scale_step = autoscale_rule['scale_step']
-            x = threading.Thread(target=self.decide_scale_thread, args=(service_name, scale_min, scale_max, scale_step,))
+            x = threading.Thread(target=self.decide_scale_thread,
+                                 args=(service_name, scale_min, scale_max, scale_step,))
             x.start()
 
     def decide_scale_thread(self, service_name, scale_min, scale_max, scale_step):
@@ -55,16 +57,16 @@ class AutoScaleStrategy(object):
         req_rate_end = self.dockerSvc.get_req_rate(service_name)
         cpu_usage_end = self.dockerSvc.get_cpu_usage(service_name)
 
-        self.traffic_map[req_rate_key]=req_rate_end
-        self.traffic_map[cpu_usage_key]=cpu_usage_end
+        self.traffic_map[req_rate_key] = req_rate_end
+        self.traffic_map[cpu_usage_key] = cpu_usage_end
 
         if req_rate_start is None or cpu_usage_start is None:
             return
 
-        scale_up =  (((req_rate_start-req_rate_end)/self.config['poll_interval_seconds']) > DELTA_REQ) or \
-                    ((cpu_usage_start-cpu_usage_end) > DELTA_CPU)
-        scale_down = (((req_rate_start-req_rate_end)/self.config['poll_interval_seconds']) < -DELTA_REQ) or \
-                     ((cpu_usage_start-cpu_usage_end) < -DELTA_CPU)
+        scale_up = (((req_rate_start - req_rate_end) / self.config['poll_interval_seconds']) > DELTA_REQ) or \
+                   ((cpu_usage_start - cpu_usage_end) > DELTA_CPU)
+        scale_down = (((req_rate_start - req_rate_end) / self.config['poll_interval_seconds']) < -DELTA_REQ) or \
+                     ((cpu_usage_start - cpu_usage_end) < -DELTA_CPU)
 
         # systemDelta = float(docker_system_usage2) - float(docker_system_usage1)
         # daoke_cpu_num = str(str(self.client.inspect_container(str(container)))).split('DAOKECPU=')[-1].split("\'")[0]
