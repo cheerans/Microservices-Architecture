@@ -33,7 +33,8 @@ class AutoScaleStrategy(object):
 
             logger.info("SERVICE_NAME {}".format(service_name))
             self.docker_engine = docker.from_env()
-            containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
+            #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
+            containerLst = self.docker_engine.containers.list()
             logger.info("CONTAINERS_LIST {}".format(containerLst))
 
             scale_min = autoscale_rule['scale_min']
