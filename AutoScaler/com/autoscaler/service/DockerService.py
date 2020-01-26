@@ -45,7 +45,8 @@ class DockerService(object):
     def _get_service(self, service_name):
         services = self.docker_engine.services.list(filters=dict(name=service_name))
         
-        containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
+        #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
+        containerLst = self.docker_engine.containers.list()
         logger.info("CONTAINERS_LIST {}".format(containerLst))
         for container in containerLst:
             logger.info("REQ_COUNT_URL {}".format(container.attrs['HostConfig']['CpuPercent']))
