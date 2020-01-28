@@ -30,6 +30,11 @@ class DockerService(object):
         return req_rate
 
     def get_cpu_usage(self,service_name):
+        
+        #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
+        containerLst = self.docker_engine.containers.list()
+        for container in containerLst:
+            logger.info("CPU_PERCENT {}".format(container.attrs['HostConfig']['CpuPercent']))
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
@@ -43,16 +48,9 @@ class DockerService(object):
         return req_rate
 
     def _get_service(self, service_name):
-        services = self.docker_engine.services.list(filters=dict(name=service_name))
-        
-        #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
-        containerLst = self.docker_engine.containers.list()
-        logger.info("CONTAINERS_LIST {}".format(containerLst))
-        for container in containerLst:
-            logger.info("REQ_COUNT_URL {}".format(container.attrs['HostConfig']['CpuPercent']))
-            
+        services = self.docker_engine.services.list(filters=dict(name=service_name))            
         if (not services):
-            raise ServiceNotFoundException(service_name)
+            raise ServiceNotFoundException(service_name)                     
         return services[0]
 
     def get_service_replica_count(self, service_name):
