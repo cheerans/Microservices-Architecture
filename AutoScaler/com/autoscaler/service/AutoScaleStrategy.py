@@ -2,8 +2,6 @@ import threading
 from datetime import datetime, time
 import logging
 
-import docker
-
 from com.autoscaler.constants.Constants import DELTA_CPU, DELTA_REQ
 
 logger = logging.getLogger(__name__)
@@ -30,13 +28,7 @@ class AutoScaleStrategy(object):
         autoscale_rules = self.config['autoscale_config']
         for autoscale_rule in autoscale_rules:
             service_name = autoscale_rule['service_name']
-
             logger.info("SERVICE_NAME {}".format(service_name))
-            self.docker_engine = docker.from_env()
-            #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
-            containerLst = self.docker_engine.containers.list()
-            logger.info("CONTAINERS_LIST {}".format(containerLst))
-
             scale_min = autoscale_rule['scale_min']
             scale_max = autoscale_rule['scale_max']
             scale_step = autoscale_rule['scale_step']
