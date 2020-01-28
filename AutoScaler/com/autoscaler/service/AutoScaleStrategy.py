@@ -1,65 +1,100 @@
-import json
+import threading
+from datetime import datetime, time
 import logging
-import os
 
-import docker
-import urllib3
-from docker.types import ServiceMode
-
-from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
+from com.autoscaler.constants.Constants import DELTA_CPU, DELTA_REQ
 
 logger = logging.getLogger(__name__)
 
-def jsons(resp):
-    pass
 
-class DockerService(object):
-    def __init__(self):
-        self.docker_engine = docker.from_env()
+class AutoScaleStrategy(object):
+    traffic_map = {}
 
-    def get_req_rate(self,service_name):
-        req_rate = None
-        req_count_url = os.environ["REQ_COUNT_URL"]
-        logger.info("REQ_COUNT_URL {}".format(req_count_url))
-        resp = urllib3.PoolManager().request('GET',req_count_url)
-        resp = json.loads(resp.data.decode('utf-8'))
-        if 'measurements' in resp:
-            resp=next(filter(lambda x: x['statistic'] == 'COUNT', resp['measurements']))
-            if 'value' in resp:
-                req_rate = int(resp['value'])
-        return req_rate
+    def __init__(self, config, dockerSvc, scheduler, datetime_module=None):
 
-    def get_cpu_usage(self,service_name):
-        
-        #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
-        containerLst = self.docker_engine.containers.list()
-        for container in containerLst:
-            logger.info("CPU_PERCENT {}".format(container.attrs['HostConfig']['CpuPercent']))
+        self.config = config
+        self.dockerSvc = dockerSvc
+        self.scheduler = scheduler
+        self.datetime_module = datetime_module or datetime
 
-        client = docker.client.DockerClient()
-        container = client.containers.list(filters=dict(name=service_name))
+    def start(self):
 
-        req_rate = None
-        cpu_usage_url = os.environ["CPU_USAGE_URL"]
-        logger.info("CPU_USAGE_URL {}".format(cpu_usage_url))
-        resp = urllib3.PoolManager().request('GET',cpu_usage_url)
-        resp = json.loads(resp.data.decode('utf-8'))
-        if 'measurements' in resp:
-            resp=next(filter(lambda x: x['statistic'] == 'VALUE', resp['measurements']))
-            if 'value' in resp:
-                req_rate = int(resp['value'])
-        return req_rate
+        job = self.scheduler.add_job(self.run, 'interval', seconds=self.config['poll_interval_seconds'])
+        job.modify(next_run_time=self.datetime_module.now(self.scheduler.timezone))
+        self.scheduler.start()
 
-    def _get_service(self, service_name):
-        services = self.docker_engine.services.list(filters=dict(name=service_name))            
-        if (not services):
-            raise ServiceNotFoundException(service_name)                     
-        return services[0]
+    def run(self):
 
-    def get_service_replica_count(self, service_name):
-        service = self._get_service(service_name)
-        return service.attrs['Spec']['Mode']['Replicated']['Replicas']
+        autoscale_rules = self.config['autoscale_config']
+        for autoscale_rule in autoscale_rules:
+            service_name = autoscale_rule['service_name']
+            logger.info("SERVICE_NAME {}".format(service_name))
+            scale_min = autoscale_rule['scale_min']
+            scale_max = autoscale_rule['scale_max']
+            scale_step = autoscale_rule['scale_step']
+            x = threading.Thread(target=self.decide_scale_thread,
+                                 args=(service_name, scale_min, scale_max, scale_step,))
+            x.start()
 
-    def scale_service(self, service_name, replica_count):
-        service = self._get_service(service_name)
-        service.update(mode=ServiceMode("replicated", replicas=replica_count))
+    def decide_scale_thread(self, service_name, scale_min, scale_max, scale_step):
+
+        req_rate_key = service_name + "_" + "req_rate"
+        cpu_usage_key = service_name + "_" + "cpu_usage"
+
+        req_rate_start = None
+        if req_rate_key in self.traffic_map:
+            req_rate_start = self.traffic_map[req_rate_key]
+        cpu_usage_start = None
+        if cpu_usage_key in self.traffic_map:
+            cpu_usage_start = self.traffic_map[cpu_usage_key]
+        req_rate_end = self.dockerSvc.get_req_rate(service_name)
+        cpu_usage_end = self.dockerSvc.get_cpu_usage(service_name)
+
+        self.traffic_map[req_rate_key] = req_rate_end
+        self.traffic_map[cpu_usage_key] = cpu_usage_end
+
+        if req_rate_start is None or cpu_usage_start is None:
+            return
+
+        scale_up = (((req_rate_start - req_rate_end) / self.config['poll_interval_seconds']) > DELTA_REQ) or \
+                   ((cpu_usage_start - cpu_usage_end) > DELTA_CPU)
+        scale_down = (((req_rate_start - req_rate_end) / self.config['poll_interval_seconds']) < -DELTA_REQ) or \
+                     ((cpu_usage_start - cpu_usage_end) < -DELTA_CPU)
+
+        # systemDelta = float(docker_system_usage2) - float(docker_system_usage1)
+        # daoke_cpu_num = str(str(self.client.inspect_container(str(container)))).split('DAOKECPU=')[-1].split("\'")[0]
+        # if cpuDelta >= 0 and systemDelta >= 0:
+        #     if daoke_cpu_num == "{u":
+        #         daoke_cpu_num = 24
+        #         return round((float(cpuDelta) / float(systemDelta) * cpu_num * 100.0) / float(daoke_cpu_num), 2)
+        #     elif daoke_cpu_num == "0":
+        #         daoke_cpu_num = 24
+        #         return round((float(cpuDelta) / float(systemDelta) * cpu_num * 100.0) / float(daoke_cpu_num), 2)
+        #     else:
+        #         return round((float(cpuDelta) / float(systemDelta) * cpu_num * 100.0) / float(daoke_cpu_num), 2)
+
+        if scale_up:
+            current_replica_count = self.docker_client.get_service_replica_count(service_name=service_name)
+            logger.debug("Replica count for {}: {}".format(service_name, current_replica_count))
+            if (current_replica_count + scale_step) <= scale_max:
+                logger.info("Scaling up {} from {} to {} as metric value is {}".format(
+                    service_name,
+                    current_replica_count,
+                    current_replica_count + scale_step)
+                )
+                self.docker_client.scale_service(
+                    service_name=service_name,
+                    replica_count=current_replica_count + scale_step
+                )
+
+        if scale_down:
+            if (current_replica_count - scale_step) >= scale_min:
+                logger.info("Scaling down {} from {} to {} as metric value is {}".format(
+                    service_name,
+                    current_replica_count,
+                    current_replica_count - scale_step)
+                )
+                self.docker_client.scale_service(
+                    service_name=service_name,
+                    replica_count=current_replica_count - scale_step
+                )
