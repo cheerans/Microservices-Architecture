@@ -34,26 +34,27 @@ class DockerService(object):
         try:
             client = docker.client.DockerClient()
             containerLst = client.containers
+            logger.info("HERE1")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container))
-            container = client.containers.list(filters=dict(name=service_name))
         except:
-            logger.info("ERROR{}")
+            logger.info("ERROR")
             
         try:
             client = docker.client.DockerClient()
             container = client.containers.list(filters=dict(name=service_name))
+            logger.info("HERE2")
             logger.info("CONTAINER {}".format(container))
         except:
-            logger.info("ERROR{}")
+            logger.info("ERROR")
 
         try:
-            #containerLst = self.docker_engine.containers.list(filters=dict(name=service_name))
             containerLst = self.docker_engine.containers.list()
+            logger.info("HERE3")
             for container in containerLst:
                 logger.info("CPU_PERCENT {}".format(container.attrs['HostConfig']['CpuPercent']))
         except:
-            logger.info("ERROR{}")
+            logger.info("ERROR")
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
