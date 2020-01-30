@@ -32,19 +32,23 @@ class DockerService(object):
     def get_cpu_usage(self,service_name):
 
         try:
-            client = docker.client.DockerClient()
-            containerLst = client.containers
+            client = docker.client.from_env()
+            containerLst = client.containers.list()
             logger.info("HERE1")
-            for container in containerLst.__dict__:
-                logger.info("CONTAINER {}".format(container))
+            for container in containerLst:
+                logger.info("CONTAINER {}".format(container.id))
         except:
             logger.info("ERROR")
             
         try:
-            client = docker.client.DockerClient()
-            container = client.containers.list(filters=dict(name=service_name))
+            client = docker.Client( base_url='unix://var/run/docker.sock',
+                                    version='1.12',
+                                    timeout=10)
+
+            containers = client.containers.list
             logger.info("HERE2")
-            logger.info("CONTAINER {}".format(container))
+            for container in containerLst:
+                logger.info("CONTAINER {}".format(container.id))
         except:
             logger.info("ERROR")
 
