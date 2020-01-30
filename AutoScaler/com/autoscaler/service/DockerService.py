@@ -35,7 +35,7 @@ class DockerService(object):
             client = docker.client.DockerClient()
             containerLst = client.containers
             logger.info("HERE1")
-            for container in containerLst:
+            for container in containerLst.__dict__:
                 logger.info("CONTAINER {}".format(container))
         except:
             logger.info("ERROR")
@@ -49,7 +49,7 @@ class DockerService(object):
             logger.info("ERROR")
 
         try:
-            containerLst = self.docker_engine.containers.list()
+            containerLst = self.docker_engine.containers
             logger.info("HERE3")
             for container in containerLst:
                 logger.info("CPU_PERCENT {}".format(container.attrs['HostConfig']['CpuPercent']))
