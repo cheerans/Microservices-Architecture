@@ -45,7 +45,7 @@ class DockerService(object):
                                     version='1.12',
                                     timeout=10)
 
-            containers = client.containers.list
+            containers = client.containers.list()
             logger.info("HERE2")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
@@ -54,8 +54,9 @@ class DockerService(object):
 
         try:
             client = docker.DockerClient(version='auto')
+            logger.info("HERE3")            
             containerLst = client.containers.list()
-            logger.info("HERE3")
+            logger.info("HERE4")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
         except:
