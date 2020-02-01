@@ -5,6 +5,7 @@ import os
 import docker
 import urllib3
 from docker.types import ServiceMode
+import requests_unixsocket
 
 from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
 
@@ -61,6 +62,18 @@ class DockerService(object):
                 logger.info("CONTAINER {}".format(container.id))
         except:
             logger.info("ERROR")
+            
+        self.base = "http+unix://%2Fvar%2Frun%2Fdocker.sock"
+        self.url = "/containers/json"
+        try:        
+            self.session = requests_unixsocket.Session()
+            logger.info("HERE5")
+            self.resp = self.session.get( self.base + self.url)
+            logger.info("CONTAINER {}".format(self.resp))
+        except Exception as ex:
+            template = "An exception of type {0} occured. Arguments:\n{1!r}"
+            message = template.format(type(ex).__name__, ex.args)
+            print message
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
