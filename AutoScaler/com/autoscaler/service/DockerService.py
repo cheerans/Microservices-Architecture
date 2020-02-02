@@ -71,9 +71,7 @@ class DockerService(object):
             self.resp = self.session.get( self.base + self.url)
             logger.info("CONTAINER {}".format(self.resp))
         except Exception as ex:
-            template = "An exception of type {0} occured. Arguments:\n{1!r}"
-            message = template.format(type(ex).__name__, ex.args)
-            print message
+            logger.info("ERROR")
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
