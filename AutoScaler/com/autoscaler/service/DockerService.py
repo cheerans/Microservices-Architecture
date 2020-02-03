@@ -54,9 +54,9 @@ class DockerService(object):
             logger.info("ERROR")
 
         try:
-            client = docker.DockerClient(version='auto')
+            client = docker.DockerClient(base_url='unix://var/run/docker.sock')
             logger.info("HERE3")            
-            containerLst = client.containers.list()
+            containerLst = client.
             logger.info("HERE4")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
@@ -64,7 +64,7 @@ class DockerService(object):
             logger.info("ERROR")
             
         self.base = "http+unix://%2Fvar%2Frun%2Fdocker.sock"
-        self.url = "/containers/json"
+        self.url = "/v1.39/containers/json"
         try:        
             self.session = requests_unixsocket.Session()
             logger.info("HERE5")
