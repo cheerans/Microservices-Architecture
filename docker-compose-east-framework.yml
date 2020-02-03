@@ -131,4 +131,3 @@ networks:
 volumes:
     userdata:
         external: true
-    - "/var/run/docker.sock:/var/run/docker.sock"
