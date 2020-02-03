@@ -34,6 +34,7 @@ class DockerService(object):
 
         try:
             client = docker.client.from_env()
+            logger.info("HERE11")
             containerLst = client.containers.list()
             logger.info("HERE1")
             for container in containerLst:
@@ -67,6 +68,7 @@ class DockerService(object):
             self.session = requests_unixsocket.Session()
             logger.info("HERE5")
             self.resp = self.session.get( self.base + self.url)
+            logger.info("HERE6")
             logger.info("CONTAINER {}".format(self.resp))
         except Exception as ex:
             logger.info("ERROR")
