@@ -55,11 +55,9 @@ class DockerService(object):
 
         try:
             client = docker.DockerClient(base_url='unix://var/run/docker.sock')
-            logger.info("HERE3")            
-            containerLst = client.
-            logger.info("HERE4")
-            for container in containerLst:
-                logger.info("CONTAINER {}".format(container.id))
+            logger.info("HERE3")
+            for container in client.containers(decode=True):
+                logger.info("CONTAINER {}".format(container))
         except:
             logger.info("ERROR")
             
