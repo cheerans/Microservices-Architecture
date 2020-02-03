@@ -13,3 +13,6 @@ NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DO
 default   *        virtualbox   Running   tcp://192.168.99.100:2376           v18.06.0-ce
 
 Now type `docker -H tcp://192.168.99.100:2376 ps`
+
+
+curl --unix-socket /var/run/docker.sock http:/v1.24/containers/json
