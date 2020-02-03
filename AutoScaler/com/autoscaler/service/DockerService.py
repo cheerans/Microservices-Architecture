@@ -54,7 +54,7 @@ class DockerService(object):
             logger.info("ERROR")
 
         try:
-            client = docker.DockerClient(base_url='unix://var/run/docker.sock')
+            client = docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
             logger.info("HERE3")
             for container in client.containers(decode=True):
                 logger.info("CONTAINER {}".format(container))
