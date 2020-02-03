@@ -49,7 +49,8 @@ services:
             aliases:
                 - autoscaler-east
     volumes:
-      - userdata:/var/www/mlservicedatadir      
+      - userdata:/var/www/mlservicedatadir
+      - /var/run/docker.sock:/var/run/docker.sock
     logging:
       driver: json-file      
 #  nginx: # read https://docs.nginx.com/nginx/admin-guide/installing-nginx/installing-nginx-docker/
@@ -75,6 +76,5 @@ networks:
     ml-cloud-network-east: 
         external: true
 volumes:
-    /var/run/docker.sock:/var/run/docker.sock
     userdata:
         external: true
