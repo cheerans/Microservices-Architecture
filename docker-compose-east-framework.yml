@@ -129,6 +129,6 @@ networks:
     ml-cloud-network-east: 
         external: true
 volumes:
-    - /var/run/docker.sock:/var/run/docker.sock
     userdata:
         external: true
+    - "/var/run/docker.sock:/var/run/docker.sock"
