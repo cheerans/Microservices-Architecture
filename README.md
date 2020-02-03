@@ -71,7 +71,8 @@ Please click the link above for details. This is the Microservice implementation
   Please click the link above for details. The idea is to implement an API Gateway. Why Gateway, several Microservices can be tailored to one API gateway and load balancing can never go wrong when a service is consumed via a gateway, plus security can be implemented easily hiding microservices behind a DMZ zone.
  
 [Auto Scaler](AutoScaler/README.md)
-AutoScaler will scale the services running on the local docker. The details can be seen in this section
+
+ AutoScaler will scale the services running on the local docker. The details can be seen in this section
   
 [Hystrix Circuit Breaker](MLService/README.md)
   
