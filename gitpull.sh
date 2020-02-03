@@ -10,3 +10,5 @@ alias git="./gitpull.sh"
 alias k="./kill.sh"
 alias rmi='docker rmi -f $(docker images -q)'
 alias rmc='docker rm -f $(docker ps -a -q)'
+alias rmai='docker rmi -f $(docker images -a santhoshcheeran/autoscalerrepo -q)'
+alias rmac='docker rm -f $(docker ps -a  | grep autoscaler | awk '{print $1}')'
