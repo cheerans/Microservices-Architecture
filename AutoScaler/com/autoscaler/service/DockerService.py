@@ -43,9 +43,13 @@ class DockerService(object):
             logger.info("ERROR")
             
         try:
-            client = docker.APIClient(  base_url='unix://var/run/docker.sock',
-                                        version='auto',
-                                        timeout=10)
+            #client = docker.APIClient(  base_url='unix://var/run/docker.sock',
+            #                            version='auto',
+            #                            timeout=10)
+
+            client = docker.APIClient(base_url='tcp://192.168.99.100:2376',
+                                                version='auto',
+                                                timeout=10)
 
             containers = client.containers.list()
             logger.info("HERE2")
@@ -55,14 +59,15 @@ class DockerService(object):
             logger.info("ERROR")
 
         try:
-            client = docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
+            #client = docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
+            client = docker.DockerClient(base_url='tcp://192.168.99.100:2376', version='auto')            
             logger.info("HERE3")
             for container in client.containers(decode=True):
                 logger.info("CONTAINER {}".format(container))
         except:
             logger.info("ERROR")
             
-        self.base = "http+unix://%2Fvar%2Frun%2Fdocker.sock"
+        self.base = "tcp://192.168.99.100:2376"
         self.url = "/v1.39/containers/json"
         try:        
             self.session = requests_unixsocket.Session()
