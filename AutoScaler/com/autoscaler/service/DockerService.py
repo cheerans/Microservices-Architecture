@@ -43,9 +43,9 @@ class DockerService(object):
             logger.info("ERROR")
             
         try:
-            client = docker.api.APIClient(  base_url='unix://var/run/docker.sock',
-                                            version='auto',
-                                            timeout=10)
+            client = docker.APIClient(  base_url='unix://var/run/docker.sock',
+                                        version='auto',
+                                        timeout=10)
 
             containers = client.containers.list()
             logger.info("HERE2")
