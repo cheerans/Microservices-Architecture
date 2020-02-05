@@ -6,7 +6,6 @@ import docker
 import urllib3
 from docker.types import ServiceMode
 import requests_unixsocket
-from docker import Client
 
 from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
 
