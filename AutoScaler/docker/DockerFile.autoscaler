@@ -24,6 +24,9 @@ CMD ["sh", "-c", "sudo groupadd docker"]
 CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
 CMD ["sh", "-c", "sudo newgrp docker"]
 
+CMD ["sh", "-c", "sudo chown "$USER":"$USER" /home/"$USER"/.docker -R"]
+CMD ["sh", "-c", "sudo chmod g+rwx "$HOME/.docker" -R"]
+
 VOLUME /var/run/docker.sock
 
 # creating here as mldocker user has no rights
