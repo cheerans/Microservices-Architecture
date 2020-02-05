@@ -39,8 +39,8 @@ class DockerService(object):
             logger.info("HERE1")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
-        except:
-            logger.info("ERROR")
+        except Exception as e:
+            logger.info(e.__str__())
             
         try:
             #client = docker.APIClient(  base_url='unix://var/run/docker.sock',
@@ -50,13 +50,13 @@ class DockerService(object):
             client = docker.APIClient(base_url='tcp://192.168.99.100:2376',
                                                 version='auto',
                                                 timeout=10)
-
+            logger.info("HERE22")
             containers = client.containers.list()
             logger.info("HERE2")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
-        except:
-            logger.info("ERROR")
+        except Exception as e:
+            logger.info(e.__str__())
 
         try:
             #client = docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
@@ -64,8 +64,8 @@ class DockerService(object):
             logger.info("HERE3")
             for container in client.containers(decode=True):
                 logger.info("CONTAINER {}".format(container))
-        except:
-            logger.info("ERROR")
+        except Exception as e:
+            logger.info(e.__str__())
             
         self.base = "tcp://192.168.99.100:2376"
         self.url = "/v1.39/containers/json"
@@ -75,8 +75,8 @@ class DockerService(object):
             self.resp = self.session.get( self.base + self.url)
             logger.info("HERE6")
             logger.info("CONTAINER {}".format(self.resp))
-        except Exception as ex:
-            logger.info("ERROR")
+        except Exception as e:
+            logger.info(e.__str__())
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
