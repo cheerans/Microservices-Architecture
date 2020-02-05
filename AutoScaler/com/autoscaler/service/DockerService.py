@@ -6,6 +6,7 @@ import docker
 import urllib3
 from docker.types import ServiceMode
 import requests_unixsocket
+from docker import Client
 
 from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
 
@@ -41,6 +42,20 @@ class DockerService(object):
                 logger.info("CONTAINER {}".format(container.id))
         except Exception as e:
             logger.info(e.__str__())
+
+        try:
+            # client = docker.APIClient(  base_url='unix://var/run/docker.sock',
+            #                            version='auto',
+            #                            timeout=10)
+
+            client = docker.client           
+            logger.info("HERE22")
+            containerLst = client.ContainerCollection.list()
+            logger.info("HERE2")
+            for container in containerLst:
+                logger.info("CONTAINER {}".format(container.id))
+        except Exception as e:
+            logger.info(e.__str__())
             
         try:
             #client = docker.APIClient(  base_url='unix://var/run/docker.sock',
@@ -50,9 +65,9 @@ class DockerService(object):
             client = docker.APIClient(base_url='tcp://192.168.99.100:2376',
                                                 version='auto',
                                                 timeout=10)
-            logger.info("HERE22")
+            logger.info("HERE33")
             containers = client.containers.list()
-            logger.info("HERE2")
+            logger.info("HERE3")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
         except Exception as e:
@@ -61,7 +76,7 @@ class DockerService(object):
         try:
             #client = docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
             client = docker.DockerClient(base_url='tcp://192.168.99.100:2376', version='auto')            
-            logger.info("HERE3")
+            logger.info("HERE4")
             for container in client.containers(decode=True):
                 logger.info("CONTAINER {}".format(container))
         except Exception as e:
@@ -71,7 +86,7 @@ class DockerService(object):
         self.url = "/v1.39/containers/json"
         try:        
             self.session = requests_unixsocket.Session()
-            logger.info("HERE5")
+            logger.info("HERE6")
             self.resp = self.session.get( self.base + self.url)
             logger.info("HERE6")
             logger.info("CONTAINER {}".format(self.resp))
