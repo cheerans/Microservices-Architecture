@@ -33,8 +33,9 @@ WORKDIR /home/mldocker/src
 RUN mkdir /home/mldocker/.docker
 RUN chown mldocker:mldocker /home/mldocker/.docker -R
 RUN chmod g+rwx /home/mldocker/.docker -R
+
 #RUN chown mldocker:mldocker /var/run/docker.sock -R
-RUN chmod g+rwx /var/run/docker.sock -R
+#RUN chmod g+rwx /var/run/docker.sock -R
 
 
 run rm -rf /home/mldocker/src/Microservices-Architecture  &&  git clone https://github.com/cheerans/Microservices-Architecture
