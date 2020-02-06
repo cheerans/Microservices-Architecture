@@ -20,7 +20,7 @@ run python3 -m pip install --upgrade pipenv
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
-RUN groupadd docker
+RUN getent group docker || groupadd docker
 
 RUN echo $USER
 
