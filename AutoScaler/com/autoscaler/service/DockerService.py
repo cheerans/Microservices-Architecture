@@ -49,7 +49,7 @@ class DockerService(object):
 
             client = docker.client           
             logger.info("HERE22")
-            containerLst = client.ContainerCollection.list()
+            containerLst = client.ContainerCollection().list()
             logger.info("HERE2")
             for container in containerLst:
                 logger.info("CONTAINER {}".format(container.id))
