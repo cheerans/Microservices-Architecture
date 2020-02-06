@@ -21,6 +21,9 @@ run python3 -m pip install --upgrade pipenv
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
 CMD ["sh", "-c", "sudo groupadd docker"]
+
+RUN useradd -G docker mldocker
+
 CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
 CMD ["sh", "-c", "sudo newgrp docker"]
 
