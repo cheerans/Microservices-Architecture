@@ -20,17 +20,19 @@ run python3 -m pip install --upgrade pipenv
 
 RUN useradd -ms /bin/bash mldocker
 USER mldocker
-CMD ["sh", "-c", "sudo groupadd docker"]
+RUN groupadd docker
 
-RUN useradd -G docker mldocker
+RUN echo $USER
 
-CMD ["sh", "-c", "sudo usermod -aG docker $USER"]
-CMD ["sh", "-c", "sudo newgrp docker"]
+RUN sudo usermod -aG docker $USER
+RUN sudo newgrp docker
 
-CMD ["sh", "-c", "sudo chown "$USER":"$USER" /home/"$USER"/.docker -R"]
-CMD ["sh", "-c", "sudo chmod g+rwx "$HOME/.docker" -R"]
+RUN sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
+RUN sudo chmod g+rwx "$HOME/.docker" -R
 
 VOLUME /var/run/docker.sock
+
+RUN useradd -G docker mldocker
 
 # creating here as mldocker user has no rights
 RUN mkdir /home/mldocker/src
