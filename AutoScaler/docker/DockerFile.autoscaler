@@ -19,13 +19,13 @@ run python3 -m pip install pipenv
 run python3 -m pip install --upgrade pipenv
 
 RUN useradd -ms /bin/bash mldocker
-USER mldocker
 RUN getent group docker || groupadd docker
 
-RUN echo ${USER}
-
-RUN sudo usermod -aG docker $USER
+USER root
+RUN sudo usermod -a G docker mldocker
 RUN sudo newgrp docker
+
+USER mldocker
 
 RUN sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
 RUN sudo chmod g+rwx "$HOME/.docker" -R
