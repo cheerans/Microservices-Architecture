@@ -24,12 +24,10 @@ RUN getent group docker || groupadd docker
 USER root
 RUN usermod -G docker mldocker
 RUN newgrp docker
+RUN chown "mldocker":"mldocker" /home/"mldocker"/.docker -R
+RUN chmod g+rwx "$HOME/.docker" -R
 
 USER mldocker
-
-RUN sudo chown "$USER":"$USER" /home/"$USER"/.docker -R
-RUN sudo chmod g+rwx "$HOME/.docker" -R
-
 VOLUME /var/run/docker.sock
 
 RUN useradd -G docker mldocker
