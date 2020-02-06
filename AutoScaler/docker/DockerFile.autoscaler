@@ -22,8 +22,8 @@ RUN useradd -ms /bin/bash mldocker
 RUN getent group docker || groupadd docker
 
 USER root
-RUN sudo usermod -a G docker mldocker
-RUN sudo newgrp docker
+RUN usermod -a G docker mldocker
+RUN newgrp docker
 
 USER mldocker
 
