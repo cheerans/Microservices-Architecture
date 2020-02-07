@@ -25,7 +25,7 @@ USER root
 RUN usermod -G docker mldocker
 RUN newgrp docker
 RUN mkdir -p /var/run
-chmod 777 /var/run/docker.sock
+run chmod 777 /var/run/docker.sock
 
 # creating here as mldocker user has no rights
 USER mldocker
