@@ -24,6 +24,8 @@ RUN getent group docker || groupadd docker
 USER root
 RUN usermod -G docker mldocker
 RUN newgrp docker
+RUN mkdir -p /var/run
+chmod 777 /var/run/docker.sock
 
 # creating here as mldocker user has no rights
 USER mldocker
@@ -34,9 +36,9 @@ RUN mkdir /home/mldocker/.docker
 RUN chown mldocker:docker /home/mldocker/.docker -R
 RUN chmod g+rwx /home/mldocker/.docker -R
 
-RUN mkdir -p /var/run
 #RUN chown mldocker:docker /var/run -R
 VOLUME /var/run
+
 
 #RUN chown mldocker:mldocker /var/run/docker.sock -R
 #RUN chmod g+rwx /var/run/docker.sock -R
