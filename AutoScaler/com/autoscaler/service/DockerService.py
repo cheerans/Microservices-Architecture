@@ -38,7 +38,8 @@ class DockerService(object):
             containerLst = client.containers.list()
             logger.info("HERE1")
             for container in containerLst:
-                logger.info("CONTAINER {}".format(container))
+                json_formatted_str = json.dumps(container, indent=2)
+                print(json_formatted_str)
         except Exception as e:
             logger.info(e.__str__())
 
