@@ -35,7 +35,7 @@ RUN chown mldocker:docker /home/mldocker/.docker -R
 RUN chmod g+rwx /home/mldocker/.docker -R
 
 RUN mkdir -p /var/run
-RUN chown mldocker:docker /var/run -R
+#RUN chown mldocker:docker /var/run -R
 VOLUME /var/run
 
 #RUN chown mldocker:mldocker /var/run/docker.sock -R
