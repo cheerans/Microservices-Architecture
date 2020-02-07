@@ -42,56 +42,6 @@ class DockerService(object):
         except Exception as e:
             logger.info(e.__str__())
 
-        try:
-            # client = docker.APIClient(  base_url='unix://var/run/docker.sock',
-            #                            version='auto',
-            #                            timeout=10)
-
-            client = docker.client           
-            logger.info("HERE22")
-            containerLst = client.ContainerCollection().list()
-            logger.info("HERE2")
-            for container in containerLst:
-                logger.info("CONTAINER {}".format(container.id))
-        except Exception as e:
-            logger.info(e.__str__())
-            
-        try:
-            #client = docker.APIClient(  base_url='unix://var/run/docker.sock',
-            #                            version='auto',
-            #                            timeout=10)
-
-            client = docker.APIClient(base_url='tcp://192.168.99.100:2376',
-                                                version='auto',
-                                                timeout=10)
-            logger.info("HERE33")
-            containers = client.containers.list()
-            logger.info("HERE3")
-            for container in containerLst:
-                logger.info("CONTAINER {}".format(container.id))
-        except Exception as e:
-            logger.info(e.__str__())
-
-        try:
-            #client = docker.DockerClient(base_url='unix://var/run/docker.sock',version='auto')
-            client = docker.DockerClient(base_url='tcp://192.168.99.100:2376', version='auto')            
-            logger.info("HERE4")
-            for container in client.containers(decode=True):
-                logger.info("CONTAINER {}".format(container))
-        except Exception as e:
-            logger.info(e.__str__())
-            
-        self.base = "tcp://192.168.99.100:2376"
-        self.url = "/v1.39/containers/json"
-        try:        
-            self.session = requests_unixsocket.Session()
-            logger.info("HERE6")
-            self.resp = self.session.get( self.base + self.url)
-            logger.info("HERE6")
-            logger.info("CONTAINER {}".format(self.resp))
-        except Exception as e:
-            logger.info(e.__str__())
-
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
         logger.info("CPU_USAGE_URL {}".format(cpu_usage_url))
