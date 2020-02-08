@@ -38,10 +38,16 @@ class DockerService(object):
             containerLst = client.containers.list()
             logger.info("HERE1")
             for container in containerLst:
-                json_formatted_str = json.dumps(container, indent=2)
-                print(json_formatted_str)
+                container.reload()
+                logger.info("CONTAINER {}".format(container))
         except Exception as e:
             logger.info(e.__str__())
+
+            #import subprocess
+            #container_ip = subprocess.check_output([
+            #    'docker', 'inspect', container.name, '-f',
+            #    '{{.NetworkSettings.Networks.%s.IPAddress}}' % network.name
+            #]).strip()
 
         req_rate = None
         cpu_usage_url = os.environ["CPU_USAGE_URL"]
