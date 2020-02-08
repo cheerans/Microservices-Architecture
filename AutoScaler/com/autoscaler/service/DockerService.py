@@ -38,8 +38,9 @@ class DockerService(object):
             containerLst = client.containers.list()
             logger.info("HERE1")
             for container in containerLst:
-                container.reload()
-                logger.info("CONTAINER {}".format(container))
+                stats = container.stats(stream=False)
+                print(stats)
+                #logger.info("CONTAINER {}".format(container))
         except Exception as e:
             logger.info(e.__str__())
 
