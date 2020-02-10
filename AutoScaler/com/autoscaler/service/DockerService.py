@@ -45,12 +45,15 @@ class DockerService(object):
                 if service_name in stats['name']:
                     service_count += 1
                     if stats['cpu_stats']['cpu_usage']['total_usage'] is not None:
+                        logger.info("cpu_usage")
                         cpu_usage += stats['cpu_stats']['cpu_usage']['total_usage']
                         logger.info("cpu_usage".format(cpu_usage))
                     if stats['cpu_stats']['system_cpu_usage'] is not None:
+                        logger.info("system_cpu_usage")
                         system_cpu_usage += stats['cpu_stats']['system_cpu_usage']
                         logger.info("system_cpu_usage".format(system_cpu_usage))
                     if stats['cpu_stats']['online_cpus'] is not None:
+                        logger.info("cpu_count")
                         cpu_count += stats['cpu_stats']['online_cpus']
                         logger.info("cpu_count".format(cpu_count))
 
