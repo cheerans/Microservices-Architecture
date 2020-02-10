@@ -2,7 +2,7 @@ import threading
 from datetime import datetime, time
 import logging
 
-from com.autoscaler.constants.Constants import DELTA_CPU, DELTA_REQ
+from com.autoscaler.constants.Constants import HIGH_CPU_USAGE_PERCENT, LOW_CPU_USAGE_PERCENT
 
 logger = logging.getLogger(__name__)
 
@@ -38,44 +38,38 @@ class AutoScaleStrategy(object):
 
     def decide_scale_thread(self, service_name, scale_min, scale_max, scale_step):
 
-        req_rate_key = service_name + "_" + "req_rate"
+        system_cpu_usage_key = service_name + "_" + "system_cpu_usage"
         cpu_usage_key = service_name + "_" + "cpu_usage"
 
-        req_rate_start = None
-        if req_rate_key in self.traffic_map:
-            req_rate_start = self.traffic_map[req_rate_key]
+        system_cpu_usage_start = None
+        if system_cpu_usage_key in self.traffic_map:
+            system_cpu_usage_start = self.traffic_map[system_cpu_usage_key]
+
         cpu_usage_start = None
+
         if cpu_usage_key in self.traffic_map:
             cpu_usage_start = self.traffic_map[cpu_usage_key]
-        req_rate_end = self.dockerSvc.get_req_rate(service_name)
-        cpu_usage_end = self.dockerSvc.get_cpu_usage(service_name)
 
-        self.traffic_map[req_rate_key] = req_rate_end
+        cpu_usage_end, system_cpu_usage_end, cpu_count = self.dockerSvc.get_cpu_usage(service_name)
+
+        logger.info("cpu_usage_end, system_cpu_usage_end, cpu_count".
+                    format(cpu_usage_end, system_cpu_usage_end, cpu_count))
+
+        self.traffic_map[system_cpu_usage_key] = system_cpu_usage_end
         self.traffic_map[cpu_usage_key] = cpu_usage_end
 
-        if req_rate_start is None or cpu_usage_start is None:
+        if system_cpu_usage_start is None or cpu_usage_start is None:
             return
 
-        scale_up = (((req_rate_start - req_rate_end) / self.config['poll_interval_seconds']) > DELTA_REQ) or \
-                   ((cpu_usage_start - cpu_usage_end) > DELTA_CPU)
-        scale_down = (((req_rate_start - req_rate_end) / self.config['poll_interval_seconds']) < -DELTA_REQ) or \
-                     ((cpu_usage_start - cpu_usage_end) < -DELTA_CPU)
-
-        # systemDelta = float(docker_system_usage2) - float(docker_system_usage1)
-        # daoke_cpu_num = str(str(self.client.inspect_container(str(container)))).split('DAOKECPU=')[-1].split("\'")[0]
-        # if cpuDelta >= 0 and systemDelta >= 0:
-        #     if daoke_cpu_num == "{u":
-        #         daoke_cpu_num = 24
-        #         return round((float(cpuDelta) / float(systemDelta) * cpu_num * 100.0) / float(daoke_cpu_num), 2)
-        #     elif daoke_cpu_num == "0":
-        #         daoke_cpu_num = 24
-        #         return round((float(cpuDelta) / float(systemDelta) * cpu_num * 100.0) / float(daoke_cpu_num), 2)
-        #     else:
-        #         return round((float(cpuDelta) / float(systemDelta) * cpu_num * 100.0) / float(daoke_cpu_num), 2)
+        delta_system_cpu_usage = system_cpu_usage_start - system_cpu_usage_end
+        delta_cpu_usage = cpu_usage_start - cpu_usage_end
+        cpu_usage_change_percent = (delta_cpu_usage/delta_system_cpu_usage) * 100
+        scale_up = (cpu_usage_change_percent > 0) and (cpu_usage_change_percent > HIGH_CPU_USAGE_PERCENT)
+        scale_down = (cpu_usage_change_percent < 0) and (cpu_usage_change_percent < LOW_CPU_USAGE_PERCENT)
 
         if scale_up:
             current_replica_count = self.docker_client.get_service_replica_count(service_name=service_name)
-            logger.debug("Replica count for {}: {}".format(service_name, current_replica_count))
+            logger.debug("Replica count for {}:{}".format(service_name, current_replica_count))
             if (current_replica_count + scale_step) <= scale_max:
                 logger.info("Scaling up {} from {} to {} as metric value is {}".format(
                     service_name,
