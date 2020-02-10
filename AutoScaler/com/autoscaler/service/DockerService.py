@@ -44,19 +44,29 @@ class DockerService(object):
                 stats = container.stats(stream=False)
                 if service_name in stats['name']:
                     service_count += 1
-                    cpu_usage += stats['cpu_stats']['cpu_usage']['total_usage']
-                    system_cpu_usage += stats['cpu_stats']['system_cpu_usage']
-                    cpu_count += stats['cpu_stats']['online_cpus']
+                    if stats['cpu_stats']['cpu_usage']['total_usage'] is not None:
+                        cpu_usage += stats['cpu_stats']['cpu_usage']['total_usage']
+                        logger.info("cpu_usage".format(cpu_usage))
+                    if stats['cpu_stats']['system_cpu_usage'] is not None:
+                        system_cpu_usage += stats['cpu_stats']['system_cpu_usage']
+                        logger.info("system_cpu_usage".format(system_cpu_usage))
+                    if stats['cpu_stats']['online_cpus'] is not None:
+                        cpu_count += stats['cpu_stats']['online_cpus']
+                        logger.info("cpu_count".format(cpu_count))
+
         except Exception as e:
             logger.info(e.__str__())
             
-        logger.info("cpu_usage_end, system_cpu_usage_end, cpu_count".
+        logger.info("cpu_usage, system_cpu_usage, cpu_count".
                     format(cpu_usage, system_cpu_usage, cpu_count))
 
         if service_count > 0:
-            cpu_usage = cpu_usage / service_count
-            system_cpu_usage = system_cpu_usage / service_count
-            online_cpus = cpu_count / service_count
+            if cpu_usage is not None:
+                cpu_usage = cpu_usage / service_count
+            if system_cpu_usage is not None:
+                system_cpu_usage = system_cpu_usage / service_count
+            if cpu_count is not None:
+                online_cpus = cpu_count / service_count
         return cpu_usage, system_cpu_usage, online_cpus
 
     def _get_service(self, service_name):
