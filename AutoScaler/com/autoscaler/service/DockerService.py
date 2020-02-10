@@ -35,9 +35,9 @@ class DockerService(object):
         try:
             client = docker.from_env()
             containerLst = client.containers.list()
-            cpu_usage = None
-            system_cpu_usage = None
-            cpu_count = None
+            cpu_usage = 0
+            system_cpu_usage = 0
+            cpu_count = 0
 
             service_count = 0
             for container in containerLst:
