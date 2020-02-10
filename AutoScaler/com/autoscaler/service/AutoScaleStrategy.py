@@ -68,7 +68,7 @@ class AutoScaleStrategy(object):
         scale_down = (cpu_usage_change_percent < 0) and (cpu_usage_change_percent < LOW_CPU_USAGE_PERCENT)
 
         if scale_up:
-            current_replica_count = self.docker_client.get_service_replica_count(service_name=service_name)
+            current_replica_count = self.dockerSvc.get_service_replica_count(service_name=service_name)
             logger.debug("Replica count for {}:{}".format(service_name, current_replica_count))
             if (current_replica_count + scale_step) <= scale_max:
                 logger.info("Scaling up {} from {} to {} as metric value is {}".format(
@@ -76,7 +76,7 @@ class AutoScaleStrategy(object):
                     current_replica_count,
                     current_replica_count + scale_step)
                 )
-                self.docker_client.scale_service(
+                self.dockerSvc.scale_service(
                     service_name=service_name,
                     replica_count=current_replica_count + scale_step
                 )
@@ -88,7 +88,7 @@ class AutoScaleStrategy(object):
                     current_replica_count,
                     current_replica_count - scale_step)
                 )
-                self.docker_client.scale_service(
+                self.dockerSvc.scale_service(
                     service_name=service_name,
                     replica_count=current_replica_count - scale_step
                 )
