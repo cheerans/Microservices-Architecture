@@ -32,6 +32,10 @@ class DockerService(object):
 
     def get_cpu_usage(self,service_name):
 
+        #jsonStr = {"cpu_stats": { "cpu_usage": { "total_usage": 43746356446 } } }
+        #jsonStr = json.dumps(jsonStr)
+        #jsonStr = json.loads(jsonStr)
+        #jsonStr = jsonStr["cpu_stats"]
         try:
             client = docker.from_env()
             containerLst = client.containers.list()
@@ -42,19 +46,19 @@ class DockerService(object):
             service_count = 0
             for container in containerLst:
                 stats = container.stats(stream=False)
-                if service_name in stats['name']:
+                if service_name in stats.attrs['name']:
                     service_count += 1
-                    if stats['cpu_stats']['cpu_usage']['total_usage'] is not None:
+                    if stats.attrs['cpu_stats']['cpu_usage']['total_usage'] is not None:
                         logger.info("cpu_usage")
-                        cpu_usage += stats['cpu_stats']['cpu_usage']['total_usage']
+                        cpu_usage += stats.attrs['cpu_stats']['cpu_usage']['total_usage']
                         logger.info("cpu_usage".format(cpu_usage))
-                    if stats['cpu_stats']['system_cpu_usage'] is not None:
+                    if stats.attrs['cpu_stats']['system_cpu_usage'] is not None:
                         logger.info("system_cpu_usage")
-                        system_cpu_usage += stats['cpu_stats']['system_cpu_usage']
+                        system_cpu_usage += stats.attrs['cpu_stats']['system_cpu_usage']
                         logger.info("system_cpu_usage".format(system_cpu_usage))
-                    if stats['cpu_stats']['online_cpus'] is not None:
+                    if stats.attrs['cpu_stats']['online_cpus'] is not None:
                         logger.info("cpu_count")
-                        cpu_count += stats['cpu_stats']['online_cpus']
+                        cpu_count += stats.attrs['cpu_stats']['online_cpus']
                         logger.info("cpu_count".format(cpu_count))
 
         except Exception as e:
