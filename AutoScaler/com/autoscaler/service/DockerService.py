@@ -34,9 +34,7 @@ class DockerService(object):
 
         try:
             client = docker.from_env()
-            logger.info("HERE11")
             containerLst = client.containers.list()
-            logger.info("HERE1")
             cpu_usage = None
             system_cpu_usage = None
             cpu_count = None
@@ -51,6 +49,10 @@ class DockerService(object):
                     cpu_count += stats['cpu_stats']['online_cpus']
         except Exception as e:
             logger.info(e.__str__())
+            
+        logger.info("cpu_usage_end, system_cpu_usage_end, cpu_count".
+                    format(cpu_usage, system_cpu_usage, cpu_count))
+
         if service_count > 0:
             cpu_usage = cpu_usage / service_count
             system_cpu_usage = system_cpu_usage / service_count
