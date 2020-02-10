@@ -1,11 +1,11 @@
 import json
 import logging
 import os
+import threading
 
 import docker
 import urllib3
 from docker.types import ServiceMode
-import requests_unixsocket
 
 from com.autoscaler.exception.ServiceNotFoundException import ServiceNotFoundException
 
@@ -37,29 +37,25 @@ class DockerService(object):
             logger.info("HERE11")
             containerLst = client.containers.list()
             logger.info("HERE1")
+            cpu_usage = None
+            system_cpu_usage = None
+            cpu_count = None
+
+            service_count = 0
             for container in containerLst:
                 stats = container.stats(stream=False)
-                print(stats)
-                #logger.info("CONTAINER {}".format(container))
+                if service_name in stats['name']:
+                    service_count += 1
+                    cpu_usage += stats['cpu_stats']['cpu_usage']['total_usage']
+                    system_cpu_usage += stats['cpu_stats']['system_cpu_usage']
+                    cpu_count += stats['cpu_stats']['online_cpus']
         except Exception as e:
             logger.info(e.__str__())
-
-            #import subprocess
-            #container_ip = subprocess.check_output([
-            #    'docker', 'inspect', container.name, '-f',
-            #    '{{.NetworkSettings.Networks.%s.IPAddress}}' % network.name
-            #]).strip()
-
-        req_rate = None
-        cpu_usage_url = os.environ["CPU_USAGE_URL"]
-        logger.info("CPU_USAGE_URL {}".format(cpu_usage_url))
-        resp = urllib3.PoolManager().request('GET',cpu_usage_url)
-        resp = json.loads(resp.data.decode('utf-8'))
-        if 'measurements' in resp:
-            resp=next(filter(lambda x: x['statistic'] == 'VALUE', resp['measurements']))
-            if 'value' in resp:
-                req_rate = int(resp['value'])
-        return req_rate
+        if service_count > 0:
+            cpu_usage = cpu_usage / service_count
+            system_cpu_usage = system_cpu_usage / service_count
+            online_cpus = cpu_count / service_count
+        return cpu_usage, system_cpu_usage, online_cpus
 
     def _get_service(self, service_name):
         services = self.docker_engine.services.list(filters=dict(name=service_name))            
