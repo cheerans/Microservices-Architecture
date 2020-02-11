@@ -75,13 +75,13 @@ class DockerService(object):
                     format(total_cpu_usage, total_system_cpu_usage, total_cpu_count))
 
         if service_count > 0:
-            if cpu_usage is not None:
-                cpu_usage = cpu_usage / service_count
-            if system_cpu_usage is not None:
-                system_cpu_usage = system_cpu_usage / service_count
-            if cpu_count is not None:
-                cpu_count = cpu_count / service_count
-        return cpu_usage, system_cpu_usage, cpu_count
+            if total_cpu_usage is not None:
+                total_cpu_usage = total_cpu_usage / service_count
+            if total_system_cpu_usage is not None:
+                total_system_cpu_usage = total_system_cpu_usage / service_count
+            if total_cpu_count is not None:
+                total_cpu_count = total_cpu_count / service_count
+        return total_cpu_usage, total_system_cpu_usage, total_cpu_count
 
     def _get_service(self, service_name):
         services = self.docker_engine.services.list(filters=dict(name=service_name))            
