@@ -1,4 +1,4 @@
-poll_interval_seconds: 10
+poll_interval_seconds: 120
 autoscale_config:
   - service_name: mlserver-east
     scale_min: 1
