@@ -52,8 +52,7 @@ class AutoScaleStrategy(object):
 
         cpu_usage_end, system_cpu_usage_end, cpu_count = self.dockerSvc.get_cpu_usage(service_name)
 
-        logger.info("cpu_usage_end, system_cpu_usage_end, cpu_count".
-                    format(cpu_usage_end, system_cpu_usage_end, cpu_count))
+        print(cpu_usage_end, system_cpu_usage_end, cpu_count)
 
         self.traffic_map[system_cpu_usage_key] = system_cpu_usage_end
         self.traffic_map[cpu_usage_key] = cpu_usage_end
