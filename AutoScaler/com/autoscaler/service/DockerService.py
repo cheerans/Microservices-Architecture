@@ -63,10 +63,10 @@ class DockerService(object):
                             cpu_usage = cpu_usage["total_usage"]
                             if cpu_usage is not None:
                                 total_cpu_usage += cpu_usage
-                        if cpu_count is not None:
-                            total_system_cpu_usage += cpu_count
                         if system_cpu_usage is not None:
-                            total_cpu_count += system_cpu_usage
+                            total_system_cpu_usage += system_cpu_usage
+                        if cpu_count is not None:
+                            total_cpu_count += cpu_count
 
         except Exception as e:
             logger.info(e.__str__())
