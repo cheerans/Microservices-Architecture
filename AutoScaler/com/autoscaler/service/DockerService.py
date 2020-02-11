@@ -50,8 +50,6 @@ class DockerService(object):
                     cpu_stats = stats["cpu_stats"]
                     cpu_usage = None
                     if cpu_stats is not None:
-                        logger.info("cpu_stats")
-                        print(cpu_stats)
                         cpu_usage = cpu_stats["cpu_usage"]
                         system_cpu_usage = cpu_stats["system_cpu_usage"]
                         cpu_count = cpu_stats["online_cpus"]
@@ -66,8 +64,7 @@ class DockerService(object):
 
         except Exception as e:
             logger.info(e.__str__())
-            
-        logger.info("total_cpu_usage, total_system_cpu_usage, total_cpu_count")
+
         print(total_cpu_usage, total_system_cpu_usage, total_cpu_count)
 
         if service_count > 0:
@@ -78,7 +75,6 @@ class DockerService(object):
             if total_cpu_count is not None:
                 total_cpu_count = total_cpu_count / service_count
 
-        logger.info("total_cpu_usage, total_system_cpu_usage, total_cpu_count")
         print(total_cpu_usage, total_system_cpu_usage, total_cpu_count)
         return total_cpu_usage, total_system_cpu_usage, total_cpu_count
 
