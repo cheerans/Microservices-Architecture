@@ -36,36 +36,26 @@ class DockerService(object):
         #jsonStr = json.dumps(jsonStr)
         #jsonStr = json.loads(jsonStr)
         #jsonStr = jsonStr["cpu_stats"]
+        total_cpu_usage = 0
+        total_system_cpu_usage = 0
+        total_cpu_count = 0
         try:
             client = docker.from_env()
             containerLst = client.containers.list()
-            total_cpu_usage = 0
-            total_system_cpu_usage = 0
-            total_cpu_count = 0
-
             service_count = 0
             for container in containerLst:
                 stats = container.stats(stream=False)
                 if service_name in stats["name"]:
                     service_count += 1
-                    print(stats)
                     cpu_stats = stats["cpu_stats"]
                     cpu_usage = None
                     if cpu_stats is not None:
                         logger.info("cpu_stats")
                         print(cpu_stats)
                         cpu_usage = cpu_stats["cpu_usage"]
-                        logger.info("cpu_usage")
-                        print(cpu_usage)
                         system_cpu_usage = cpu_stats["system_cpu_usage"]
-                        logger.info("system_cpu_usage")
-                        print(system_cpu_usage)
                         cpu_count = cpu_stats["online_cpus"]
-                        logger.info("cpu_count")
-                        print(cpu_count)
                         if cpu_usage is not None:
-                            logger.info("cpu_usage")
-                            print(cpu_usage)
                             cpu_usage = cpu_usage["total_usage"]
                             if cpu_usage is not None:
                                 total_cpu_usage += cpu_usage
@@ -87,6 +77,9 @@ class DockerService(object):
                 total_system_cpu_usage = total_system_cpu_usage / service_count
             if total_cpu_count is not None:
                 total_cpu_count = total_cpu_count / service_count
+
+        logger.info("total_cpu_usage, total_system_cpu_usage, total_cpu_count")
+        print(total_cpu_usage, total_system_cpu_usage, total_cpu_count)
         return total_cpu_usage, total_system_cpu_usage, total_cpu_count
 
     def _get_service(self, service_name):
