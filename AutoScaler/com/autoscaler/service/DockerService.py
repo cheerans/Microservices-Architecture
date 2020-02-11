@@ -46,19 +46,19 @@ class DockerService(object):
             service_count = 0
             for container in containerLst:
                 stats = container.stats(stream=False)
-                if service_name in stats.attrs['name']:
+                if service_name in stats["name"]:
                     service_count += 1
-                    if stats.attrs['cpu_stats']['cpu_usage']['total_usage'] is not None:
+                    if stats["cpu_stats"]["cpu_usage"]["total_usage"] is not None:
                         logger.info("cpu_usage")
-                        cpu_usage += stats.attrs['cpu_stats']['cpu_usage']['total_usage']
+                        cpu_usage += stats["cpu_stats"]["cpu_usage"]["total_usage"]
                         logger.info("cpu_usage".format(cpu_usage))
-                    if stats.attrs['cpu_stats']['system_cpu_usage'] is not None:
+                    if stats["cpu_stats"]["system_cpu_usage"] is not None:
                         logger.info("system_cpu_usage")
-                        system_cpu_usage += stats.attrs['cpu_stats']['system_cpu_usage']
+                        system_cpu_usage += stats["cpu_stats"]["system_cpu_usage"]
                         logger.info("system_cpu_usage".format(system_cpu_usage))
-                    if stats.attrs['cpu_stats']['online_cpus'] is not None:
+                    if stats["cpu_stats"]["online_cpus"] is not None:
                         logger.info("cpu_count")
-                        cpu_count += stats.attrs['cpu_stats']['online_cpus']
+                        cpu_count += stats["cpu_stats"]["online_cpus"]
                         logger.info("cpu_count".format(cpu_count))
 
         except Exception as e:
@@ -84,7 +84,7 @@ class DockerService(object):
 
     def get_service_replica_count(self, service_name):
         service = self._get_service(service_name)
-        return service.attrs['Spec']['Mode']['Replicated']['Replicas']
+        return service['Spec']['Mode']['Replicated']['Replicas']
 
     def scale_service(self, service_name, replica_count):
         service = self._get_service(service_name)
