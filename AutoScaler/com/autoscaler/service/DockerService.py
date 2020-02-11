@@ -39,34 +39,40 @@ class DockerService(object):
         try:
             client = docker.from_env()
             containerLst = client.containers.list()
-            cpu_usage = 0
-            system_cpu_usage = 0
-            cpu_count = 0
+            total_cpu_usage = 0
+            total_system_cpu_usage = 0
+            total_cpu_count = 0
 
             service_count = 0
             for container in containerLst:
                 stats = container.stats(stream=False)
                 if service_name in stats["name"]:
                     service_count += 1
-                    logger.info("cpu_usage".format(stats["cpu_usage"]))
-                    if stats["cpu_stats"]["cpu_usage"]["total_usage"] is not None:
-                        logger.info("cpu_usage")
-                        cpu_usage += stats["cpu_stats"]["cpu_usage"]["total_usage"]
+                    cpu_stats = stats["cpu_stats"]
+                    cpu_usage = None
+                    if cpu_stats is not None:
+                        logger.info("cpu_stats".format(cpu_stats))
+                        cpu_usage = cpu_stats["cpu_usage"]
                         logger.info("cpu_usage".format(cpu_usage))
-                    if stats["cpu_stats"]["system_cpu_usage"] is not None:
-                        logger.info("system_cpu_usage")
-                        system_cpu_usage += stats["cpu_stats"]["system_cpu_usage"]
+                        system_cpu_usage = cpu_stats["system_cpu_usage"]
                         logger.info("system_cpu_usage".format(system_cpu_usage))
-                    if stats["cpu_stats"]["online_cpus"] is not None:
-                        logger.info("cpu_count")
-                        cpu_count += stats["cpu_stats"]["online_cpus"]
+                        cpu_count = cpu_stats["online_cpus"]
                         logger.info("cpu_count".format(cpu_count))
+                        if cpu_usage is not None:
+                            logger.info("cpu_usage".format(cpu_usage))
+                            cpu_usage = cpu_usage["total_usage"]
+                            if cpu_usage is not None:
+                                total_cpu_usage += cpu_usage
+                        if cpu_count is not None:
+                            total_system_cpu_usage += cpu_count
+                        if system_cpu_usage is not None:
+                            total_cpu_count += system_cpu_usage
 
         except Exception as e:
             logger.info(e.__str__())
             
-        logger.info("cpu_usage, system_cpu_usage, cpu_count".
-                    format(cpu_usage, system_cpu_usage, cpu_count))
+        logger.info("total_cpu_usage, total_system_cpu_usage, total_cpu_count".
+                    format(total_cpu_usage, total_system_cpu_usage, total_cpu_count))
 
         if service_count > 0:
             if cpu_usage is not None:
