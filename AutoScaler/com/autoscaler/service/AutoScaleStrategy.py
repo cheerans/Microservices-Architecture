@@ -44,25 +44,32 @@ class AutoScaleStrategy(object):
         system_cpu_usage_start = None
         if system_cpu_usage_key in self.traffic_map:
             system_cpu_usage_start = self.traffic_map[system_cpu_usage_key]
-
+            
         cpu_usage_start = None
-
         if cpu_usage_key in self.traffic_map:
             cpu_usage_start = self.traffic_map[cpu_usage_key]
-
+            
         cpu_usage_end, system_cpu_usage_end, cpu_count = self.dockerSvc.get_cpu_usage(service_name)
+        
+        if cpu_usage_end is None or system_cpu_usage_end is None or cpu_count is not None:
+            logger.error("Error getting Container performance for service {}".format(service_name))
+            return
 
-        print(cpu_usage_end, system_cpu_usage_end, cpu_count)
+        #print(cpu_usage_end, system_cpu_usage_end, cpu_count)
 
         self.traffic_map[system_cpu_usage_key] = system_cpu_usage_end
         self.traffic_map[cpu_usage_key] = cpu_usage_end
-
+        
+        # nothing to do
         if system_cpu_usage_start is None or cpu_usage_start is None:
             return
 
         delta_system_cpu_usage = system_cpu_usage_start - system_cpu_usage_end
         delta_cpu_usage = cpu_usage_start - cpu_usage_end
         cpu_usage_change_percent = (delta_cpu_usage/delta_system_cpu_usage) * 100
+        
+        print(cpu_usage_change_percent)
+        
         scale_up = (cpu_usage_change_percent > 0) and (cpu_usage_change_percent > HIGH_CPU_USAGE_PERCENT)
         scale_down = (cpu_usage_change_percent < 0) and (cpu_usage_change_percent < LOW_CPU_USAGE_PERCENT)
 
