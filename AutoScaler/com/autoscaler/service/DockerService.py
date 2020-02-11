@@ -48,6 +48,7 @@ class DockerService(object):
                 stats = container.stats(stream=False)
                 if service_name in stats["name"]:
                     service_count += 1
+                    print(stats)
                     cpu_stats = stats["cpu_stats"]
                     cpu_usage = None
                     if cpu_stats is not None:
