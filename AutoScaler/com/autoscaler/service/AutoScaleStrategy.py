@@ -51,7 +51,7 @@ class AutoScaleStrategy(object):
             
         cpu_usage_end, system_cpu_usage_end, cpu_count = self.dockerSvc.get_cpu_usage(service_name)
         
-        if cpu_usage_end is None or system_cpu_usage_end is None or cpu_count is not None:
+        if cpu_usage_end is None or system_cpu_usage_end is None or cpu_count is None:
             logger.error("Error getting Container performance for service {}".format(service_name))
             return
 
