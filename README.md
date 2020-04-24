@@ -80,7 +80,9 @@ Please click the link above for details. This is the Microservice implementation
   
   ## Accessing metrics about a server
 
-    http://localhost:8761/eureka/apps/mlservice-east - The above shows the metrics about the server
+    http://localhost:8761/eureka/apps/mlservice-east - The above shows the metrics about a server and all its instances
+    
+    http://localhost:8761/eureka/apps/mlservice-east/localhost:mlservice-east:8091 - The above shows the metrics about a server instance
     
     http://localhost:8091/actuator/health - The above shows the status of the server
   
