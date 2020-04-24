@@ -78,6 +78,12 @@ Please click the link above for details. This is the Microservice implementation
   
   Please click the link above for details. This area shows how we can avoid cascading failures and avoid certain circuit paths by resolving to return failure.
   
+  ## Accessing metrics about a server
+
+    http://localhost:8761/eureka/apps/mlservice-east - The above shows the metrics about the server
+    
+    http://localhost:8091/actuator/health - The above shows the status of the server
+  
   ## Accessing a port on Windows Docker
   
   The ports of a docker container is not automatically forwarded to the localhost:port. Hence we need to do the following instruction. The magic is done by `microsoft\iis` which spawns up IIS server on the windows machine and makes the docker container available. Here port 8080 on docker container is available. To build an image do the following
