@@ -10,6 +10,8 @@ eureka:
     instance:
         hostname: ${SERVER-HOST:0.0.0.0}
     client:
+        healthcheck:
+            enabled: true     
         registerWithEureka: true
         fetchRegistry: true
         region: ${REGION:east}
