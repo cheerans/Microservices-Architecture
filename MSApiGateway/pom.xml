@@ -78,6 +78,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-actuator</artifactId>
 		</dependency>
+		<!-- used for resttemplate retry on fail -->
 		<dependency>
 		    <groupId>org.springframework.retry</groupId>
 		    <artifactId>spring-retry</artifactId>
