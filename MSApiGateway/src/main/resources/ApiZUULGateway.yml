@@ -29,7 +29,7 @@ ribbon:
     eureka:
         enabled: true
         MaxAutoRetries: 0
-        MaxAutoRetriesNextServer: 0
+        MaxAutoRetriesNextServer: 1
         ReadTimeout: 10000
         PoolMaxThreads: 500
         MaxTotalConnections: 500
