@@ -28,11 +28,11 @@ zuul:
 ribbon:
     eureka:
         enabled: true
-        MaxAutoRetries: 0
-        MaxAutoRetriesNextServer: 1
-        ReadTimeout: 10000
-        PoolMaxThreads: 500
-        MaxTotalConnections: 500
-        MaxConnectionsPerHost: 50
-        MaxHttpConnectionsPerHost: 50
-        MaxTotalHttpConnections: 500
+    MaxAutoRetries: 0
+    MaxAutoRetriesNextServer: 1
+    ReadTimeout: 10000
+    PoolMaxThreads: 500
+    MaxTotalConnections: 500
+    MaxConnectionsPerHost: 50
+    MaxHttpConnectionsPerHost: 50
+    MaxTotalHttpConnections: 500
