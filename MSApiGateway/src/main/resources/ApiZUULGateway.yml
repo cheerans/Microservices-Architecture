@@ -10,6 +10,7 @@ eureka:
   instance:
     hostname: ${SERVER-HOST:0.0.0.0}
   client:
+    # This line makes sure that a down server is detected
     healthcheck:
       enabled: true   
     preferSameZoneEureka: true
@@ -28,6 +29,7 @@ zuul:
       serviceId: mlservice
       stripPrefix: true      
 ribbon:
+    # Makes sure a retyr is done
     MaxAutoRetries: 0
     MaxAutoRetriesNextServer: 1
     ReadTimeout: 10000
