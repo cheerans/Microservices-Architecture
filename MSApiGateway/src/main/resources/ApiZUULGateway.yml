@@ -26,8 +26,6 @@ zuul:
       serviceId: mlservice
       stripPrefix: true      
 ribbon:
-    eureka:
-        enabled: true
     MaxAutoRetries: 0
     MaxAutoRetriesNextServer: 1
     ReadTimeout: 10000
