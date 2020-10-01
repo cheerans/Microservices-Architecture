@@ -23,6 +23,10 @@ docker swarm init --advertise-addr 192.98.78.256:2377
 #get token for manager
 docker swarm join-token --rotate manager
 
+
+# Now we will make all the othre machines Join the manager node, 
+# By quoting its IP address and port and providing the token created as auth
+
 docker swarm join --token TOKEN_FROM_ABOVE 192.98.78.256:2377
 
 #get token for manager
@@ -38,10 +42,15 @@ docker info ml_manager
 
 # Is equuialent of docker run
 
+# This operation is done on the manager ... but it affects all the swarm nodes too
 docker service create --replicas 5 -p 80:80 --name web nginx
 
-# This will scale from 5 to 8
+
+# This operation is done on the manager ... but it affects all the swarm nodes too
+# This will scale from 5 to 8. But all of them together willl have 8 instances, so 3 on first, 4 on second, 1 on third
 docker service scale web=8
+
+# CLEAR ... HOW SWARM WORKS ???
 
 docker service ls
 
@@ -55,4 +64,9 @@ docker service rm web
 # to deploy the app on the cloud hosted swarm
 # Open docker compose and see, it has services listed
 # it runs on swarm created already
+# DEPLOY ON THE MANAGER NODE IS THE TRICK; IT DEPLOYS ON ALL
 docker stack deploy -c docker-compose.yml ml_cloud_stack 
+
+
+# Prometheus can be used to pull the stats
+https://docs.docker.com/config/daemon/prometheus/
