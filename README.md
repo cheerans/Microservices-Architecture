@@ -85,6 +85,18 @@ Please click the link above for details. This is the Microservice implementation
     http://localhost:8761/eureka/apps/mlservice-east/localhost:mlservice-east:8091 - The above shows the metrics about a server instance
     
     http://localhost:8091/actuator/health - The above shows the status of the server
+    
+    http://localhost:8091/actuator/prometheus -  shows CPU usage etc if you add followinf dependency
+    
+    <dependency>
+		    <groupId>io.micrometer</groupId>
+		    <artifactId>micrometer-registry-prometheus</artifactId>
+		  </dependency>
+    
+    add the following entries in spring properties file
+    
+    management.endpoint.health.show-details=always
+    management.endpoints.web.exposure.include=health,info,prometheus
   
   ## Accessing a port on Windows Docker
   
