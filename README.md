@@ -79,6 +79,8 @@ Please click the link above for details. This is the Microservice implementation
   Please click the link above for details. This area shows how we can avoid cascading failures and avoid certain circuit paths by resolving to return failure.
   
   ## Accessing metrics about a server
+  
+  Refer to this article - https://reflectoring.io/spring-boot-health-check/
 
     http://localhost:8761/eureka/apps/mlservice-east - The above shows the metrics about a server and all its instances
     
