@@ -1,3 +1,16 @@
+Engineering Difficulty and its Payoffs
+=======================================
+
+Someone who dropped out of high school thought that much technical knowledge was enough to sustain a high level in society. The fact is it isn't enough. Anymuch is never enough is the fact, as you know. However it is impossible to establish a norm that a high school dropout cannot succeed in life. But the industrial revolution has a micro or nano percenteage of such people and they where never responsible for the wave of industrial revolution, but just some industry. The idea they contributed was to success, which is what we are born with as a brain function. So that largely demerits the argument, technology can be achieved by human spirit alone and not time or education and lengthy reiterative research.
+
+Technical degree is must to join a software development job, as it demonstrates morally conscient life discipline required by the job, in the field of intellectual endeavors alone and not include worldclass skill in mass organizing, a high school drop out usually has adequately. It is under the fair argument, the person dropped due to confidence in self.
+
+A program made to make things smarter and faster, doesn't have to be faster or designed or thought off but only coded faster at the first try to get promoted at job is not an engineering argument. This scheme could be sustained by a ponzi scheme of doing next task faster, while previous things break and takes more time ot fix, or change is well understood. In long run, this becomes unsustaineable, spiralling the company down - as competitor can achieve products with rich features by clever engineering at FRACTIONAL COST.
+
+We are here for studying modern ways to optimize things. eg: Taking years to study a simple process of writing by hand, but trying to automate it by printing - was the first machine. We used centuries of years to accomplish this feat, while 100,0000 of our population was jobless and had hands free to write. Engineering has a goal and effect, it is for that one person who cannot hire 100,000 people to print a book, but has the grand wisdom to write one worth read by 100,000. If you think free market is not possible without adeqaute engineering. Why ? Core Free market relies on that man printing that book about that idea.
+
+High school failed resource teaching mathematics masters program in 3 sessions, by just slipping through all pages and stating I didn't have problem writing High school exams like this, is an accurate statement but is not statistically sufficient a statement !!!
+
 The Dogma of A Complex System
 ===============================
 
