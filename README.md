@@ -1,7 +1,7 @@
 Engineering Difficulty and its Payoffs
 =======================================
 
-I used to be an Engineering school teacher and I got my students understand tough principles with metaphors and similies. Learned this unique method from my chemistry teacher, but our physics teacher denounced this method. As physics people don't like chemistry, it is reasonable chemical proof that the method is sound :)
+Disclaimer: No Intent to offend anyone. I used to be an Engineering school teacher and I got my students understand tough principles with metaphors and similies. Learned this unique method from my chemistry teacher, but our physics teacher denounced this method. As physics people don't like chemistry, it is reasonable chemical proof that the method is sound :)
 
 Let us put an example: Let us say Tesla set out to build the fastest car. At it they built a self driving car. Would a faster car be more faster than a self driving car, given the owner could meander and use their time more wisely, that way making journey use less wasted time ??? At this juncture would it have been smart to just build a slow car so fast that we deliver it in three development cycles ? and not be too fast, neither complicate the concept and hire cheap man power ???
 
