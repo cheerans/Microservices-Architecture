@@ -1,6 +1,8 @@
 Engineering Difficulty and its Payoffs
 =======================================
 
+I used to be an Engineering school teacher and I got my students understand tough principles with metaphors and similies. Learned this unique method from my chemistry teacher, but our physics teacher denounced this method. As physics people don't like chemistry, it is reasonable chemical proof that the method is sound :)
+
 Let us put an example: Let us say Tesla set out to build the fastest car. At it they built a self driving car. Would a faster car be more faster than a self driving car, given the owner could meander and use their time more wisely, that way making journey use less wasted time ??? At this juncture would it have been smart to just build a slow car so fast that we deliver it in three development cycles ? and not be too fast, neither complicate the concept and hire cheap man power ???
 
 Would perceived performance of the manufacturing team be more important than the performance of the manufactured product ??? Tesla is the answer - multitude of innovations implemented at once is needed to survive.
@@ -18,7 +20,7 @@ One day a man buys a rare breed expensive watch dog and feeds it and makes it bi
 
 What if a poor man buys a dog ? The poor man will be sent to jail! The dog will be handed over to the major man as damages. What will happen to the dog ? He will protect the major man's house. Now the poor man steals at major mans home and the dog chases him, the poor man is arrested and the dog gets share of big bones and is hailed as a hero! 
 
-Poor man is Monolith architecture, Rich Major man is the Microservices architecture and the faithful dog is the Customer :) You can see that the only Happy scenario for a customer of a complex multi lot of users system to have a fast application, is to have microservices architecture, else the apllication will almost hang or have very slow response. I hope you like the concept. 
+Poor man is Monolith architecture, Rich Major man is the Microservices architecture and the faithful dog is the Customer :) You can see that the only Happy scenario for a customer of a complex multi lot of users system to have a fast application, is to have microservices architecture, else the apllication will almost hang or have very slow response. I hope you like the easy to remember concept. 
 
 Microservices Architecture (Load balanced + High availability)
 =============================================================
