@@ -87,7 +87,7 @@ Please click the link above for details. This is the Microservice implementation
 
  AutoScaler will scale the services running on the local docker. The details can be seen in this section
   
-[Hystrix Circuit Breaker](MLService/hystrix.md)
+[Hystrix Circuit Breaker](hystrix.md)
   
   Please click the link above for details. This area shows how we can avoid cascading failures and avoid certain circuit paths by resolving to return failure.
   
