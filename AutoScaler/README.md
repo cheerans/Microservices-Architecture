@@ -2,7 +2,7 @@
 
 `Uses Python`
 
-* It scales services on the local docker machine. This app runs on the docker machine and monitors the docker cpu usage as a percentage and scales the application, up and down when threshold is crossed. It is easy to read the code from there on. [The config file is](properties/ScaleServicesConfig.yml)
+* It scales services on the local docker machine. This app runs on the docker machine and monitors the docker cpu usage as a percentage and scales the application, up and down when threshold is crossed. It is easy to read the code from there on. Please click here for config file - [properties/ScaleServicesConfig.yml](properties/ScaleServicesConfig.yml). The heart of the code is here [com/autoscaler/service/AutoScaleStrategy.py](com/autoscaler/service/AutoScaleStrategy.py)
 
 Please type `docker-machine ls`
 
