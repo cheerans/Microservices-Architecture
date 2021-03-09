@@ -1,0 +1,1 @@
+Hystrix is used to implement circuit breaker and hence all failed routes will turn off, from further traffic routing, avoiding cascading failure. These parameters are configurable and uses spring hystrix implementation.
