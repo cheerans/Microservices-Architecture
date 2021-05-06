@@ -7,7 +7,7 @@ Let us put an example: Let us say Tesla set out to build the fastest car. At it 
 
 Now persuading via history - eg: PRINTING PRESS. Taking years to study a simple process of writing by hand, but trying to automate it by printing - was the first machine. We used centuries of years to accomplish this feat, had several different intermediary machines for printing, while 100,0000 of our population was jobless and had hands available free to write. Engineering has a goal and effect, it is for that one person who cannot hire 100,000 people to print a book, but has the grand wisdom to write one worth read by 100,0000. If you really think, free market is not possible without adeqaute engineering. Why ? Core free market idea relies on that man printing that book about that neuvo idea. 
 
-Link between Printing and Microservices ? Cloud and Microservices, enables small companies to have cheap hardware and scale as they grow - rather than buying expensive unix servers.
+Link between Printing and Microservices ? Cloud and Microservices, enables small companies to have cheap hardware and scale as they grow - rather than buying expensive unix servers upfront spending 1 million dollar. They will spend 1 million dollar and not tank economy by not doing so :), but not just yet!
 
 Now persuading by pure finesse. Any number of hours used to skim milk to create the gentlest delicatessen cream, will never fail to gather consumers, neither will it fail to fetch top dollars. 
 
