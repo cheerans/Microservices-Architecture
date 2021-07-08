@@ -1,8 +1,23 @@
 Autoscaling
 -----------
-kubectl autoscale rs foo --min=2 --max=5 --cpu-percent=80
 
 #https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
+
+./kubect run hello-nginx --image=scheeran/nginx --port=80
+o/p: deployment "hello-nginx" created
+
+kubectl get pods
+
+kubectl expose deployment hello-nginx --type=NodePort
+o/p: service "hello-nginx" exposed
+
+kubectl get services
+
+-- manual scaling
+kubectl scale --replicas=3 deployment/hello-nginx
+o/p: deployment "hello-nginx" scaled
+
+kubectl autoscale deployment/hello-nginx --min=2 --max=5 --cpu-percent=80
 
 https://kubernetes.io/blog/2016/07/autoscaling-in-kubernetes/
 Setting Up Autoscaling on GCE
