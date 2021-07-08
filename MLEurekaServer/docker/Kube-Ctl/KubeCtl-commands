@@ -1,6 +1,13 @@
 Autoscaling
 -----------
 
+you could run via yaml like below
+
+#https://docs.docker.com/get-started/kube-deploy/
+the yaml file will deaclre deployment, replica, expose as service, expose ports to external ports etc
+kubectl apply -f bb.yaml
+kubectl delete -f bb.yaml
+
 #https://rominirani.com/tutorial-getting-started-with-kubernetes-on-your-windows-laptop-with-minikube-3269b54a226
 
 ./kubect run hello-nginx --image=scheeran/nginx --port=80
