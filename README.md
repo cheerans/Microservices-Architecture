@@ -11,6 +11,8 @@ Link between Printing and Microservices ? Cloud and Microservices, enables small
 
 Now persuading by pure finesse. Any number of hours used to skim milk to create the gentlest delicatessen cream, will never fail to gather consumers, neither will it fail to fetch top dollars. 
 
+Now persuading via Time Vs Money axis: All innovations that can be done by fast hard work alone, has been already done - is a safe assumption. Universe had been around for millions of years and work is cumulative. Hence what is left to do is smart work. What is the proof, I would have hired people with money and forced competition using price gauging to produce virtual immense fast hard work. I could have worked long period of time to produce all that could be produced via fast hard work eventually and posthumously - and if not yet I will. Elongated periods of slow work simulates fast work - by principle of being cheap. The concept is bending the time axis - to simple past and future using money spent on work as a medium. What is left - smart work ? Any work without an egineering advantage is already done or can be reproduced easy is the proof.
+
 The Dogma of A Complex System
 ===============================
 
