@@ -13,17 +13,6 @@ Now persuading by pure finesse. Any number of hours used to skim milk to create 
 
 Now persuading via Time Vs Money axis: All innovations that can be done by fast hard work alone, has been already done - is a safe assumption. Universe had been around for millions of years and work is cumulative. Hence what is left to do is smart work. What is the proof, I would have hired people with money and forced competition using predatory pricing to produce virtual immense fast hard work. I could have worked long period of time to produce all that could be produced via fast hard work eventually and posthumously - and if not yet I will. Elongated periods of slow work simulates fast work - by principle of being cheap. The concept is bending the time axis - to simple past and future using money spent on work as a medium. What is left - smart work ? Any work without an egineering advantage is already done or can be reproduced easy is the proof.
 
-The Dogma of A Complex System
-===============================
-
-I will try to explain microservices with a small story.
-
-One day a man buys a rare breed expensive watch dog and feeds it and makes it big. The dog was trained in several wonderful skills, and his job was to catch the thief. One day a thief walks in and the dog chases the thief away, and injures him slightly in the pursuit from him falling down alone. With the help of this police is able to track the thief. The case goes to court and the prosecution argues that the dog should be hanged for chasing the thief. Was a dog chasing a man inhumane ? People said since the thief was a major person in the area, attacking the person is dogs crime and owning the dog, the mans crime. So the man get tried for aggravated assault! But since the man had enough money to raise a dog and build a house worth protecting with a dog, he was able to hire a lawyer of great reputation. This lawyer with all his might argues the case to release the man and not charge him with aggravated assault. However the dog was deemed dangerous and put to sleep and the thief was granted damages for medical treatment and defamation caused by the incident. 
-
-What if a poor man buys a dog ? The poor man will be sent to jail! The dog will be handed over to the major man as damages. What will happen to the dog ? He will protect the major man's house. Now the poor man steals at major mans home and the dog chases him, the poor man is arrested and the dog gets share of big bones and is hailed as a hero! 
-
-Poor man is Monolith architecture, Rich Major man is the Microservices architecture and the faithful dog is the Customer :) You can see that the only Happy scenario for a customer of a complex multi lot of users system to have a fast application, is to have microservices architecture, else the apllication will almost hang or have very slow response. I hope you like the easy to remember concept - Use Rich Major architecture called Microservice. 
-
 Microservices Architecture (Load balanced + High availability)
 =============================================================
 
